@@ -2,78 +2,72 @@ package view;
 
 import java.util.Scanner;
 
-public class ChildMenuView_나웅기 {
+public class ParentMenuView_나웅기 {
 
-	Scanner sc = new Scanner(System.in);
-	// ElectronicsController controller = new ElectronicsController(); // 전역변수 초기화,
-	// 생성자 호출
+	Scanner sc= new Scanner(System.in);
+	//ElectronicsController controller = new ElectronicsController(); // 전역변수 초기화, 생성자 호출 
 
 	/**
-	 * 전체 메뉴를 출력하는 메소드
-	 */
-	public void printMenu() {
+	  전체 메뉴를 출력하는 메소드
+	*/
+	public void printMenu(){
+        
+	     while(true){
+           System.out.println("----------------------------------------------------------------------------------");
+           System.out.println("1. 조회    2. 통계 조회     3. 마이페이지     4. 로그아웃");
+		   System.out.println("----------------------------------------------------------------------------------");
+		   System.out.print("메뉴선택 > ");
 
-		boolean b = true;
-		while (b) {
-			System.out.println("----------------------------------------------------------------------------------");
-			System.out.println("1. 조회    2. 기입장 작성     3. 통계 조회     4. 랭킹 조회   5. 마이페이지    6. 로그아웃(누르면 부모 메뉴로 넘어감)");
-			System.out.println("----------------------------------------------------------------------------------");
-			System.out.print("메뉴선택 > ");
+		   String  menu = sc.nextLine();
+		   switch(menu){
+		   		case "1" : 
+               //controller.selectAll();
+			   break;
+			   case "2" : 
+               //this.inputSearch();
+			   break;
+			   case "3" : 
+               this.parentMyPage();
+			   break;
+			   case "4" : 
+               //this.inputUpdate();
+//				   System.exit(0);
+			   break;
+			   default:
+				   System.out.println("메뉴를 다시 선택해주세요!!!!");
 
-			String menu = sc.nextLine();
-			switch (menu) {
-			case "1":
-				// controller.selectAll();
-				break;
-			case "2":
-				// this.inputSearch();
-				break;
-			case "3":
-				// this.inputInsert();
-				break;
-			case "4":
-				// this.inputUpdate();
-				break;
-			case "5":
-				this.kidsMyPage();
-				break;
-			case "6":
-				// System.exit(0);
-				b = false;
-				break;
-			default:
-				System.out.println("메뉴를 다시 선택해주세요!!!!");
+		   }//switch문끝
 
-			}// switch문끝
+		 }//while문끝
 
-		} // while문끝
-
-	}// 메소드끝
-
+	}//메소드끝
 	/**
 	 * 자식 마이페이지 메인 화면 만약 한가지 업무 끝나고 마이페이지에 있게 하려면 while문 넣기
 	 */
-	public void kidsMyPage() {
+	public void parentMyPage() {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("                               마 이 페 이 지                                     ");
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("1. 닉네임 수정    2. 비밀번호 변경     3. 연결된 부모 확인     4. 회원 탈퇴");
+		System.out.println("1. 닉네임 수정    2. 비밀번호 변경     3. 내가 쓴 댓글, 좋아요     3. 연결된 부모 확인     4. 회원 탈퇴");
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.print("메뉴선택 > ");
 
 		String menu = sc.nextLine();
 		switch (menu) {
 		case "1":
-			this.kidsNickChange();
+			this.parentNickChange();
 			break;
 		case "2":
-			this.kidsPasswordChange();
+			this.parentPasswordChange();
 			break;
 		case "3":
-			 this.kidsRelationCheck();
+//			 this.parentRelationCheck();
 			break;
 		case "4":
+			 this.parentRelationCheck();
+			break;
+		case "5":
 			 this.leaveUser();
 			break;
 		default:
@@ -81,11 +75,10 @@ public class ChildMenuView_나웅기 {
 
 		}
 	}
-
 	/**
-	 * 아이 닉네임 변경 
+	 * 부모 닉네임 변경 
 	 */
-	public void kidsNickChange() {
+	public void parentNickChange() {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("                               닉 네 임 변 경                                     ");
 		System.out.println("----------------------------------------------------------------------------------");
@@ -101,7 +94,7 @@ public class ChildMenuView_나웅기 {
 			System.out.println("1. 변경하기   2. 취소하기");
 			String check = sc.nextLine();
 			if (check.equals("1")) {
-				// 닉네임 수정하는 함수 입력
+				// 이 부분에 닉네임 수정하는 함수 입력
 				System.out.println("변경되었습니다.");
 				b = false;
 			} else if (check.equals("2")) {
@@ -115,9 +108,9 @@ public class ChildMenuView_나웅기 {
 	}
 
 	/**
-	 * 아이 비밀번호 변경 
+	 * 부모 비밀번호 변경 
 	 */
-	public void kidsPasswordChange() {
+	public void parentPasswordChange() {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("                            비 밀 번 호 변 경                                     ");
 		System.out.println("----------------------------------------------------------------------------------");
@@ -128,30 +121,91 @@ public class ChildMenuView_나웅기 {
 		String passwordCheck = sc.nextLine();
 		// 아랫 부분은 나중에 successView에서 보여줄 것
 		if (password.equals(passwordCheck)) {
-			// 비밀번호 수정하는 함수 입력하기
+			// 이 부분에 비밀번호 수정하는 함수 입력
 			System.out.println("변경되었습니다.");
 		} else {
 			System.out.println("비밀번호가 다릅니다.");
-			kidsPasswordChange();
+			parentPasswordChange();
 		}
 	}
+	
+	/**
+	 * 부모 댓글 좋아요 내역(수정)
+	 * 여기부터 다시 생각해보기
+	 */
+	public void ParentHistory() {
+		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("                             댓 글 좋 아 요 내 역                                 ");
+		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("조회하실 기간을 선택해주세요!");
+		System.out.print("시작일 : ");
+		String startDate = sc.nextLine();
+		System.out.print("종료일 : ");
+		String endDate = sc.nextLine();
+		// 이 부분에 댓글 좋아요 리스트 받아오는 함수 입력
+		// 더미 데이터
+		String date = "2023-08-01";
+		String comment = "용돈 올려줄게~";
+		String like = "👍👍👍";
+		String row = date + "    ||    " + comment + "    ||    " + like;
+		System.out.println(row);
+		boolean b = true;
+		while (b) {
+			System.out.println("변경할 날짜를 입력해주세요");
+			System.out.println("1. 댓글 수정   2. 댓글 삭제   3. 좋아요 삭제   4. 나가기");
+			String choice = sc.nextLine();
+			switch (choice) {
+			case "1":
+				String changeDate = this.getDate();
+				
+				break;
+			case "2":
+				this.parentPasswordChange();
+				break;
+			case "3":
+//				 this.parentRelationCheck();
+				break;
+			case "4":
+				 this.parentRelationCheck();
+				break;
+			default:
+				System.out.println("번호를 다시 입력해주세요!!!!");
 
+			}
+		}
+	}
+	
+	/**
+	 * 날짜 선택 함수
+	 */
+	public String getDate() {
+		System.out.println("날짜를 선택해주세요");
+		System.out.print("날짜 : ");
+		String date = sc.nextLine();
+		return date;
+	}
+	
 	/**
 	 * 아이 부모 관계 추가 
-	 * 일단은 추가 부분만 구현 음... 부모를 뭐로 찾을까요?? (매개변수) 
+	 * 일단은 추가 부분만 구현
 	 * 일단은 아이디로 하겠습니다
 	 */
-	public void kidsRelationCheck() {
+	public void parentRelationCheck() {
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("                               부 모 님 추 가                                     ");
+		System.out.println("                                자 식 추 가                                       ");
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("부모님의 아이디를 입력해주세요");
-		System.out.print("아이디 : ");
+		System.out.println("자식의 주민등록번호를 입력해주세요");
+		System.out.print("주민등록번호 : ");
 		String id = sc.nextLine();
-		// 이부분에 부모 찾는 함수 입력
+		// 이 부분에 부모 찾는 함수 입력
 		System.out.println("부모 가져오는 함수 실행 중...");
 		System.out.println(id);
-
+		// 테스트
+		if (id == "") {
+			System.out.println("가입되어 있는 아이가 없습니다.");
+			return;
+		}
+		
 		System.out.println("등록하시겠습니까??");
 		
 		boolean b = true;
@@ -183,7 +237,7 @@ public class ChildMenuView_나웅기 {
 		System.out.println("비밀번호를 입력해주세요");
 		System.out.print("비밀번호 : ");
 		String password = sc.nextLine();
-		// 비밀번호 확인 함수 넣기
+		// 이 부분에 비밀번호 확인 함수 입력
 		if (password != "") {
 			System.out.println("정말로 탈퇴하시겠습니까...?");
 			boolean b = true;
@@ -191,7 +245,7 @@ public class ChildMenuView_나웅기 {
 				System.out.println("1. 탈퇴하기   2. 취소하기");
 				String check = sc.nextLine();
 				if (check.equals("1")) {
-					// 이부분에 회원 탈퇴 함수 넣기
+					// 이부분에 회원 탈퇴 함수 입력
 					System.out.println("탈퇴되었습니다.");
 					b = false;
 				} else if (check.equals("2")) {
@@ -207,5 +261,6 @@ public class ChildMenuView_나웅기 {
 			System.out.println();
 		}
 	}
+
 
 }
