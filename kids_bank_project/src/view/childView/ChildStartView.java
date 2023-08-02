@@ -1,28 +1,21 @@
 package view.childView;
 
-
 import java.util.Scanner;
 
-import view.ChildMenuView;
-import view.ParentMenuView;
-
 public class ChildStartView {
-
 	static Scanner sc = new Scanner(System.in);
 
-	public ChildStartView() {
-	}
+	public ChildStartView() {}
 
+	/**
+	 * 시작 화면 출력하는 메소드
+	 */
 	static public void printChildStart() {
-
 		System.out.println();
-		System.out.println(
-				"==============================================================================================");
-		System.out.println("                                         <아이 회원>");
-		System.out
-				.println("                               1.로그인                   2.회원가입							  ");
-		System.out.println(
-				"----------------------------------------------------------------------------------------------");
+		System.out.println("==============================================================================================");
+		System.out.println("                                         <아이 회원>                                             ");
+		System.out.println("                               1.로그인                   2.회원가입							      ");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.print("메뉴선택 >> ");
 
 		String menu = sc.nextLine();
@@ -34,31 +27,30 @@ public class ChildStartView {
 			printJoin();
 			break;
 		default:
-			System.out.println("메뉴를 다시 선택해주세요!!!!");
-
+			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
 		}
 	}
 
 	/**
-	 * 회원가입(아이) 화면을 출력하는 메소드
+	 * 회원가입 화면을 출력하는 메소드
 	 */
 	public static void printJoin() {
-
 		System.out.println();
-		System.out.println(
-				"--------------------------------------- 아이 회원가입---------------------------------------------");
+		System.out.println("----------------------------------------아이 회원가입---------------------------------------------");
 
 		System.out.print("ID 입력 : ");
 		String id = sc.nextLine();
 		System.out.print("PW 입력 : ");
 		String password = sc.nextLine();
-		System.out.print("이름 입력: ");
+		System.out.print("이름 입력 : ");
 		String name = sc.nextLine();
+		System.out.print("주민등록번호 입력(-포함) : ");
+		String registrationNumber = sc.nextLine();
 
-		if (true) { // 3가지 항목 모두 제대로 입력한 경우 -> 메소드 추가하기
+		if (true) { // 4가지 항목 모두 제대로 입력한 경우 -> 메소드 추가하기
 			System.out.println();
 			System.out.println("아이 회원가입 성공!");
-		} else { // 3가지 항목 제대로 입력하지 않은 경우
+		} else { // 4가지 항목 제대로 입력하지 않은 경우
 			System.out.println();
 			System.out.println("정보를 다시 입력하세요.");
 			// 예외처리 추가
@@ -69,16 +61,13 @@ public class ChildStartView {
 	 * 로그인 화면을 출력하는 메소드
 	 */
 	public static void printLogin() {
-
 		System.out.println();
-		System.out.println(
-				"**********************************************************************************************");
-		System.out.println(
-				"                                        *  로그인  *                                                  ");
+		System.out.println("**********************************************************************************************");
+		System.out.println("                                    *  아이 로그인  *                                            ");
 		System.out.println();
-		System.out.print("                                     ID: ");
+		System.out.print("                                     ID : ");
 		String id = sc.nextLine();
-		System.out.print("                                     PW: ");
+		System.out.print("                                     PW : ");
 		String password = sc.nextLine();
 
 		if (true) {
@@ -87,22 +76,20 @@ public class ChildStartView {
 			System.out.println();
 
 			printMainMenu();
-
 		} else {
 			System.out.println("아이디, 비밀번호를 다시 확인해주세요.");
 		}
 	}
-
+	
+	/**
+	 * 메인 화면 출력하는 메소드
+	 */
 	public static void printMainMenu() {
-
-		boolean b = true;
-		while (b) {
+		while (true) {
 			System.out.println();
-			System.out.println(
-					"**********************************************************************************************");
-			System.out.println("         1. 기입장     2. 통계 조회     3. 랭킹 조회   4. 마이페이지    5. 로그아웃  ");
-			System.out.println(
-					"----------------------------------------------------------------------------------------------");
+			System.out.println("**********************************************************************************************");
+			System.out.println("              1. 기입장     2. 통계 조회     3. 랭킹 조회    4. 마이페이지    5. 로그아웃                  ");
+			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.print("메뉴선택 >> ");
 
 			String menu = sc.nextLine();
@@ -122,11 +109,7 @@ public class ChildStartView {
 				break;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-
 			}
-
 		}
-
 	}
-
 }
