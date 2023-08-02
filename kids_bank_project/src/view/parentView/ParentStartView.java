@@ -140,6 +140,7 @@ public class ParentStartView {
 				MoneyBookView.printMoneyBookMenu();
 				break;
 			case "2":
+				StatisticsView.printStatisticsMenu();
 				break;
 			case "3":
 				MyPageView.printMyPageMenu();

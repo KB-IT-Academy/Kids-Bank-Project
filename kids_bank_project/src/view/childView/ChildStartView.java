@@ -103,6 +103,7 @@ public class ChildStartView {
 			case "2":
 				break;
 			case "3":
+				StatisticsView.printStatisticsMenu();
 				break;
 			case "4":
 				MyPageView.printMyPageMenu();
