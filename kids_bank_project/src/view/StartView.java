@@ -5,8 +5,8 @@ import java.util.Scanner;
 import view.childView.ChildStartView;
 import view.parentView.ParentStartView;
 
-/*
- * 
+/**
+ * 프로그램 시작 View
  */
 public class StartView {
 	public static void main(String[] args) {

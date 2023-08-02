@@ -2,6 +2,9 @@ package view.childView;
 
 import java.util.Scanner;
 
+/**
+ * 아이 회원 View
+ */
 public class ChildStartView {
 	static Scanner sc = new Scanner(System.in);
 
@@ -82,7 +85,7 @@ public class ChildStartView {
 	}
 	
 	/**
-	 * 메인 화면 출력하는 메소드
+	 * 메인 메뉴 화면 출력하는 메소드
 	 */
 	public static void printMainMenu() {
 		while (true) {

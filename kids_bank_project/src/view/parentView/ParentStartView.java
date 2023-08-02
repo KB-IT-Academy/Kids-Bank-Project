@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 import view.childView.ChildStartView;
 
+/**
+ * 부모 회원 View
+ */
 public class ParentStartView {
 	static Scanner sc = new Scanner(System.in);
 
@@ -121,7 +124,7 @@ public class ParentStartView {
 	}
 
 	/**
-	 * 메인 화면 출력하는 메소드
+	 * 메인 메뉴 화면 출력하는 메소드
 	 */
 	public static void printMainMenu() {
 		while (true) {
