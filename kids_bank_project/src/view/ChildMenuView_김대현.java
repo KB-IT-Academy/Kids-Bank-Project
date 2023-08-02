@@ -2,10 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-import mvc.dto.Electronics;
-
-
-public class ChildMenuView {
+public class ChildMenuView_김대현{
 
 	Scanner sc= new Scanner(System.in);
 	//ElectronicsController controller = new ElectronicsController(); // 전역변수 초기화, 생성자 호출 
@@ -66,18 +63,18 @@ public class ChildMenuView {
                case "1" : 
             	   System.out.print("날짜 입력 ");
 			       String date = sc.nextLine(); 
-         	   	   controller.getMonthMoneyBook(date);
+         	   	  // controller.getMonthMoneyBook(date);
 			   break;
 			   case "2" : 
-				   controller.getRecentMoneyBook();
+				  // controller.getRecentMoneyBook();
 			   break;
 			   case "3" : 
-				   controller.getAllMoneyBook();
+//				   controller.getAllMoneyBook();
 			   break;
 			   case "4" : 
 			       System.out.print("날짜 입력 ");
-			       String date = sc.nextLine(); 
-				   controller.getDateMoneyBook(date);  
+//			       String date = sc.nextLine(); 
+//				   controller.getDateMoneyBook(date);  
 			   break;
 			   default:
 				   System.out.println("메뉴를 다시 선택해주세요!!!!");
@@ -101,7 +98,7 @@ public class ChildMenuView {
 		 System.out.print("카테고리 ");
 		 String category = sc.nextLine();
 		       
-		 controller.createMoneyBook( new MoneyBook(date,content, memo, money, category) );
+//		 controller.createMoneyBook( new MoneyBook(date,content, memo, money, category) );
 			}//inputCreate 메소드 끝
 		
 

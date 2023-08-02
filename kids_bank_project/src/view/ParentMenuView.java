@@ -45,22 +45,11 @@ public class ParentMenuView {
 	/**
 	   등록할때 키보드 입력을 처리하는 메소드
 	*/
-	public void inputInsert(){
-        System.out.print("모델번호는? ");
-        int modelNo = Integer.parseInt(sc.nextLine());
-
-		System.out.print("모델이름은? ");
-        String modelName = sc.nextLine();
-
-		System.out.print("모델가격은? ");
-        int modelPrice = Integer.parseInt(sc.nextLine());
-
-		System.out.print("모델설명은? ");
-        String modelDetail = sc.nextLine();
+	
 
         
 		//controller.insert( new Electronics(modelNo, modelName, modelPrice, modelDetail) );
 
-	}
-
 }
+
+
