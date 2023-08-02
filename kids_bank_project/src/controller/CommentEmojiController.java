@@ -42,7 +42,7 @@ public class CommentEmojiController {
 	 * 이모지 생성
 	 * @param num : 자식 고유 번호, moneyDate : 댓글 달 날짜
 	 */
-	public void craeteEmoji(int num, String moneyDate) {
+	public void craeteEmoji(EmojiDto dto) {
 		
 	}
 	

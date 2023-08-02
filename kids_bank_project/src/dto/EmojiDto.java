@@ -10,7 +10,6 @@ public class EmojiDto {
 	public EmojiDto() {}
 	
 	public EmojiDto(int emojiType, String moneyDate) {
-		super();
 		this.emojiType = emojiType;
 		this.moneyDate = moneyDate;
 	}
