@@ -6,16 +6,16 @@ import dto.MoneyBookDto;
 
 public class MoneyBookController{
 	/**
-	 * 기입장 생성
-	 * @param MoneyBookDto
-	 
+	 * 기입장 생성하는 메서드
+	 * @param MoneyBookdto
+	 * @return total_amount(잔액)
 	 */
 	public static void createMoneyBook(MoneyBookDto dto) {
 		
 	}
 	
 	/**
-	 * 기입장 수정
+	 * 기입장 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
 	public static void updateMoneyBook(MoneyBookDto dto) {
@@ -23,14 +23,14 @@ public class MoneyBookController{
 	}
 	
 	/**
-	 * 기입장 전체 삭제
+	 * 자신의 전체 기입장을 삭제하는 메서드
 	 */
 	public static void deleteAllMoneyBook() {
 		
 	}
 	
 	/**
-	 * 기입장 일부 삭제
+	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
 	 * @param 기입장 row number 
 	 */
 	public static void deleteMoneyBook(int rownum) {
@@ -38,30 +38,30 @@ public class MoneyBookController{
 	}
 	
 	/**
-	 * 기입장 전체 조회
+	 * 작성한 전체 기입장을 조회하는 메서드
 	 */
 	public static void getAllMoneyBook() {
 		
 	}
 	
 	/**
-	 * 기입장 하루 조회
-	 * @param 날짜 조회
+	 * 지정한 날짜의 기입장 조회하는 메서드
+	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 */
 	public static void getDayMoneyBook(String date) {
 		
 	}
 	
 	/**
-	 * 기입장 한달 조회
-	 * @param 한달 조회 => 입력 값 "2023-08"로 할지 정해야함
+	 * 기입장 한달 분을 조회하는 메서드
+	 * @param 한달 조회 => 입력 값 "2023-08"
 	 */
 	public static void getMonthMoneyBook(String date) {
 	
 	}
 	
 	/**
-	 * 기입장 최근 5개 조회
+	 * 최근 5개의 기입장을 조회하는 메서드
 	 * @return
 	 */
 	public static void getRecentMoneyBook() {
