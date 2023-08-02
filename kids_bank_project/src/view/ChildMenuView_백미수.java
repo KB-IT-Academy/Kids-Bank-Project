@@ -160,6 +160,7 @@ public class ChildMenuView_백미수 {
 		returnMenu();
 
 	}
+	
 	/**
 	 * 랭킹창 or 메뉴창 선택 메소드
 	 */
