@@ -2,8 +2,6 @@ package view;
 
 import java.util.Scanner;
 
-import static view.MainView.printMenuMain;
-
 
 public class ChildMenuView_김휘경 {
 
@@ -194,11 +192,5 @@ public class ChildMenuView_김휘경 {
 	}
 
 	 */
-
-	public static void main(String[] args) {
-		printMenuMain();
-
-	}
-
 
 }
