@@ -2,6 +2,8 @@ package view.childView;
 
 import java.util.Scanner;
 
+import view.StartView;
+
 /**
  * 아이 회원 View
  */
@@ -101,15 +103,17 @@ public class ChildStartView {
 				MoneyBookView.printMoneyBookMenu();
 				break;
 			case "2":
+				StatisticsView.printStatisticsMenu();
 				break;
 			case "3":
-				StatisticsView.printStatisticsMenu();
+				RankView.printRankView();
 				break;
 			case "4":
 				MyPageView.printMyPageMenu();
 				break;
 			case "5":
-				System.exit(0);
+				System.out.println("로그아웃 되었습니다.");
+				StartView.printMain();
 				break;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");

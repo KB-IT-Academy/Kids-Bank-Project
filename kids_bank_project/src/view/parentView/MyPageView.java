@@ -74,6 +74,7 @@ public class MyPageView {
 				if (check.equals("1")) {
 					// 이부분에 회원 탈퇴 함수 넣기
 					System.out.println("탈퇴되었습니다.");
+					//System.exit(0);			//시스템종료
 					break;
 				} else if (check.equals("2")) {
 					System.out.println("취소되었습니다.");

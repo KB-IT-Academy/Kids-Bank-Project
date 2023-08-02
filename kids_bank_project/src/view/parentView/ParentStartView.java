@@ -2,6 +2,7 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import view.StartView;
 import view.childView.ChildStartView;
 
 /**
@@ -146,7 +147,8 @@ public class ParentStartView {
 				MyPageView.printMyPageMenu();
 				break;
 			case "4":
-				System.exit(0);
+				System.out.println("로그아웃 되었습니다.");
+				StartView.printMain();
 				break;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");

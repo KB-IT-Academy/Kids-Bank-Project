@@ -10,6 +10,11 @@ import view.parentView.ParentStartView;
  */
 public class StartView {
 	public static void main(String[] args) {
+		
+		printMain();
+	}
+	
+	public static void printMain() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("==============================================================================================");
@@ -31,7 +36,5 @@ public class StartView {
 		default:
 			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
 		}
-		
-		
 	}
 }
