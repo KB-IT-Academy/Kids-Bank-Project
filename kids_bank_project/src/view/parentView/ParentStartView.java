@@ -142,7 +142,7 @@ public class ParentStartView {
 			case "2":
 				break;
 			case "3":
-				MyPageView.ParentsMyPage();
+				MyPageView.printMyPageMenu();
 				break;
 			case "4":
 				System.exit(0);

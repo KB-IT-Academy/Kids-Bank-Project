@@ -105,7 +105,7 @@ public class ChildStartView {
 			case "3":
 				break;
 			case "4":
-				MyPageView.kidsMyPage();
+				MyPageView.printMyPageMenu();
 				break;
 			case "5":
 				System.exit(0);
