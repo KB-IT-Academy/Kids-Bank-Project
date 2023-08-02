@@ -16,7 +16,7 @@ public class ParentMenuView_나웅기 {
            System.out.println("----------------------------------------------------------------------------------");
            System.out.println("1. 조회    2. 통계 조회     3. 마이페이지     4. 로그아웃");
 		   System.out.println("----------------------------------------------------------------------------------");
-		   System.out.print("메뉴선택 > ");
+		   System.out.print("메뉴선택 : ");
 
 		   String  menu = sc.nextLine();
 		   switch(menu){
@@ -49,9 +49,9 @@ public class ParentMenuView_나웅기 {
 		System.out.println("                               마 이 페 이 지                                     ");
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("1. 닉네임 수정    2. 비밀번호 변경     3. 내가 쓴 댓글, 좋아요     3. 연결된 부모 확인     4. 회원 탈퇴");
+		System.out.println("1. 닉네임 수정    2. 비밀번호 변경     3. 내가 쓴 댓글, 좋아요     4. 연결된 부모 확인     5. 회원 탈퇴");
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.print("메뉴선택 > ");
+		System.out.print("메뉴선택 : ");
 
 		String menu = sc.nextLine();
 		switch (menu) {
@@ -62,7 +62,7 @@ public class ParentMenuView_나웅기 {
 			this.parentPasswordChange();
 			break;
 		case "3":
-//			 this.parentRelationCheck();
+			 this.ParentHistory();
 			break;
 		case "4":
 			 this.parentRelationCheck();
@@ -151,23 +151,27 @@ public class ParentMenuView_나웅기 {
 		System.out.println(row);
 		boolean b = true;
 		while (b) {
-			System.out.println("변경할 날짜를 입력해주세요");
-			System.out.println("1. 댓글 수정   2. 댓글 삭제   3. 좋아요 삭제   4. 나가기");
+			System.out.println("1. 댓글 수정   2. 댓글 삭제   3. 좋아요 취소   4. 나가기");
 			String choice = sc.nextLine();
 			switch (choice) {
 			case "1":
-				String changeDate = this.getDate();
-				
+				String choiceDate = this.getDate();
+				// 여기에 댓글 수정 함수 입력
+				System.out.println("변경되었습니다.");
 				break;
 			case "2":
-				this.parentPasswordChange();
+				String choiceDate1 = this.getDate();
+				// 여기에 댓글 삭제 함수 입력
+				System.out.println("삭제되었습니다.");
 				break;
 			case "3":
-//				 this.parentRelationCheck();
+				String choiceDate2 = this.getDate();
+				// 여기에 좋아요 취소 함수 입력
+				System.out.println("취소되었습니다.");
 				break;
 			case "4":
-				 this.parentRelationCheck();
-				break;
+				 b = false;
+				 break;
 			default:
 				System.out.println("번호를 다시 입력해주세요!!!!");
 
@@ -179,7 +183,7 @@ public class ParentMenuView_나웅기 {
 	 * 날짜 선택 함수
 	 */
 	public String getDate() {
-		System.out.println("날짜를 선택해주세요");
+		System.out.println("날짜를 입력해주세요");
 		System.out.print("날짜 : ");
 		String date = sc.nextLine();
 		return date;
@@ -198,7 +202,7 @@ public class ParentMenuView_나웅기 {
 		System.out.print("주민등록번호 : ");
 		String id = sc.nextLine();
 		// 이 부분에 부모 찾는 함수 입력
-		System.out.println("부모 가져오는 함수 실행 중...");
+		System.out.println("자식 데이터 가져오는 함수 실행 중...");
 		System.out.println(id);
 		// 테스트
 		if (id == "") {

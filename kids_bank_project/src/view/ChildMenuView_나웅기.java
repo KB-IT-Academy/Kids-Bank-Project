@@ -143,33 +143,14 @@ public class ChildMenuView_나웅기 {
 	 */
 	public void kidsRelationCheck() {
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("                               부 모 님 추 가                                     ");
+		System.out.println("                               부 모 님 조 회                                     ");
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("부모님의 아이디를 입력해주세요");
-		System.out.print("아이디 : ");
-		String id = sc.nextLine();
-		// 이부분에 부모 찾는 함수 입력
-		System.out.println("부모 가져오는 함수 실행 중...");
-		System.out.println(id);
-
-		System.out.println("등록하시겠습니까??");
 		
-		boolean b = true;
-		while (b) {
-			System.out.println("1. 등록하기   2. 취소하기");
-			String check = sc.nextLine();
-			if (check.equals("1")) {
-				// 이부분에 관계 연결 함수 입력
-				System.out.println("등록되었습니다.");
-				b = false;
-			} else if (check.equals("2")) {
-				System.out.println("취소되었습니다.");
-				b = false;
-			} else {
-				System.out.println("번호를 다시 입력해주세요");
-				System.out.println();
-			}
-		}
+		
+		// 이부분에 부모 조회하는 함수 입력
+		System.out.println("부모 조회 ...");
+		System.out.println("돌아가시려면 아무 키나 눌러주세요");
+		String choice = sc.nextLine();
 	}
 	
 	/**
