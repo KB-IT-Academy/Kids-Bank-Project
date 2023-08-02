@@ -45,7 +45,7 @@ public class MoneyBookView {
 	 */
 	static public void printSearchMenu() {
 		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("           1. 최근 5건     2. 날짜 조회     3. 월별 조회   4. 전체 조회                     ");
 		System.out.print("메뉴선택 >> ");
 
