@@ -8,7 +8,7 @@ public class RankController {
 	 * 일주일 랭킹
 	 * @param (type : true : 지출 많은 순, false : 수입 많은 순), date : 현재 날짜
 	 */
-	public void getWeekRank(boolean type, String date) {
+	public static void getWeekRank(boolean type, String date) {
 		
 	}
 	
@@ -17,7 +17,7 @@ public class RankController {
 	 * 한달 랭킹
 	 * * @param (type : true : 지출 많은 순, false : 수입 많은 순), date : 현재 날짜
 	 */
-	public void getMonthRank(boolean type, String date) {
+	public static void getMonthRank(boolean type, String date) {
 		
 	}
 }

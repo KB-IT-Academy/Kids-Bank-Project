@@ -6,14 +6,14 @@ public class LoginController {
 	 * 자식 로그인
 	 * @param String id, String password
 	 */
-	public void loginChild(String id, String password) {
+	public static void loginChild(String id, String password) {
 		
 	}
 	
 	/**
 	 * 자식 로그아웃
 	 */
-	public void logoutChild() {
+	public static void logoutChild() {
 		
 	}
 	
@@ -21,14 +21,14 @@ public class LoginController {
 	 * 부모 로그인
 	 * @param String id, String password
 	 */
-	public void loginParent(String id, String password) {
+	public static void loginParent(String id, String password) {
 		
 	}
 	
 	/**
 	 * 부모 로그아웃
 	 */
-	public void logoutParent() {
+	public static void logoutParent() {
 		
 	}
 }

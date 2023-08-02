@@ -12,8 +12,8 @@ public class ChildDto extends UserDto {
 	 */
 	public ChildDto(){	}
 	
-	public ChildDto(int number, String id, String password, String name, String phone, String registrationNumber, String joinDate, String nickname) {
-		super(number, id, password, name, phone, joinDate, nickname);
+	public ChildDto(int number, String id, String password, String name, String phone, String registrationNumber, String joinDate) {
+		super(number, id, password, name, phone, joinDate);
 		this.registrationNumber = registrationNumber;
 		this.isOpen = true;
 	}

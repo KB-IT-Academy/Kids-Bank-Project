@@ -3,3 +3,6 @@
 /joinService.class
 /LoginService.class
 /MoneyBookService.class
+/MyPageService.class
+/RankService.class
+/MyPageServiceImpl.class

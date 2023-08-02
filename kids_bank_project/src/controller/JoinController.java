@@ -10,7 +10,7 @@ public class JoinController {
 	 * 자식 회원 가입
 	 * @param childDto(자식 dto)
 	 */
-	public void CreateChild(ChildDto dto) {
+	public static void CreateChild(ChildDto dto) {
 		
 	}
 	
@@ -18,7 +18,7 @@ public class JoinController {
 	 * 자식 정보 수정
 	 * @param childDto(자식 dto)
 	 */
-	public void updateChild(ChildDto dto) {
+	public static void updateChild(ChildDto dto) {
 		
 	}
 	
@@ -32,7 +32,7 @@ public class JoinController {
 	 * @param parentDto(부모dto)
 	 * @param registNum(주민등록번호)
 	 */
-	public void createParent(ParentDto dto, String registNum) {
+	public static void createParent(ParentDto dto, String registNum) {
 		
 	}
 	
@@ -40,7 +40,7 @@ public class JoinController {
 	 * 부모 회원 수정
 	 * @param ParentDto(부모dto)
 	 */
-	public void updateParent(ParentDto dto) {
+	public static void updateParent(ParentDto dto) {
 		
 	}
 	
