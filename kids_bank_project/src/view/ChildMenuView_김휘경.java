@@ -17,21 +17,26 @@ public class ChildMenuView_김휘경 {
 		   System.out.println();
 		   System.out.println("                                로그인 및 회원가입을 선택해주세요!             ");
 		   System.out.println();
-		   System.out.println("                              1. 로그인             2. 회원가입");
+		   System.out.println("                        1. 로그인        2. 부모 로그인        2. 회원가입");
 		   System.out.println("-------------------------------------------------------------------------------------------------");
 
 		   String  menu = sc.nextLine();
 		   switch(menu){
                case "1" : 
                  //controller.selectAll();
-				   System.out.println("로그인 선택 완료");
+				   System.out.println("아이 로그인 선택 완료");
 				   printMenuLogin();
 			   break;
 			   case "2" : 
                  //this.inputSearch();
-				   System.out.println("회원가입 선택 완료");
+				   System.out.println("부모 로그인 선택 완료");
 				   printMenuJoinParent();
 			   break;
+			   case "3" :
+				   //this.inputSearch();
+				   System.out.println("회원가입 선택 완료");
+				   printMenuJoinParent();
+				   break;
 			   default:
 				   System.out.println("메뉴를 다시 선택해주세요!!!!");
 
