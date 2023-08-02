@@ -11,7 +11,7 @@ public class MyPageView {
 	/**
 	 * 자식 마이페이지 메인 화면 만약 한가지 업무 끝나고 마이페이지에 있게 하려면 while문 넣기
 	 */
-	public static void kidsMyPage() {
+	public static void ParentsMyPage() {
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("                                         마 이 페 이 지                                          ");
 		System.out.println("----------------------------------------------------------------------------------------------");

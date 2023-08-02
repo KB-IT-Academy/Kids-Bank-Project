@@ -3,8 +3,7 @@ package view.parentView;
 import java.util.Scanner;
 
 import view.childView.ChildStartView;
-import view.childView.MoneyBookView;
-import view.childView.MyPageView;
+
 
 public class ParentStartView {
 
@@ -147,6 +146,7 @@ public class ParentStartView {
 			case "2":
 				break;
 			case "3":
+				MyPageView.ParentsMyPage();
 				break;
 			case "4":
 				System.exit(0);
