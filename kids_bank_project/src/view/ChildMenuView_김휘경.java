@@ -2,6 +2,8 @@ package view;
 
 import java.util.Scanner;
 
+import static view.MainView.printMenuMain;
+
 
 public class ChildMenuView_김휘경 {
 
@@ -10,6 +12,7 @@ public class ChildMenuView_김휘경 {
 	/**
 	  메인 메뉴를 출력하는 메소드
 	*/
+	/*
 	public static void printMenuMain(){
 
 	     while(true){
@@ -45,9 +48,12 @@ public class ChildMenuView_김휘경 {
 		 }
 	}
 
+	 */
+
 	/**
 	 로그인 화면을 출력하는 메소드
 	 */
+	/*
 	public static void printMenuLogin(){
 
 		System.out.println("---------------------------[Kids Bank - 어린이 용돈기입장 관리 프로그램]---------------------------------");
@@ -73,6 +79,8 @@ public class ChildMenuView_김휘경 {
 		}
 
 	}
+
+
 	public static void printMenu(String type) {
 		if(type.equals("child")){
 			System.out.println("--------- 아이 메뉴---------------");
@@ -86,10 +94,13 @@ public class ChildMenuView_김휘경 {
 
 	}
 
+	 */
+
 
 	/**
 	 회원가입 메인 메뉴를 출력하는 메소드
 	 */
+	/*
 	public static void printMenuJoinMain(){
 
 		while(true){
@@ -117,9 +128,13 @@ public class ChildMenuView_김휘경 {
 		}
 	}
 
+	 */
+
 	/**
 	 회원가입(부모) 화면을 출력하는 메소드
 	 */
+
+	/*
 	public static void printMenuJoinParent(){
 
 		System.out.println("---------------------------[Kids Bank - 어린이 용돈기입장 관리 프로그램]---------------------------------");
@@ -148,9 +163,13 @@ public class ChildMenuView_김휘경 {
 	}
 
 
+	 */
+
 	/**
 	 회원가입(아이) 화면을 출력하는 메소드
 	 */
+
+	/*
 	public static void printMenuJoinChild(){
 		System.out.println("---------------------------[Kids Bank - 어린이 용돈기입장 관리 프로그램]---------------------------------");
 		System.out.println();
@@ -173,6 +192,8 @@ public class ChildMenuView_김휘경 {
 		//controller.insert( new Child() );
 
 	}
+
+	 */
 
 	public static void main(String[] args) {
 		printMenuMain();
