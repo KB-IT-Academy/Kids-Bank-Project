@@ -8,11 +8,10 @@ public class MoneyBookController{
 	/**
 	 * 기입장 생성
 	 * @param MoneyBookDto
-	 * @return int amount(잔액)
+	 
 	 */
-	public int createMoneyBook(MoneyBookDto dto) {
+	public void createMoneyBook(MoneyBookDto dto) {
 		
-		return 0; 
 	}
 	
 	/**
@@ -32,45 +31,41 @@ public class MoneyBookController{
 	
 	/**
 	 * 기입장 일부 삭제
-	 * @param 기입장 고유 번호
+	 * @param 기입장 row number 
 	 */
-	public void deleteMoneyBook(int num) {
+	public void deleteMoneyBook(int rownum) {
 		
 	}
 	
 	/**
 	 * 기입장 전체 조회
 	 */
-	public List<MoneyBookDto> getAllMoneyBook() {
+	public void getAllMoneyBook() {
 		
-		return null;
 	}
 	
 	/**
 	 * 기입장 하루 조회
 	 * @param 날짜 조회
 	 */
-	public List<MoneyBookDto> getDayMoneyBook(String date) {
+	public void getDayMoneyBook(String date) {
 		
-		return null;
 	}
 	
 	/**
 	 * 기입장 한달 조회
 	 * @param 한달 조회 => 입력 값 "2023-08"로 할지 정해야함
 	 */
-	public List<MoneyBookDto> getMonthMoneyBook(String date) {
+	public void getMonthMoneyBook(String date) {
 	
-		return null;
 	}
 	
 	/**
 	 * 기입장 최근 5개 조회
 	 * @return
 	 */
-	public List<MoneyBookDto> getRecentMoneyBook() {
+	public void getRecentMoneyBook() {
 		
-		return null;
 	}
 	
 }	

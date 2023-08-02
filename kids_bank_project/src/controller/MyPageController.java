@@ -9,18 +9,16 @@ public class MyPageController {
 	/**
 	 * 모든 자식 회원 조회
 	 */
-	public List<ChildDto> childFindAll() {
+	public void childFindAll() {
 		
-		return null;
 	}
 	
 	/**
 	 * 자식 고유 번호로 회원 조회
 	 * @param 자식 고유 번호
 	 */
-	public ChildDto childFindByNumber(int num) {
+	public void childFindByNumber(int num) {
 		
-		return null;
 	}
 	
 	/**
@@ -33,18 +31,16 @@ public class MyPageController {
 	/**
 	 * 모든 부모 회원 조회
 	 */
-	public List<ParentDto> parentFindAll() {
+	public void parentFindAll() {
 		
-		return null;
 	}
 	
 	/**
 	 * 부모 고유 번호로 회원 조회
 	 * @param 부모 고유 번호
 	 */
-	public ParentDto parentFindByNumber(int num) {
+	public void parentFindByNumber(int num) {
 		
-		return null;
 	}
 	
 	/**
@@ -57,15 +53,15 @@ public class MyPageController {
 	/**
 	 * 연결된 부모 확인
 	 */
-	public List<UserDto> getParent() {
-		return null;
+	public void getParent() {
+
 	}
 	
 	/**
 	 * 연결된 자식 확인
 	 */
-	public List<UserDto> getChild() {
-		return null;
+	public void getChild() {
+
 	}
 	/**
 	 * 가족 관계 생성(부모 => 자식)

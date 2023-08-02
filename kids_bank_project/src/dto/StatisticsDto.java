@@ -6,7 +6,7 @@ public class StatisticsDto {
 	private int outComeAmount;
 	private String startDate;
 	private String endDate;
-	CategoryDto categoryDto; 
+	private CategoryDto categoryDto; 
 	
 	public StatisticsDto(String nickname, int inComeAmount, int outComeAmount,
 			String startDate, String endDate, CategoryDto categoryDto) {

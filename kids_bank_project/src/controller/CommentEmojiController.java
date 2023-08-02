@@ -7,7 +7,7 @@ import dto.EmojiDto;
 
 public class CommentEmojiController {
 	/**
-	 * 댓글 생성
+	 * 댓글 생성할 때 사용하는 메서드.
 	 * @param CommentDto
 	 */
 	public void createComment(CommentDto dto) {
@@ -33,14 +33,13 @@ public class CommentEmojiController {
 	 * 댓글 조회
 	 * @param num : 자식 고유 번호, moneyDate : 댓글 달 날짜
 	 */
-	public List<CommentDto> getComment(int num, String moneyDate) {
+	public void getComment(int num, String moneyDate) {
 		
-		return null;
 	}
 	
 	/**
 	 * 이모지 생성
-	 * @param num : 자식 고유 번호, moneyDate : 댓글 달 날짜
+	 * @param EmojiDto(이모지 타입, 해당 날짜)
 	 */
 	public void craeteEmoji(EmojiDto dto) {
 		
@@ -48,7 +47,7 @@ public class CommentEmojiController {
 	
 	/**
 	 * 이모지 취소
-	 * @param
+	 * @param 해당 날짜
 	 */
 	public void deleteEmoji(String moneyDate) {
 		
@@ -58,8 +57,7 @@ public class CommentEmojiController {
 	 * 이모지 조회
 	 * @param num : 자식 고유 번호, moneyDate : 댓글 달 날짜
 	 */
-	public List<EmojiDto> getEmoji(int num, String moneyDate) {
-		
-		return null;
+	public void getEmoji(int num, String moneyDate) {
+
 	}
 }
