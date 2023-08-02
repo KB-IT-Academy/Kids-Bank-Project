@@ -10,7 +10,7 @@ public class UserDto {
 	private String name; // 이름
 	private String phone; // 전화번호(-제외)
 	private String joinDate; // 주민등록번호(-포함)
-	private String nickname; // 닉네임
+
 	
 	/**
 	 * 생성자
@@ -24,7 +24,6 @@ public class UserDto {
 		this.name = name;
 		this.phone = phone;
 		this.joinDate = joinDate;
-		this.nickname = nickname;
 	}
 
 	/**
@@ -78,14 +77,6 @@ public class UserDto {
 		this.joinDate = joinDate;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	
 	/**
 	 * toString
 	 */
@@ -104,8 +95,6 @@ public class UserDto {
 		builder.append(phone);
 		builder.append(", joinDate=");
 		builder.append(joinDate);
-		builder.append(", nickname=");
-		builder.append(nickname);
 		return builder.toString();
 	}
 }

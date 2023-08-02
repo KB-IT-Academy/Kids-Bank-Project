@@ -1,7 +1,7 @@
 package dto;
 
 public class CommentDto {
-	private int number;
+	// comment 고유 번호
 	private String content;
 	private String moneyDate;
 	// 자식고유번호는 childDto에서 getter로 가져오기(필요로 한 곳에서)
@@ -12,8 +12,7 @@ public class CommentDto {
 	 */
 	public CommentDto() {}
 	
-	public CommentDto(int number, String content, String moneyDate) {
-		this.number = number;
+	public CommentDto(String content, String moneyDate) {
 		this.content = content;
 		this.moneyDate = moneyDate;
 		
@@ -21,12 +20,6 @@ public class CommentDto {
 	/**
 	 * getter, setter
 	 */
-	public int getNumber() {
-		return number;
-	}
-	public void setNumber(int number) {
-		this.number = number;
-	}
 	public String getContent() {
 		return content;
 	}
@@ -46,9 +39,7 @@ public class CommentDto {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("CommentDto [number=");
-		builder.append(number);
-		builder.append(", content=");
+		builder.append("CommentDto [content=");
 		builder.append(content);
 		builder.append(", moneyDate=");
 		builder.append(moneyDate);
