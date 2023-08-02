@@ -1,22 +1,43 @@
 package view;
 
+import java.util.Scanner;
+
+import view.childView.ChildStartView;
+import view.parentView.ParentStartView;
 
 /*
  * 
  */
 public class StartView {
 
+	
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("===== Kids Bank =====");
 		
-		System.out.println("--------- 아이 메뉴---------------");
-		ChildMenuView ch_mv = new ChildMenuView(); // 전역변수 초기화, 생성자 호출 
-		ch_mv.printMenu();
-	    
-		System.out.println("--------부모 메뉴---------------");
-		ParentMenuView pr_mv = new ParentMenuView(); // 전역변수 초기화, 생성자 호출 
-		pr_mv.printMenu();
+		System.out.println("==============================================================================================");
+		System.out.println("                                       K i d s B a n k                                    ");
+		System.out.println("==============================================================================================");
+		System.out.println();
+		System.out.println("                               1.아이 입장                   2.부모 입장							  ");
+		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.print("메뉴선택 >> ");
+
+		String menu = sc.nextLine();
+		switch (menu) {
+		case "1":
+			ChildStartView ch_mv = new ChildStartView(); 
+			ch_mv.printChildStart();
+			break;
+		case "2":
+			ParentStartView pr_mv = new ParentStartView(); 
+			pr_mv.printParentStart();
+			break;
+		default:
+			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+
+		}
+		
 		
 	}
 }

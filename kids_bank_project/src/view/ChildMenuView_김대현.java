@@ -2,13 +2,7 @@ package view;
 
 import java.util.Scanner;
 
-<<<<<<< HEAD
 public class ChildMenuView_김대현{
-=======
-
-
-public class ChildMenuView_김대현 {
->>>>>>> 212cba8585272b01590aa26dc3522b63aefd2f08
 
 	Scanner sc= new Scanner(System.in);
 	//ElectronicsController controller = new ElectronicsController(); // 전역변수 초기화, 생성자 호출 
@@ -69,7 +63,6 @@ public class ChildMenuView_김대현 {
                case "1" : 
             	   System.out.print("날짜 입력 ");
 			       String date = sc.nextLine(); 
-<<<<<<< HEAD
          	   	  // controller.getMonthMoneyBook(date);
 			   break;
 			   case "2" : 
@@ -82,20 +75,6 @@ public class ChildMenuView_김대현 {
 			       System.out.print("날짜 입력 ");
 //			       String date = sc.nextLine(); 
 //				   controller.getDateMoneyBook(date);  
-=======
-         	   	   //controller.getMonthMoneyBook(date);
-			   break;
-			   case "2" : 
-				   //controller.getRecentMoneyBook();
-			   break;
-			   case "3" : 
-				   //controller.getAllMoneyBook();
-			   break;
-			   case "4" : 
-			       System.out.print("날짜 입력 ");
-			       String date2 = sc.nextLine();
-				   //controller.getDateMoneyBook(date);
->>>>>>> 212cba8585272b01590aa26dc3522b63aefd2f08
 			   break;
 			   default:
 				   System.out.println("메뉴를 다시 선택해주세요!!!!");
@@ -119,11 +98,7 @@ public class ChildMenuView_김대현 {
 		 System.out.print("카테고리 ");
 		 String category = sc.nextLine();
 		       
-<<<<<<< HEAD
 //		 controller.createMoneyBook( new MoneyBook(date,content, memo, money, category) );
-=======
-		 //controller.createMoneyBook( new MoneyBook(date,content, memo, money, category) );
->>>>>>> 212cba8585272b01590aa26dc3522b63aefd2f08
 			}//inputCreate 메소드 끝
 		
 
