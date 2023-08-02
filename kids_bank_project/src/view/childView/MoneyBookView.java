@@ -44,9 +44,8 @@ public class MoneyBookView {
 	static public void printSearchMenu() {
 		
 		System.out.println();
-		System.out.println("**********************************************************************************************");
+		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("           1. 최근 5건     2. 날짜 조회     3. 월별 조회   4. 전체 조회   ");
-		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.print("메뉴선택 >> ");
 
 		String menu = sc.nextLine();
@@ -129,9 +128,9 @@ public class MoneyBookView {
 		//에러처리+날짜 내역들 출력 메소드
 		
 		System.out.println("수정할 번호 입력 (수정할 내역이 없으면 -1 입력) : ");
-		String exit = sc.nextLine();
+		String rownum = sc.nextLine();
 		
-		if(exit.equals("-1")) {
+		if(rownum.equals("-1")) {
 			return;
 		}else {
 			selectContentOfBook();

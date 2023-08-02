@@ -80,7 +80,6 @@ public class MyPageView {
 		System.out.println("----------------------------------------------------------------------------------");
 		
 		System.out.println("변경 PW:");
-		System.out.print("PW : ");
 		String password = sc.nextLine();
 		System.out.print("PW 확인 : ");
 		String passwordCheck = sc.nextLine();

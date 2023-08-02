@@ -35,41 +35,8 @@ public class MyPageView {
 
 		}
 	}
-
 	/**
-	 * 아이 닉네임 변경 
-	 */
-	/*public static void kidsNickChange() {
-		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("                               닉 네 임 변 경                                     ");
-		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("변경하실 닉네임을 입력해주세요!");
-		System.out.print("닉네임 : ");
-		String nickname = sc.nextLine();
-		System.out.println(nickname);
-		System.out.println("변경 하시겠습니까??");
-		
-		// 아랫 부분은 나중에 successView에서 보여줄 것
-		boolean b = true;
-		while (b) {
-			System.out.println("1. 변경하기   2. 취소하기");
-			String check = sc.nextLine();
-			if (check.equals("1")) {
-				// 닉네임 수정하는 함수 입력
-				System.out.println("변경되었습니다.");
-				b = false;
-			} else if (check.equals("2")) {
-				System.out.println("취소되었습니다.");
-				b = false;
-			} else {
-				System.out.println("번호를 다시 입력해주세요");
-				System.out.println();
-			}
-		}
-	}*/
-
-	/**
-	 * 아이 비밀번호 변경 
+	 * 부모 비밀번호 변경 
 	 */
 	public static void kidsPasswordChange() {
 		
@@ -77,7 +44,6 @@ public class MyPageView {
 		System.out.println("----------------------------------------------------------------------------------");
 		
 		System.out.println("변경 PW:");
-		System.out.print("PW : ");
 		String password = sc.nextLine();
 		System.out.print("PW 확인 : ");
 		String passwordCheck = sc.nextLine();

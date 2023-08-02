@@ -142,6 +142,7 @@ public class ParentStartView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
+				MoneyBookView.printMoneyBookMenu();
 				break;
 			case "2":
 				break;
