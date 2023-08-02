@@ -55,8 +55,8 @@ public class ChildMenuView{
 	public void inputSearch(){  //1. 조회 눌렀을때
 		System.out.println("----------------------------------------------------------------------------------");
         System.out.println("1. 월별 조회   2. 최근 5건   3.전체조회   4.날짜 검색 조회 ");
-		   System.out.println("----------------------------------------------------------------------------------");
-		   System.out.print("메뉴선택 > ");
+		System.out.println("----------------------------------------------------------------------------------");
+		System.out.print("메뉴선택 > ");
 		   String  menu = sc.nextLine();
 		   
 		   switch(menu){
