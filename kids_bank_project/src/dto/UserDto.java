@@ -17,7 +17,7 @@ public class UserDto {
 	 */
 	public UserDto(){}
 
-	public UserDto(int number, String id, String password, String name, String phone, String joinDate, String nickname) {
+	public UserDto(int number, String id, String password, String name, String phone, String joinDate) {
 		this.number = number;
 		this.id = id;
 		this.password = password;

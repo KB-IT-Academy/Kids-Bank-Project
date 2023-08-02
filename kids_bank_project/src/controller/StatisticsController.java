@@ -8,7 +8,7 @@ public class StatisticsController {
 	 * 하루 통계
 	 * @param 현재 날짜 
 	 */
-	public void getDateAmountInfo(String date) {
+	public static void getDateAmountInfo(String date) {
 		
 	}
 	
@@ -16,7 +16,7 @@ public class StatisticsController {
 	 * 주간 통계
 	 * @param 현재 날짜 
 	 */
-	public void getWeekAmountInfo(String date) {
+	public static void getWeekAmountInfo(String date) {
 		
 	}
 	
@@ -24,7 +24,7 @@ public class StatisticsController {
 	 * 월간 통계
 	 * @param 현재 날짜 
 	 */
-	public void getMonthAmountInfo(String date) {
+	public static void getMonthAmountInfo(String date) {
 		
 	}
 	
@@ -32,7 +32,7 @@ public class StatisticsController {
 	 * 1년 통계
 	 * @param 현재 날짜 
 	 */
-	public void getYearAmountInfo(String date) {
+	public static void getYearAmountInfo(String date) {
 		
 	}
 }
