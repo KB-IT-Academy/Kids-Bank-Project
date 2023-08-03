@@ -2,7 +2,7 @@
 # https://www.toptal.com/developers/gitignore?templates=java,windows,macos,intellij+all,eclipse에서 편집
 
 ### 이클립스 ###
-.메타데이터
+.metadata
 큰 상자/
 tmp/
 *.tmp
