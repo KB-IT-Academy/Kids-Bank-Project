@@ -1,12 +1,15 @@
 package view.parentView;
 
+import java.util.List;
 import java.util.Scanner;
 
 import controller.LoginController;
 import controller.MyPageController;
+import dto.UserDto;
 import view.StartView;
 import view.SuccessView;
 import view.childView.ChildStartView;
+import dto.ChildDto;
 import dto.ParentDto;
 
 /**
@@ -144,6 +147,7 @@ public class ParentStartView {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력, 자식 순서대로
+
 			if(MyPageController.getChild(num) == 0) { 
 //				SuccessView.printChilds();
 				System.out.println("----------------------------------------------------------------------------------------------");
@@ -153,10 +157,15 @@ public class ParentStartView {
 				System.out.println();
 				System.out.print("자식 등록부터 해주세요!");
 			}
- 
+  
+			//List<ChildDto> childs = MyPageController.getChild(num);
+//			SuccessView.printChilds();
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.print("자녀 선택 : "); 
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
+			//UserDto childData = childs.get(childOrder-1);
 			printMainMenu();
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
