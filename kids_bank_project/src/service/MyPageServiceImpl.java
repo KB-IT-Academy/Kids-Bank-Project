@@ -44,14 +44,14 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public ParentDto parentFindByNumber(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		ParentDto dto = myPageDao.parentFindByNumber(num);
+		return dto;
 	}
 
 	@Override
 	public int parentDelete() {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = myPageDao.parentDelete();
+		return result;
 
 	}
 
@@ -63,14 +63,14 @@ public class MyPageServiceImpl implements MyPageService {
 
 	@Override
 	public List<UserDto> getChild() {
-		// TODO Auto-generated method stub
-		return null;
+		List<UserDto> list = myPageDao.getChild();
+		return list;
 	}
 
 	@Override
-	public int createRelation(String registNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int createRelation(String registNum, int order) {
+		int result = myPageDao.createRelation(registNum, order);
+		return result;
 	}
 
 }

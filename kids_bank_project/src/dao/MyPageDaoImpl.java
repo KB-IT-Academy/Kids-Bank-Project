@@ -38,7 +38,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int parentNum = rs.getInt("parent_num");
-				UserDto user = getUserData(con, parentNum);
+				UserDto user = getParentData(con, parentNum);
 				list.add(user);
 			}
 		} catch (SQLException e) {
@@ -183,48 +183,118 @@ public class MyPageDaoImpl implements MyPageDao {
 	 */
 	@Override
 	public ParentDto parentFindByNumber(int num) {
-//		Connection con = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		ParentDto dto = null;
-//		String sql = "select * from child where child_num = ? ";
-//		try {
-//			con = DBManager.getConnection();
-//			ps = con.prepareStatement(sql);
-//			// 여기에 static 자식 고유 번호 가져오기
-//			ps.setInt(1, 1);
-//			rs = ps.executeQuery();
-//			if (rs.next()) {
-//				int childNum = rs.getInt("child_num");
-//				String id = rs.getString("id");
-//				String password = rs.getString("password");
-//				String name = rs.getString("name");
-//				String phone = rs.getString("phone");
-//				String registrationNumber = rs.getString("registration_number");
-//				String joinDate = rs.getString("join_date");
-//				dto = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBManager.releaseConnection(con, ps, rs);
-//		}
-		return null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		ParentDto dto = null;
+		String sql = "select * from parent where parent_num = ? ";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			// 여기에 static 자식 고유 번호 가져오기
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int parentNum = rs.getInt("parent_num");
+				String id = rs.getString("id");
+				String password = rs.getString("password");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String joinDate = rs.getString("join_date");
+				String parentType = rs.getString("parent_type");
+				dto = new ParentDto(parentNum, id, password, name, phone, joinDate, parentType);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return dto;
 	}
+	/**
+	 * 부모 회원 탈퇴하는 메서드 
+	 * delete parent where parent_num = ? (부모 고유 번호)
+	 */
 	@Override
 	public int parentDelete() {
-		// TODO Auto-generated method stub
-		return 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "delete parent where parent_num = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			// static에 있는 부모고유번호 넣기
+			ps.setInt(1, 1);
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
 	}
+	
+	/**
+	 * 연결된 자식 확인하는 메서드
+	 * select * from parent_child where parent_num = ?
+	 * select * from parent where child_
+	 */
 	@Override
 	public List<UserDto> getChild() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<UserDto> list = new ArrayList<>();
+		String sql = "select * from parent_child where parent_num = 1";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int childNum = rs.getInt("child_num");
+				UserDto user = getChildData(con, childNum);
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return list;
+
 	}
+	
+	/**
+	 * 가족 관계 생성(부모 => 자식)
+	 * @param 주민등록번호(registNum)
+	 * select child_num from child where registration_num = ? (주민등록번호)
+	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
+	 */
 	@Override
-	public int createRelation(String registNum) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int createRelation(String registNum, int order) {
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "select child_num from child where registration_number = ?";
+		ResultSet rs = null;
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			// static에 있는 부모고유번호 넣기
+			ps.setString(1, registNum);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int childNum = rs.getInt("child_num");
+				// con, 자식 고유 번호, 부모 고유번호, 순서
+				result = insertRelation(con, childNum, 1, order);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
 	}
 	
 	/**
@@ -232,8 +302,9 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * @param con
 	 * @param num
 	 * @return
+	 * select * from parent where parent_num = ?
 	 */
-	private UserDto getUserData(Connection con, int num) throws SQLException {
+	private UserDto getParentData(Connection con, int num) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		UserDto dto = null;
@@ -257,6 +328,67 @@ public class MyPageDaoImpl implements MyPageDao {
 			DBManager.releaseConnection(null, ps, rs);
 		}
 		return dto;
+	}
+	
+	/**
+	 * getChild의 추가 쿼리
+	 * @param con
+	 * @param num
+	 * @return
+	 * select * from child where child_num = ?
+	 */
+	private UserDto getChildData(Connection con, int num) throws SQLException {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		UserDto dto = null;
+		String sql = "select * from child where child_num = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				int childNum = rs.getInt("child_num");
+				String id = rs.getString("id");
+				String password = rs.getString("password");
+				String name = rs.getString("name");
+				String phone = rs.getString("phone");
+				String registrationNumber = rs.getString("registration_number");
+				String joinDate = rs.getString("join_date");
+				dto = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
+			}
+		} finally {
+			DBManager.releaseConnection(null, ps, rs);
+		}
+		return dto;
+	}
+	
+	/**
+	 * 
+	 * @param con
+	 * @param num 자식 고유 번호
+	 * @param 부모 고유 번호
+	 * @param 자식 순서 
+	 * @return
+	 * insert into parent_child values (relation_seq.next, ?, ?, ?) 
+	 * (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 	
+	 */
+	
+	private int insertRelation(Connection con, int num, int parentNum, int order) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = "insert into parent_child values (relation_seq.nextval, ?, ?, ?)";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);
+			ps.setInt(2, parentNum);
+			ps.setInt(3, order);
+			result = ps.executeUpdate();
+		} finally {
+			DBManager.releaseConnection(null, ps);
+		}
+		return result;
 	}
 
 }
