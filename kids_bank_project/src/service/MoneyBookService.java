@@ -11,13 +11,13 @@ public interface MoneyBookService {
 	 * @param MoneyBookdto
 	 * @return total_amount(잔액)
 	 */
-	int createMoneyBook(MoneyBookDto dto)throws SearchNotFoundException;
+	int createMoneyBook(MoneyBookDto dto) throws SearchNotFoundException;
 	
 	/**
 	 * 기입장을 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
-	void updateMoneyBook(MoneyBookDto dto)throws SearchNotFoundException;
+	void updateMoneyBook(MoneyBookDto dto) throws SearchNotFoundException;
 	
 	/**
 	 * 자신의 전체 기입장을 삭제하는 메서드

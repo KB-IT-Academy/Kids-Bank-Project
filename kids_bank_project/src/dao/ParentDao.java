@@ -3,6 +3,8 @@ package dao;
 import java.sql.SQLException;
 
 import dto.ParentDto;
+import exception.DMLException;
+import exception.SearchWrongException;
 
 public interface ParentDao {
 	/**
@@ -10,7 +12,7 @@ public interface ParentDao {
 	 * @param ParentDto
 	 * @param registNum(자식 주민등록번호)
 	 */
-	void createParent(ParentDto dto, String registNum);
+	int createParent(ParentDto dto, String registNum) throws DMLException;
 	
 	/**
 	 * 부모 회원 수정하는 메서드
@@ -26,4 +28,12 @@ public interface ParentDao {
 	 * @throws SQLException 
 	 */
 	ParentDto loginParent(String id, String password) throws SQLException;
+	
+	/**
+	 * 부모 아이디로 number 값 찾는 메서드
+	 * @param id
+	 * @return
+	 * @throws SearchWrongException
+	 */
+	int getParentNum(String id) throws SearchWrongException;
 }

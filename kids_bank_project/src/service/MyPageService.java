@@ -21,6 +21,13 @@ public interface MyPageService {
 	ChildDto childFindByNumber(int num) throws SearchNotFoundException;
 	
 	/**
+	 * 자식 주민등록번호로 자식 번호를 가져오는 메서드
+	 * @param registNum
+	 * @return 자식 번호
+	 */
+	int childFindByRegistNum(String registNum) throws SearchNotFoundException;
+	
+	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
 	int childDelete(int childNum) throws DMLException;
@@ -56,5 +63,5 @@ public interface MyPageService {
 	 * @param 주민등록번호(registNum)
 	 * @param 자식 순서(첫째인지 둘째인지)
 	 */
-	int createRelation(String registNum, int order) throws DMLException;
+	int createRelation(int parentNum, String registNum, int order) throws DMLException;
 }
