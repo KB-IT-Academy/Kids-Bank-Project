@@ -1,5 +1,8 @@
 package view;
 
+import java.util.List;
+
+import dto.MoneyBookDto;
 import view.childView.RankView;
 
 public class SuccessView {
@@ -60,6 +63,18 @@ public class SuccessView {
 	 */
 	public static void printComments() {
 		// TODO Auto-generated method stub
+		
+	}
+	
+	public static void moneyBookSelectPrint(List<MoneyBookDto> list) {
+		for(MoneyBookDto dto : list) {
+			System.out.println(dto);//board.toString()호출
+		}
+		
+	}
+
+	public static void messagePrint(String message) {
+		System.out.println(message);
 		
 	}
 }

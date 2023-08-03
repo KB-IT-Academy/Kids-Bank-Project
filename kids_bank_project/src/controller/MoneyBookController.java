@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import dto.MoneyBookDto;
+import exception.SearchNotFoundException;
 import service.MoneyBookService;
 import service.MoneyBookServiceImpl;
 import view.FailView;
@@ -18,6 +19,7 @@ public class MoneyBookController{
 	 */
 	public static void createMoneyBook(MoneyBookDto dto) {
 		moneyBookService.createMoneyBook(dto);
+		
 	}
 	
 	/**
@@ -25,14 +27,26 @@ public class MoneyBookController{
 	 * @param MoneyBookDto
 	 */
 	public static void updateMoneyBook(MoneyBookDto dto) {
-		moneyBookService.updateMoneyBook(dto);
+		try {
+			moneyBookService.updateMoneyBook(dto);
+			SuccessView.messagePrint("게시물 수정 성공");
+		}catch(SearchNotFoundException e){
+			FailView.errorMessage(e.getMessage());
+			
+		}
 	}
 	
 	/**
 	 * 자신의 전체 기입장을 삭제하는 메서드
 	 */
 	public static void deleteAllMoneyBook() {
-		moneyBookService.deleteAllMoneyBook();
+	
+		try{
+			moneyBookService.deleteAllMoneyBook();
+			SuccessView.messagePrint("게시물을 삭제하였습니다");
+		}catch(SearchNotFoundException e) {
+			FailView.errorMessage(e.getMessage());
+		}
 	}
 	
 	/**
@@ -40,14 +54,25 @@ public class MoneyBookController{
 	 * @param 기입장 row number 
 	 */
 	public static void deleteMoneyBook(int rownum) {
-		moneyBookService.deleteMoneyBook(rownum);
+		try{
+			moneyBookService.deleteMoneyBook(rownum);
+			SuccessView.messagePrint("게시물을 삭제하였습니다");
+		}catch(SearchNotFoundException e) {
+			FailView.errorMessage(e.getMessage());
+		}
 	}
 	
 	/**
 	 * 작성한 전체 기입장을 조회하는 메서드
 	 */
 	public static void getAllMoneyBook() {
-		 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook();
+		
+		 try {
+			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook();
+				 SuccessView.moneyBookSelectPrint(list);
+			  }catch (SearchNotFoundException e) {
+				  FailView.errorMessage(e.getMessage());
+			  }
 	}
 	
 	/**
@@ -55,7 +80,14 @@ public class MoneyBookController{
 	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 */
 	public static void getDayMoneyBook(String date) {
-		List<MoneyBookDto> list = moneyBookService.getDayMoneyBook(date);
+
+		try {
+			List<MoneyBookDto> list = moneyBookService.getDayMoneyBook(date);
+			 SuccessView.moneyBookSelectPrint(list);
+		  }catch (SearchNotFoundException e) {
+			  FailView.errorMessage(e.getMessage());
+		  }
+		
 	}
 	
 	/**
@@ -63,7 +95,13 @@ public class MoneyBookController{
 	 * @param 한달 조회 => 입력 값 "2023-08"
 	 */
 	public static void getMonthMoneyBook(String date) {
-		List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(date);
+		
+		try {
+			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(date);
+			 SuccessView.moneyBookSelectPrint(list);
+		  }catch (SearchNotFoundException e) {
+			  FailView.errorMessage(e.getMessage());
+		  }
 	}
 	
 	/**
@@ -71,7 +109,13 @@ public class MoneyBookController{
 	 * @return
 	 */
 	public static void getRecentMoneyBook() {
-		List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook();
+		
+		try {
+			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook();
+			 SuccessView.moneyBookSelectPrint(list);
+		  }catch (SearchNotFoundException e) {
+			  FailView.errorMessage(e.getMessage());
+		  }
 	}
 	
 }	

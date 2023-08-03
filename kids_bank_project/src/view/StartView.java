@@ -20,9 +20,7 @@ public class StartView {
 	 */
 	public static void printMain() {
 		Scanner sc = new Scanner(System.in);
-//		MyPageController.parentFindByNumber(2);
-//		MyPageController.getChild();
-		MyPageController.createRelation("791061-6716189", 2);
+
 		
 		while(true) {
 			System.out.println("==============================================================================================");
