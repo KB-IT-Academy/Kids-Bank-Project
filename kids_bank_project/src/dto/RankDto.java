@@ -1,11 +1,11 @@
 package dto;
 
+import java.util.Comparator;
+
 public class RankDto {
 // 수익, 지츨
 	private String id;
-	private int inComeAmount;
-	private int outComeAmount;
-	private double ratio;
+	private int total_money;	//지출 or 수입 total_money
 	private String startDate;
 	private int emojiCount;
 	
@@ -14,14 +14,19 @@ public class RankDto {
 	 */
 	public RankDto() {}
 	
-	public RankDto(String id, int inComeAmount, int outComeAmount, double ratio, String startDate, int emojiCount) {
+	
+	/**
+	 * 랭킹 생성자
+	 * @param id
+	 * @param emojiCount
+	 * @param currentMonth
+	 */
+	public RankDto(String id, int emojiCount,int total_money,String startDate) {
 		super();
 		this.id = id;
-		this.inComeAmount = inComeAmount;
-		this.outComeAmount = outComeAmount;
-		this.ratio = ratio;
-		this.startDate = startDate;
+		this.total_money = total_money;
 		this.emojiCount = emojiCount;
+		this.startDate = startDate;
 	}
 
 	/**
@@ -34,30 +39,6 @@ public class RankDto {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public int getInComeAmount() {
-		return inComeAmount;
-	}
-
-	public void setInComeAmount(int inComeAmount) {
-		this.inComeAmount = inComeAmount;
-	}
-
-	public int getOutComeAmount() {
-		return outComeAmount;
-	}
-
-	public void setOutComeAmount(int outComeAmount) {
-		this.outComeAmount = outComeAmount;
-	}
-
-	public double getRatio() {
-		return ratio;
-	}
-
-	public void setRatio(double ratio) {
-		this.ratio = ratio;
 	}
 
 	public String getStartDate() {
@@ -75,7 +56,14 @@ public class RankDto {
 	public void setEmojiCount(int emojiCount) {
 		this.emojiCount = emojiCount;
 	}
+	public int getTotal_money() {
+		return total_money;
+	}
 
+
+	public void setTotal_money(int total_money) {
+		this.total_money = total_money;
+	}
 	/**
 	 * 랭크 toString()
 	 */
@@ -84,19 +72,33 @@ public class RankDto {
 		StringBuilder builder = new StringBuilder();
 		builder.append("RankDto [id=");
 		builder.append(id);
-		builder.append(", inComeAmount=");
-		builder.append(inComeAmount);
-		builder.append(", outComeAmount=");
-		builder.append(outComeAmount);
-		builder.append(", ratio=");
-		builder.append(ratio);
-		builder.append(", startDate=");
-		builder.append(startDate);
+		builder.append(", total_money=");
+		builder.append(total_money);
 		builder.append(", emojiCount=");
 		builder.append(emojiCount);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	/**
+	 * 좋아요순으로 정렬하기
+	 */
+	public static final Comparator<RankDto> LikeComparator = new Comparator<RankDto>() {
+        @Override
+        public int compare(RankDto r1, RankDto r2) {
+            return Integer.compare(r1.emojiCount, r2.emojiCount);
+        }
+    };
+    
+    /**
+	 * 지출, 수입 내림차순
+	 */
+	public static final Comparator<RankDto> SumComparator = new Comparator<RankDto>() {
+        @Override
+        public int compare(RankDto r1, RankDto r2) {
+            return Integer.compare(r2.total_money, r1.total_money);
+        }
+    };
 	
 	
 }
