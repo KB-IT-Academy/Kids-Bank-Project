@@ -92,6 +92,11 @@ public class MoneyBookView {
 			System.out.println("----------------------------------------------------------------------------------");
 			System.out.println("댓글 작성할 날짜 입력 : ");		
 			moneyDate = sc.nextLine();
+			//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
+			SuccessView.printComments();
+			
+			//날짜에 댓글 내역 있으면 댓글 등록 못하게 해야함
+			
 			//날짜가 알맞게 들어오면
 			System.out.println("댓글 내용 입력 : ");
 			content = sc.nextLine();
@@ -161,7 +166,6 @@ public class MoneyBookView {
 
 		String moneyDate;
 		String emoji; //좋아요,싫어요
-		String rownum;
 		
 		switch (menu) {
 		case "1":
@@ -170,6 +174,10 @@ public class MoneyBookView {
 			System.out.println("좋아요 등록할 날짜 입력 : ");		
 			moneyDate = sc.nextLine();
 			//날짜가 알맞게 들어오면
+			
+			//좋아요 누르려는 날짜에 대한 내역들 출력
+			SuccessView.printDayMoneyBook();
+			
 			//댓글 등록 기능 실행
 			System.out.println("좋아요 등록 완료되었습니다.");
 			break;
@@ -178,17 +186,25 @@ public class MoneyBookView {
 			System.out.println("----------------------------------------------------------------------------------");
 			System.out.println("좋아요 삭제할 날짜 입력 : ");		
 			moneyDate = sc.nextLine();
-			//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
-			System.out.println("삭제할 번호 입력(수정할 내역 없으면 -1 입력) : ");
-			rownum = sc.nextLine();
 			
-			if(rownum.equals("-1")) {
+			
+			//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
+			
+			//좋아요 누른 날짜에 대한 내역들 출력(좋아요 하지 않았으면 출력 안함)
+			SuccessView.printDayMoneyBook();
+			
+			System.out.println("좋아요 삭제 하시겠습니까?(Yes or No)");
+			String choice = sc.nextLine();
+			String choice_upper = choice.toUpperCase();
+			
+			if(choice_upper.equals("NO")) {
 				return;
-			}else {
+			}else if(choice_upper.equals("YES")) {
 				//rownum int형으로 변환 뒤 메소드 실행
 				//내역 번호 안누르면 에러처리
-				
 				System.out.println("삭제 완료되었습니다.");
+			}else {
+				System.out.println("Yes or No 로 입력해주세요.");
 			}
 			break;
 		default:

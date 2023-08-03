@@ -210,7 +210,7 @@ public class ParentMenuView_나웅기 {
 			return;
 		}
 		
-		System.out.println("등록하시겠습니까??");
+		System.out.println("등록하시겠습니까?");
 		
 		boolean b = true;
 		while (b) {

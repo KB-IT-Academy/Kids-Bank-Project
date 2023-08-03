@@ -2,6 +2,7 @@ package view.childView;
 
 import java.util.Scanner;
 
+import view.StartView;
 import view.SuccessView;
 
 /**
@@ -89,7 +90,7 @@ public class MyPageView {
 		String password = sc.nextLine();
 		// 비밀번호 확인 함수 넣기
 		if (password != "") {
-			System.out.println("정말로 탈퇴하시겠습니까...?");
+			System.out.println("탈퇴하시겠습니까?");
 			while (true) {
 				System.out.println("1. 탈퇴하기 2. 취소하기");
 				System.out.print("선택 : ");
@@ -98,7 +99,7 @@ public class MyPageView {
 				if (check.equals("1")) {
 					// 이부분에 회원 탈퇴 함수 넣기
 					System.out.println("탈퇴되었습니다.");
-					//System.exit(0);			//시스템종료
+					StartView.printMain();
 					break;
 				} else if (check.equals("2")) {
 					System.out.println("취소되었습니다.");
