@@ -2,6 +2,7 @@ package view.childView;
 
 import java.util.Scanner;
 
+import controller.LoginController;
 import view.StartView;
 
 /**
@@ -16,7 +17,7 @@ public class ChildStartView {
 	/**
 	 * 시작 화면 출력하는 메소드
 	 */
-	static public void printChildStart() {
+	static public void printChildStart(String s) {
 
 		int flag = 1;
 		while (flag == 1) {
@@ -87,10 +88,12 @@ public class ChildStartView {
 		String id = sc.nextLine();
 		System.out.print("                                     PW : ");
 		String password = sc.nextLine();
+		
 
-		if (true) {
+		boolean loginCheck = LoginController.loginChild(id, password);  
+		if (loginCheck) {
 			System.out.println();
-			System.out.println("                                         로그인 성공!");
+			System.out.println("                                       로그인 성공!");
 			System.out.println();
 
 			printMainMenu();
@@ -130,7 +133,7 @@ public class ChildStartView {
 				break;
 			case "5":
 				System.out.println("로그아웃 되었습니다.");
-				StartView.printMain();
+				//StartView.printMain();
 				break;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");

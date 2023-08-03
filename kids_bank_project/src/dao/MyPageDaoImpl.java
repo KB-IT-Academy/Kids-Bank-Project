@@ -72,7 +72,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				String phone = rs.getString("phone");
 				String registrationNumber = rs.getString("registration_number");
 				String joinDate = rs.getString("join_date");
-				ChildDto cd = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
+				ChildDto cd = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate); 
 				list.add(cd);
 			}
 		} catch (SQLException e) {
@@ -108,7 +108,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				String name = rs.getString("name");
 				String phone = rs.getString("phone");
 				String registrationNumber = rs.getString("registration_number");
-				String joinDate = rs.getString("join_date");
+				String joinDate = rs.getString("join_date"); 
 				dto = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
 			}
 		} catch (SQLException e) {
