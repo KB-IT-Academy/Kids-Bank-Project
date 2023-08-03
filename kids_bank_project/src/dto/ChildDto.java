@@ -1,6 +1,6 @@
 package dto;
 
-import dto.UserDto;
+//import dto.UserDto;
 
 /**
  * 자식 DTO
@@ -11,10 +11,9 @@ public class ChildDto extends UserDto {
 	private boolean isOpen; // 공개 여부
 	
 	/**
-	 * 생성자
+	 * 생성자 
 	 */
-	public ChildDto(){	}
-
+	 
 	public ChildDto(int childNum, String id, String password, String name, String phone, String registrationNumber, String joinDate) {
 		super(id, password, name, phone, joinDate);
 		this.childNum = childNum;
@@ -29,6 +28,7 @@ public class ChildDto extends UserDto {
 		this.registrationNumber = registrationNumber;
 		this.isOpen = isOpen;
 	}
+ 
 
 	/**
 	 * Getter, Setter
