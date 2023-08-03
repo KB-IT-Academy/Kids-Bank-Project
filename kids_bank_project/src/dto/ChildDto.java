@@ -1,5 +1,7 @@
 package dto;
 
+import dto.UserDto;
+
 /**
  * 자식 DTO
  */

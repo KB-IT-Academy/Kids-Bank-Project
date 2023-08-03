@@ -1,5 +1,7 @@
 package dto;
 
+import dto.ChildDto;
+
 public class MoneyBookDto {
 	private int rownum;
 
