@@ -1,11 +1,25 @@
 package view.childView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import controller.StatisticsController;
+import session.SessionSet;
 
 /**
  * 통계 View
  */
 public class StatisticsView {
+	private static LocalDate currentDate = LocalDate.now();
+
+	private static DateTimeFormatter yearFormatter = DateTimeFormatter.ofPattern("yyyy");
+	private static DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MM");
+	private static DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd");
+	private static String yearString = currentDate.format(yearFormatter);
+	private static String monthString = currentDate.format(monthFormatter);
+	private static String dayString = currentDate.format(dayFormatter);
+	
 	static Scanner sc = new Scanner(System.in);
 	
 	public StatisticsView() {}
@@ -15,7 +29,7 @@ public class StatisticsView {
 	 */
 	public static void printStatisticsMenu() {
 		int flag = 1;
-		while (flag == 1) {
+		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("                                            통 계                                              ");
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -56,10 +70,10 @@ public class StatisticsView {
 	public static void printWeekStaticsInfo() {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
-		
-		// 7일 계산 출력
-		System.out.println("                        **"+"0월 0일"+"~"+"0월 0일"+" 7일간 주간 통계"+"**                           ");
-		printCategoryStaticsInfo();
+		System.out.println("                         **"+monthString+"월"+dayString+"일"+" 7일간 주간 통계"+"**                           ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getWeekAmountInfo(Integer.parseInt(ss.getSet().toString()), yearString+"-"+monthString+"-"+dayString);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
@@ -72,8 +86,10 @@ public class StatisticsView {
 		int month = Integer.parseInt(sc.nextLine());
 		
 		// 월 계산 출력
-		System.out.println("                                **"+"0월"+" 한달간 월간 통계"+"**                                   ");
-		printCategoryStaticsInfo();
+		System.out.println("                              **"+month+"월 한달간 월간 통계"+"**                                  ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getMonthAmountInfo(Integer.parseInt(ss.getSet().toString()), month);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
@@ -86,8 +102,10 @@ public class StatisticsView {
 		int year = Integer.parseInt(sc.nextLine());
 		
 		// 년도 계산 출력
-		System.out.println("                               **"+"0000년"+" 1년간 연간 통계"+"**                                 ");
-		printCategoryStaticsInfo();
+		System.out.println("                                  **"+year+"년 1년간 연간 통계"+"**                               ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getYearAmountInfo(Integer.parseInt(ss.getSet().toString()), year);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
@@ -102,8 +120,10 @@ public class StatisticsView {
 		String endDate = sc.nextLine();
 		
 		// 년도 계산 출력
-		System.out.println("                            **"+"0월 0일"+"~"+"0월 0일"+" 기간 통계"+"**                           ");
-		printCategoryStaticsInfo();
+		System.out.println("                               **"+startDate+"~"+endDate+" 기간 통계"+"**                        ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getRangeAmountInfo(Integer.parseInt(ss.getSet().toString()), startDate, endDate);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
