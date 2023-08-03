@@ -27,7 +27,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "insert into money_book (money_book_num, child_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date )from money_book values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, sysdate)";
+		String sql = "insert into money_book (money_book_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date )from money_book values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, sysdate)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);

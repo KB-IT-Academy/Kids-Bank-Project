@@ -1,5 +1,7 @@
 package dao;
 
+import java.sql.SQLException;
+
 import dto.ParentDto;
 
 public interface ParentDao {
@@ -20,6 +22,8 @@ public interface ParentDao {
 	 * 부모 로그인하는 메서드
 	 * @param id
 	 * @param password
+	 * @return 
+	 * @throws SQLException 
 	 */
-	void loginParent(String id, String password);
+	ParentDto loginParent(String id, String password) throws SQLException;
 }
