@@ -66,7 +66,6 @@ public class ChildDaoImpl implements ChildDao  {
 			ps.setString(4, dto.getRegistrationNumber());
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
 			throw new  DMLException();
 		} finally {
 			DBManager.releaseConnection(con, ps);

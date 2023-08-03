@@ -3,6 +3,7 @@ package service;
 import dto.ChildDto;
 import dto.ParentDto;
 import exception.DMLException;
+import exception.SearchNotFoundException;
 
 public interface joinService {
 	/**
@@ -22,8 +23,15 @@ public interface joinService {
 	 * @param ParentDto
 	 * @param registNum(자식 주민등록번호)
 	 */
-	void createParent(ParentDto dto, String registNum);
+	int createParent(ParentDto dto, String registNum) throws DMLException;
 	
+	/**
+	 * 부모 id로 부모 번호 가져오는 메서드
+	 * @param id
+	 * @return
+	 * @throws SearchNotFoundException
+	 */
+	public int getParentNum(String id) throws SearchNotFoundException;
 	/**
 	 * 부모 회원 수정하는 메서드
 	 * @param Parentdto

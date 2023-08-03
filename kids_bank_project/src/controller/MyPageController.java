@@ -44,12 +44,26 @@ public class MyPageController {
 	}
 	
 	/**
+	 * 자식 주민등록번호로 자식 번호를 가져오는 메서드
+	 * @param registNum
+	 * @return 자식 번호
+	 */
+	public static int childFindByRegistNum(String registNum) {
+		try {			
+		int result = myPageService.childFindByRegistNum(registNum);
+			return result;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return -1;
+	}
+	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
 	public static void childDelete(int childNum) {
 		try {			
 		int result = myPageService.childDelete(childNum);
-		System.out.println(result);
+		SuccessView.messagePrint("탈퇴되었습니다.");
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -145,10 +159,9 @@ public class MyPageController {
 	 * @param 주민등록번호(registNum)
 	 * @param 자식 순서(첫째인지 둘째인지)
 	 */
-	public static void createRelation(String registNum, int order) {
+	public static void createRelation(int parentNum, String registNum, int order) {
 		try {			
-		int result = myPageService.createRelation(registNum, order);
-		System.out.println(result);
+		int result = myPageService.createRelation(parentNum ,registNum, order);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}

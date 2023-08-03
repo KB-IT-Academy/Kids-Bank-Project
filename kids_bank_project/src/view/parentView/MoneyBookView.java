@@ -242,8 +242,4 @@ public class MoneyBookView {
 		}
 	}
 
-	public static void printMoneyBookMenu() {
-		// TODO Auto-generated method stub
-		
-	}
 }

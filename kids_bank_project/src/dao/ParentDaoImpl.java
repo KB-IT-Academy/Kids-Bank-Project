@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 import common.DBManager; 
 import dto.ParentDto;
+import exception.DMLException;
+import exception.SearchWrongException;
 
 public class ParentDaoImpl implements ParentDao {
 
@@ -62,9 +64,51 @@ public class ParentDaoImpl implements ParentDao {
 	}
 	
 	@Override
-	public void createParent(ParentDto dto, String registNum){
-		// TODO Auto-generated method stub
+	public int createParent(ParentDto dto, String registNum) throws DMLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into parent (parent_num, id, password, name, join_date, parent_type)"
+				+ " values (parent_seq.nextval, ?, ?, ?,sysdate,?)";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getPassword());
+			ps.setString(3, dto.getName());
+			ps.setString(4, dto.getParentType());
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new  DMLException();
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
 		
+	}
+	
+	public int getParentNum(String id) throws SearchWrongException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+		String sql = "select parent_num from parent where id = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("parent_num");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new  DMLException();
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
 	}
  
 

@@ -109,7 +109,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			// 여기에 static 자식 고유 번호 가져오기
-			ps.setInt(1, 1);
+			ps.setInt(1, num);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				int childNum = rs.getInt("child_num");
@@ -128,6 +128,35 @@ public class MyPageDaoImpl implements MyPageDao {
 			DBManager.releaseConnection(con, ps, rs);
 		}
 		return dto;
+	}
+	
+	/**
+	 * 자식 주민등록번호로 자식 번호를 가져오는 메서드
+	 * @param registNum
+	 * @return 자식 번호
+	 */
+	@Override
+	public int childFindByRegistNum(String registNum) throws SearchWrongException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = -1;
+		String sql = "select child_num from child where registration_number = ? ";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, registNum);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("child_num");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return result;
 	}
 	
 	/**
@@ -295,7 +324,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
 	 */
 	@Override
-	public int createRelation(String registNum, int order) throws DMLException{
+	public int createRelation(int parentNum ,String registNum, int order) throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -311,7 +340,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			if (rs.next()) {
 				int childNum = rs.getInt("child_num");
 				// con, 자식 고유 번호, 부모 고유번호, 순서
-				result = insertRelation(con, childNum, 1, order);
+				result = insertRelation(con, childNum, parentNum, order);
 			}
 			con.commit();
 		} catch (SQLException e) {
@@ -406,6 +435,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		int result = 0;
 		String sql = "insert into parent_child values (relation_seq.nextval, ?, ?, ?)";
 		try {
+			
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, num);
@@ -417,5 +447,6 @@ public class MyPageDaoImpl implements MyPageDao {
 		}
 		return result;
 	}
+	
 
 }
