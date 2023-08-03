@@ -15,30 +15,37 @@ public class RankView {
 	 */
 	public static void printRankView() {
 		
-		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("                                       랭         킹                                     ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		
-		System.out.println();
-		System.out.println("**********************************************************************************************");
-		System.out.println("                             1. 지출 랭킹                  2. 좋아요 랭킹                          ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.print("메뉴선택 >> ");
-
-		String type = sc.nextLine();
-		switch (type) {
-		case "1":
-			inputPeriod();
-			break;
-		case "2":
-			// 사용자 있는지 확인
-			// 좋아요 count 메소드 실행
-			SuccessView.printRank();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("                                       랭         킹                                     ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			
+			System.out.println();
+			System.out.println("**********************************************************************************************");
+			System.out.println("                             1. 지출 랭킹                  2. 좋아요 랭킹                          ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
+	
+			String type = sc.nextLine();
+			switch (type) {
+			case "1":
+				inputPeriod();
+				break;
+			case "2":
+				// 사용자 있는지 확인
+				// 좋아요 count 메소드 실행
+				SuccessView.printRank();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+	
+			}
 		}
 	}
 	/**
@@ -46,25 +53,32 @@ public class RankView {
 	 */
 	public static void inputPeriod() {
 
-		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("1. 이번 달 랭킹    2. 최근 7일 랭킹");
-		System.out.print("메뉴선택 >> ");
-
-		String menu = sc.nextLine();
-		switch (menu) {
-		case "1":
-			// 한달 지출 계산 메소드 부르기
-			inputRowRank();
-			break;
-		case "2":
-			// 일주일 지출 계산 메소드 부르기
-			inputRowRank();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-			inputPeriod();
-
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("1. 이번 달 랭킹    2. 최근 7일 랭킹");
+			System.out.println("랭킹 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
+	
+			String menu = sc.nextLine();
+			switch (menu) {
+			case "1":
+				// 한달 지출 계산 메소드 부르기
+				inputRowRank();
+				break;
+			case "2":
+				// 일주일 지출 계산 메소드 부르기
+				inputRowRank();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+				inputPeriod();
+	
+			}
 		}
 	}
 	/**
@@ -106,7 +120,8 @@ public class RankView {
 		String menu_upper = menu.toUpperCase();
 		switch (menu_upper) {
 		case "YES":
-			return;
+			ChildStartView.printMainMenu();
+			break;
 		case "NO":
 			printRankView();
 			break;

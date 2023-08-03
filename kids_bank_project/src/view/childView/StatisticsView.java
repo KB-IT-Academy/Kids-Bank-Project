@@ -14,32 +14,39 @@ public class StatisticsView {
 	 * 통계 메뉴 화면 출력하는 메소드
 	 */
 	public static void printStatisticsMenu() {
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("                                            통 계                                              ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		
-		System.out.println();
-		System.out.println("**********************************************************************************************");
-		System.out.println("                      1. 주간 통계   2. 월간 통계   3. 연간 통계   4. 기간 통계                          ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.print("메뉴선택 >> ");
-
-		String menu = sc.nextLine();
-		switch (menu) {
-		case "1":
-			printWeekStaticsInfo();
-			break;
-		case "2":
-			printMonthStaticsInfo();
-			break;
-		case "3":
-			printYearStaticsInfo();
-			break;
-		case "4":
-			printRangeStaticsInfo();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("                                            통 계                                              ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			
+			System.out.println();
+			System.out.println("**********************************************************************************************");
+			System.out.println("                      1. 주간 통계   2. 월간 통계   3. 연간 통계   4. 기간 통계                          ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
+	
+			String menu = sc.nextLine();
+			switch (menu) {
+			case "1":
+				printWeekStaticsInfo();
+				break;
+			case "2":
+				printMonthStaticsInfo();
+				break;
+			case "3":
+				printYearStaticsInfo();
+				break;
+			case "4":
+				printRangeStaticsInfo();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+			}
 		}
 	}
 	

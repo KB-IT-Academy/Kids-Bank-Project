@@ -2,6 +2,7 @@ package view.childView;
 
 import java.util.Scanner;
 
+import view.StartView;
 import view.SuccessView;
 
 /**
@@ -17,30 +18,37 @@ public class MyPageView {
 	 */
 	//마이페이지 메인 화면 만약 한가지 업무 끝나고 마이페이지에 있게 하려면 while문 넣기
 	public static void printMyPageMenu() {
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("                                         마 이 페 이 지                                          ");
-		System.out.println("----------------------------------------------------------------------------------------------");
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("                                         마 이 페 이 지                                          ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			
+			System.out.println();
+			System.out.println("**********************************************************************************************");
+			System.out.println("                      1. 비밀번호 변경     2. 연결된 부모 확인     3. 회원 탈퇴                          ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
 		
-		System.out.println();
-		System.out.println("**********************************************************************************************");
-		System.out.println("                      1. 비밀번호 변경     2. 연결된 부모 확인     3. 회원 탈퇴                          ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.print("메뉴선택 >> ");
-
-		String menu = sc.nextLine();
-		switch (menu) {
-		case "1":
-			printUpdatePassword();
-			break;
-		case "2":
-			printParentInfo();
-			break;
-		case "3":
-			printLeaveUser();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-
+			String menu = sc.nextLine();
+			switch (menu) {
+			case "1":
+				printUpdatePassword();
+				break;
+			case "2":
+				printParentInfo();
+				break;
+			case "3":
+				printLeaveUser();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+		
+			}
 		}
 	}
 
@@ -50,7 +58,7 @@ public class MyPageView {
 	public static void printUpdatePassword() {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("변경 PW 입력:");
+		System.out.println("변경 PW 입력: ");
 		String password = sc.nextLine();
 		System.out.print("변경 PW 확인 : ");
 		String passwordCheck = sc.nextLine();
@@ -89,7 +97,7 @@ public class MyPageView {
 		String password = sc.nextLine();
 		// 비밀번호 확인 함수 넣기
 		if (password != "") {
-			System.out.println("정말로 탈퇴하시겠습니까...?");
+			System.out.println("탈퇴하시겠습니까?");
 			while (true) {
 				System.out.println("1. 탈퇴하기 2. 취소하기");
 				System.out.print("선택 : ");
@@ -98,7 +106,7 @@ public class MyPageView {
 				if (check.equals("1")) {
 					// 이부분에 회원 탈퇴 함수 넣기
 					System.out.println("탈퇴되었습니다.");
-					//System.exit(0);			//시스템종료
+					StartView.printMain();
 					break;
 				} else if (check.equals("2")) {
 					System.out.println("취소되었습니다.");
