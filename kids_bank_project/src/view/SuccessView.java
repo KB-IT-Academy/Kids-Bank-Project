@@ -16,7 +16,8 @@ public class SuccessView {
 	/**
 	 * 등록된 자식들 출력창
 	 */
-	public static List<UserDto> printChilds(List<UserDto> list) {
+	public static List<ChildDto> printChilds(List<ChildDto> list) {
+		System.out.println("---------------------------------- 연결된 아이 리스트 --------------------------------------------");
 		for (int i = 0; i<list.size(); i++) {
 			System.out.println(i+1 + ". " + list.get(i).getName());
 		}

@@ -49,7 +49,7 @@ public interface MyPageService {
 	/**
 	 * 연결된 자식 확인하는 메서드
 	 */
-	List<UserDto> getChild() throws SearchNotFoundException;
+	List<ChildDto> getChild(int num) throws SearchNotFoundException;
 	
 	/**
 	 * 가족 관계 생성(부모 => 자식)

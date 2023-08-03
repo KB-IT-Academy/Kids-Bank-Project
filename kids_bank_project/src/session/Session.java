@@ -5,8 +5,32 @@ package session;
  * */
 public class Session {
 	private String sessionId; 
+	private int userNum;
 	
 	
+	// 로그인 중인 회원의 pk
+	public int getSessionUserNum() {
+		return userNum;
+	}
+	 
+	
+	public Session(int user_num) { 
+		this.userNum = user_num;
+	}
+
+
+
+
+	public int getUserNum() {
+		return userNum;
+	}
+
+
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
+
+
 	public Session(String id) {
 		this.sessionId = id;
 	} 

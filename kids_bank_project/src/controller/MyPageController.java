@@ -1,6 +1,9 @@
 package controller;
 
 import java.util.List;
+
+import dao.ChildDao;
+import dao.ChildDaoImpl;
 import dto.ChildDto;
 import dto.ParentDto;
 import dto.UserDto;
@@ -8,15 +11,19 @@ import service.MyPageService;
 import service.MyPageServiceImpl;
 import view.FailView;
 import view.SuccessView;
+import dao.MyPageDao;
+import dao.MyPageDaoImpl;
 
 public class MyPageController {
 	private static MyPageService myPageService = MyPageServiceImpl.getInstance();
+	
+	static MyPageDao mypageDao = new MyPageDaoImpl(); 
 	/**
 	 * 모든 자식 회원 조회하는 메서드
 	 */
 	public static void childFindAll() {
 		try {			
-		List<ChildDto> list = myPageService.childFindAll();
+		List<ChildDto> list = mypageDao.childFindAll();
 		System.out.println(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
@@ -90,7 +97,7 @@ public class MyPageController {
 	 */
 	public static void getParent() {
 		try {			
-		List<UserDto> list = myPageService.getParent();
+		List<UserDto> list = mypageDao.getParent();
 		SuccessView.printParents(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
@@ -100,21 +107,26 @@ public class MyPageController {
 	/**
 	 * 연결된 자식 확인하는 메서드
 	 */
-	public static void getChild() {
+	public static int getChild(int num) {
 		try {			
-		List<UserDto> list = myPageService.getChild();
-		SuccessView.printChilds(list);
+			List<ChildDto> list = myPageService.getChild(num); 
+			//System.out.println("자식찾기 성공 ");
+			
+			SuccessView.printChilds(list);
+			return 0;
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
+			return 1;
+		
 		}
 	}
 	
 	/**
 	 * 자식 보여주는 메서드(부모 메인 view)
 	 */
-	public static List<UserDto> showChild() {
+	public static List<ChildDto> showChild(int num) {
 		try {			
-		List<UserDto> list = myPageService.getChild();
+		List<ChildDto> list = myPageService.getChild(num);
 		return list;
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());

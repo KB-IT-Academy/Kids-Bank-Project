@@ -2,10 +2,12 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import controller.LoginController;
 import controller.MyPageController;
 import view.StartView;
 import view.SuccessView;
 import view.childView.ChildStartView;
+import dto.ParentDto;
 
 /**
  * 부모 회원 View
@@ -119,12 +121,15 @@ public class ParentStartView {
 		System.out.print("                                     PW : ");
 		String password = sc.nextLine();
 
-		if (true) {
+		
+		//boolean loginCheck = LoginController.loginParent(id, password);
+		ParentDto parent = LoginController.loginParent(id, password); 
+		if (parent != null) {
 			System.out.println();
 			System.out.println("                                         로그인 성공!");
 			System.out.println();
 
-			printSelectChild(); // 자녀 선택
+			printSelectChild(parent.getParentNum()); // 자녀 선택
 		} else {
 			System.out.println("아이디, 비밀번호를 다시 확인해주세요.");
 		}
@@ -133,15 +138,22 @@ public class ParentStartView {
 	/**
 	 * 메인 화면 출력 전 자녀를 선택하는 메소드
 	 */
-	public static void printSelectChild() {
+	public static void printSelectChild(int num) {
+	
 		while (true) {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력, 자식 순서대로
-			MyPageController.getChild();
-//			SuccessView.printChilds();
-			System.out.println("----------------------------------------------------------------------------------------------");
-			System.out.print("자녀 선택 : ");
+			if(MyPageController.getChild(num) == 0) { 
+//				SuccessView.printChilds();
+				System.out.println("----------------------------------------------------------------------------------------------");
+				System.out.print("자녀 선택 : ");
+				
+			}else {
+				System.out.println();
+				System.out.print("자식 등록부터 해주세요!");
+			}
+ 
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
