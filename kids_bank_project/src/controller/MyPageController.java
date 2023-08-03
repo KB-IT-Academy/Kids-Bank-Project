@@ -46,15 +46,17 @@ public class MyPageController {
 	 * 부모 고유 번호로 회원 조회하는 메서드
 	 * @param 부모 고유 번호
 	 */
-	public void parentFindByNumber(int num) {
-		
+	public static void parentFindByNumber(int num) {
+		ParentDto dto = myPageService.parentFindByNumber(num);
+		System.out.println(dto);
 	}
 	
 	/**
 	 * 부모 회원 탈퇴하는 메서드 
 	 */
 	public static void parentDelete() {
-		
+		int result = myPageService.parentDelete();
+		System.out.println(result);
 	}
 	
 	/**
@@ -69,13 +71,16 @@ public class MyPageController {
 	 * 연결된 자식 확인하는 메서드
 	 */
 	public static void getChild() {
-
+		List<UserDto> list = myPageService.getChild();
+		System.out.println(list);
 	}
 	/**
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)
+	 * @param 자식 순서(첫째인지 둘째인지)
 	 */
-	public static void createRelation(String registNum) {
-		
+	public static void createRelation(String registNum, int order) {
+		int result = myPageService.createRelation(registNum, order);
+		System.out.println(result);
 	}
 }

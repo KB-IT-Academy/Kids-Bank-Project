@@ -63,8 +63,9 @@ public interface MyPageDao {
 	/**
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)
+	 * @param 자식 순서(첫째인지 둘째인지)
 	 * select * from child where registration_num = ? (주민등록번호)
 	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
 	 */
-	int createRelation(String registNum) ;
+	int createRelation(String registNum, int order) ;
 }

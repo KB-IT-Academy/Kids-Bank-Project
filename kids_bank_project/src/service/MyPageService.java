@@ -52,6 +52,7 @@ public interface MyPageService {
 	/**
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)
+	 * @param 자식 순서(첫째인지 둘째인지)
 	 */
-	int createRelation(String registNum) ;
+	int createRelation(String registNum, int order) ;
 }
