@@ -76,7 +76,6 @@ public class RankView {
 				return;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-				inputPeriod();
 	
 			}
 		}
@@ -85,52 +84,34 @@ public class RankView {
 	 * 랭킹 sort 선택 키보드 입력을 처리하는 메소드
 	 */
 	public static void inputRowRank() {
-		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("1. 소비왕 랭킹    2. 절약왕 랭킹");
-		System.out.print("메뉴선택 >> ");
-
-		String menu = sc.nextLine();
-		switch (menu) {
-		case "1":
-			// 사용자 있는지 확인
-			// sort 메소드
-			SuccessView.printRank();
-			break;
-		case "2":
-			// 사용자 있는지 확인
-			// sort 메소드
-			SuccessView.printRank();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-			inputRowRank();
-		}
-	}
-	
-	/**
-	 * 랭킹창 or 메뉴창 선택 메소드
-	 */
-	public static void returnMenu() {
-		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("메뉴창으로 돌아가시겠습니까? (YES: 메뉴창, NO: 랭킹창)");
 		
-		String menu = sc.nextLine();
-		String menu_upper = menu.toUpperCase();
-		switch (menu_upper) {
-		case "YES":
-			ChildStartView.printMainMenu();
-			break;
-		case "NO":
-			printRankView();
-			break;
-		default:
-			System.out.println("Yes or No 로 입력해주세요.");
-			returnMenu();
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println();
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("1. 소비왕 랭킹    2. 절약왕 랭킹");
+			System.out.println("이전 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
+	
+			String menu = sc.nextLine();
+			switch (menu) {
+			case "1":
+				// 사용자 있는지 확인
+				// sort 메소드
+				SuccessView.printRank();
+				break;
+			case "2":
+				// 사용자 있는지 확인
+				// sort 메소드
+				SuccessView.printRank();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+			}
 		}
-
 	}
-
 
 }

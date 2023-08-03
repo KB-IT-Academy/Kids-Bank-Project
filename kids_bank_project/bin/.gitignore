@@ -1,1 +1,11 @@
+<<<<<<< HEAD
 /.metadata/
+=======
+/view/
+/dto/
+/controller/
+/dao/
+/service/
+/common/
+/exception/
+>>>>>>> 9a1fe39af83efaf7b75ca067a702e14e9d0aeba6

@@ -54,8 +54,6 @@ public class SuccessView {
 			}
 		}
 
-		RankView.returnMenu();
-
 	}
 	/**
 	 * 날짜에 대한 댓글들 출력

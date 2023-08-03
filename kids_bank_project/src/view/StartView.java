@@ -19,9 +19,6 @@ public class StartView {
 	 * 프로그램 시작창
 	 */
 	public static void printMain() {
-		MyPageController.parentFindAll();
-		MyPageController.childFindByNumber(1);
-//		MyPageController.childDelete();
 		Scanner sc = new Scanner(System.in);
 		
 		
