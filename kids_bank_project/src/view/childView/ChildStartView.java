@@ -21,14 +21,10 @@ public class ChildStartView {
 		int flag = 1;
 		while (flag == 1) {
 			System.out.println();
-			System.out.println(
-					"==============================================================================================");
-			System.out.println(
-					"                                         <아이 회원>                                             ");
-			System.out.println(
-					"                               1.로그인                   2.회원가입							      ");
-			System.out.println(
-					"----------------------------------------------------------------------------------------------");
+			System.out.println("==============================================================================================");
+			System.out.println("                                         <아이 회원>                                             ");
+			System.out.println("                               1.로그인                   2.회원가입							      ");
+			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
 			System.out.print("메뉴선택 >> ");
 
@@ -80,6 +76,7 @@ public class ChildStartView {
 	 * 로그인 화면을 출력하는 메소드
 	 */
 	public static void printLogin() {
+		
 		System.out.println();
 		System.out.println(
 				"**********************************************************************************************");
@@ -106,6 +103,7 @@ public class ChildStartView {
 	 * 메인 메뉴 화면 출력하는 메소드
 	 */
 	public static void printMainMenu() {
+		
 		while (true) {
 			System.out.println();
 			System.out.println(
@@ -138,5 +136,6 @@ public class ChildStartView {
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
 			}
 		}
+		
 	}
 }

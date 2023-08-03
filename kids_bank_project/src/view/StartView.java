@@ -14,6 +14,9 @@ public class StartView {
 		printMain();
 	}
 
+	/**
+	 * 프로그램 시작창
+	 */
 	public static void printMain() {
 		Scanner sc = new Scanner(System.in);
 		
