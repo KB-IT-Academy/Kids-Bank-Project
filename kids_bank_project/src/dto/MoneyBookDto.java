@@ -12,7 +12,6 @@ public class MoneyBookDto {
 	private String content; // 내용
 	private String memo; // 메모
 	private String money_date; // 수입일 or 지출일
-
 	private String write_date; // 등록일
 	private String update_date; // 수정일
 
@@ -22,19 +21,6 @@ public class MoneyBookDto {
 	 * 생성자
 	 */
 	public MoneyBookDto() {}
-	
-	public MoneyBookDto(int amount, String content, String memo) {
-		this.amount = amount;
-		this.content = content;
-		this.memo = memo;
-	}
-	
-	public MoneyBookDto(String outComeType, int amount, String content, String memo) {
-		this.outcomeType = outcomeType;
-		this.amount = amount;
-		this.content = content;
-		this.memo = memo;
-	}
 
 
 	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
