@@ -98,29 +98,19 @@ public class MyPageController {
 	}
 	
 	/**
-	 * 연결된 자식 확인하는 메서드
+	 * 연결된 자식 보여주고 반환하는 메서드
 	 */
-	public static void getChild() {
+	public static List<UserDto> getChild() {
 		try {			
 		List<UserDto> list = myPageService.getChild();
 		SuccessView.printChilds(list);
-		} catch (RuntimeException e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-	
-	/**
-	 * 자식 보여주는 메서드(부모 메인 view)
-	 */
-	public static List<UserDto> showChild() {
-		try {			
-		List<UserDto> list = myPageService.getChild();
 		return list;
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
 		return null;
 	}
+	
 	/**
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)

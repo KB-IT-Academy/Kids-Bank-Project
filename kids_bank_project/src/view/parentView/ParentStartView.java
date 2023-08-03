@@ -1,8 +1,10 @@
 package view.parentView;
 
+import java.util.List;
 import java.util.Scanner;
 
 import controller.MyPageController;
+import dto.UserDto;
 import view.StartView;
 import view.SuccessView;
 import view.childView.ChildStartView;
@@ -138,14 +140,15 @@ public class ParentStartView {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력, 자식 순서대로
-			MyPageController.getChild();
+			List<UserDto> childs = MyPageController.getChild();
 //			SuccessView.printChilds();
 			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.print("자녀 선택 : ");
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
-			printMainMenu();
+			UserDto childData = childs.get(childOrder-1);
+			printMainMenu(childData);
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
 //			System.out.println("자녀 추가하려면 +를 입력해주세요.");
@@ -162,7 +165,7 @@ public class ParentStartView {
 	/**
 	 * 메인 메뉴 화면 출력하는 메소드
 	 */
-	public static void printMainMenu() {
+	public static void printMainMenu(UserDto childData) {
 		while (true) {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
