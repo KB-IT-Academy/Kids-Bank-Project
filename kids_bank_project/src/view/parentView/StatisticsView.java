@@ -69,6 +69,7 @@ public class StatisticsView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("월 입력 : ");
+		int month = Integer.parseInt(sc.nextLine());
 		
 		// 월 계산 출력
 		System.out.println("                                **"+"0월"+" 한달간 월간 통계"+"**                                   ");
@@ -82,6 +83,7 @@ public class StatisticsView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("년도 입력 : ");
+		int year = Integer.parseInt(sc.nextLine());
 		
 		// 년도 계산 출력
 		System.out.println("                               **"+"0000년"+" 1년간 연간 통계"+"**                                 ");
@@ -119,6 +121,6 @@ public class StatisticsView {
 		
 		// 수입 대비 지출 비율 계산 후 결과 출력
 		// 수입 대비 지출 비율 계산
-		System.out.println("많이 절약했어요!");
+		//System.out.println("많이 절약했어요!");
 	}
 }
