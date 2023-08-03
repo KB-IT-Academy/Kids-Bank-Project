@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.MyPageController;
+import exception.SearchNotFoundException;
 import view.childView.ChildStartView;
 import view.parentView.ParentStartView;
 
@@ -10,15 +11,16 @@ import view.parentView.ParentStartView;
  * 프로그램 시작 View
  */
 public class StartView {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SearchNotFoundException {
 
 		printMain();
 	}
 
 	/**
 	 * 프로그램 시작창
+	 * @throws SearchNotFoundException 
 	 */
-	public static void printMain() {
+	public static void printMain(){
 		Scanner sc = new Scanner(System.in);
 
 		
@@ -34,7 +36,7 @@ public class StartView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				ChildStartView.printChildStart();
+				ChildStartView.printChildStart(null);
 				break;
 			case "2":
 				ParentStartView.printParentStart();

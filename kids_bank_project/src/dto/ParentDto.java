@@ -15,7 +15,7 @@ public class ParentDto extends UserDto {
 	public ParentDto() {}
 
 	public ParentDto(int parentNum, String id, String password, String name, String phone, String joinDate, String parentType) {
-		super(id, password, name, phone, joinDate);
+		//super(id, password, name, phone, joinDate);
 		this.parentNum = parentNum;
 		this.parentType = parentType;
 	}
