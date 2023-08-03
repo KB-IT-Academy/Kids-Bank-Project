@@ -2,6 +2,8 @@ package view.childView;
 
 import java.util.Scanner;
 
+import view.SuccessView;
+
 /**
  * 용돈기입장 View
  */
@@ -122,7 +124,8 @@ public class MoneyBookView {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("수정할 날짜 입력 : ");
 		String moneyDate = sc.nextLine();
-		//에러처리+날짜 내역들 출력 메소드
+		
+		SuccessView.printDayMoneyBook();	//하루 날짜 출력 메소드
 		
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 -1 입력) : ");
 		String rownum = sc.nextLine();
@@ -142,7 +145,8 @@ public class MoneyBookView {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("삭제할 날짜 입력 : ");
 		String moneyDate = sc.nextLine();
-		//에러처리+날짜 내역들 출력 메소드
+		
+		SuccessView.printDayMoneyBook();	//하루 날짜 출력 메소드
 		
 		System.out.println("삭제할 번호 입력(삭제할 내역 없으면 -1 입력) : ");
 		String exit = sc.nextLine();
