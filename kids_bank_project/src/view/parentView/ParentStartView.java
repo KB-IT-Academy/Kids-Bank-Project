@@ -59,21 +59,48 @@ public class ParentStartView {
 		String password = sc.nextLine();
 		System.out.print("이름 입력 : ");
 		String name = sc.nextLine();
-		System.out.print("아이와의 관계(부 or 모) : ");
+		System.out.print("자녀와의 관계(부 or 모) : ");
 		String parentType = sc.nextLine();
 		
-		// 반복문으로 설정 필요, 메소드로 따로 분리
-		System.out.print("아이찾기를 위한 아이 주민등록번호 입력(-포함) : ");
-		String registrationNumber = sc.nextLine();
-
-		if (true) { // 아이가 가입 되어있으면 -> 메소드 추가하기
-			System.out.println();
-			System.out.println("아이찾기 성공!");
+		// 자녀 찾기
+		int childCount = 0; // 자녀 찾기 성공한 횟수
+		int flag = 1;
+		while(flag == 1) {
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("추가할 자녀 없으면 q를 입력해주세요.");
+			System.out.print("자녀 찾기를 위한 자녀 주민등록번호 입력(-포함) : ");
+			String registrationNumber = sc.nextLine();
+			
+			// 자녀 가입되어 있는지 확인하는 controller
+			switch (registrationNumber) {
+			case "q":
+				flag = 0;
+				break;
+			default:
+				boolean existChild = false; // 자녀 가입되어 있으면
+				// 자녀 찾는 controller
+				if (existChild) { // 자녀가 가입되어 있으면 -> 메소드 추가하기
+					System.out.println();
+					System.out.println("자녀 찾기 성공!");
+					
+					System.out.print("자식 순서 입력 : ");
+					int childOrder = Integer.parseInt(sc.nextLine());
+					// 자녀 연결(관계 설정)하는 controller
+					childCount++;
+					System.out.println(childCount+"자녀 연결 완료");
+				} else {
+					System.out.println("해당 자녀는 가입되지 않았습니다.");
+				}
+			}
+		}
+		if (childCount == 0) { // 연결한 자녀가 없으면
+			System.out.println("회원가입 불가!");
+			System.out.println("자녀 회원가입 화면으로 이동합니다.");
+			ChildStartView.printJoin(); // 자녀 회원가입 화면으로 이동
+		} else { // 연결한 자녀가 있으면
 			System.out.println("회원가입 성공!");
+			System.out.println("부모 로그인 화면으로 이동합니다.");
 			printLogin(); // 부모 로그인 화면으로 이동
-		} else {
-			System.out.println("해당 아이는 가입되어있지 않습니다. 아이를 먼저 가입해주세요.");
-			ChildStartView.printJoin(); // 아이 회원가입 화면으로 이동
 		}
 		// controller.insert( new Parent() );
 	}
@@ -96,7 +123,7 @@ public class ParentStartView {
 			System.out.println("                                         로그인 성공!");
 			System.out.println();
 
-			printMainMenu();
+			printSelectChild(); // 자녀 선택
 		} else {
 			System.out.println("아이디, 비밀번호를 다시 확인해주세요.");
 		}
@@ -109,14 +136,13 @@ public class ParentStartView {
 		while (true) {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
-			// 자녀 정보 불러와서 출력
+			// 자녀 정보 불러와서 출력, 자식 순서대로
 			SuccessView.printChilds();
-			
-			System.out.println("         1. 자녀1     2. 자녀2   ");
 			System.out.println("----------------------------------------------------------------------------------------------");
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
-			System.out.print("자녀 선택(자녀를 추가하려면 +를 입력하세요) : ");
+			System.out.println("자녀 추가하려면 +를 입력해주세요.");
+			System.out.print("자녀 선택 : ");
 			String choice = sc.nextLine();
 
 			if (choice == "+") {
@@ -124,13 +150,10 @@ public class ParentStartView {
 			} else {
 				// 자녀 번호 입력하면
 				int childOrder = Integer.parseInt(choice);
-				
 				printMainMenu();
 				// 기능구현
 			}
-
 		}
-
 	}
 
 	/**
