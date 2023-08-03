@@ -1,8 +1,10 @@
 package view.childView;
 
+import java.util.List;
 import java.util.Scanner;
 
 import controller.MoneyBookController;
+import dto.MoneyBookDto;
 import view.SuccessView;
 
 /**
@@ -109,9 +111,10 @@ public class MoneyBookView {
 		System.out.print("분류 선택 : ");
 		String moneyType = sc.nextLine();
 
-		int outComeType, amount;
+		String outComeType; 
+		int amount;
 		String content, memo;
-
+		MoneyBookDto dto = new MoneyBookDto();
 		switch (moneyType) {
 		case "1":
 			System.out.println("금액 입력 : ");
@@ -120,19 +123,22 @@ public class MoneyBookView {
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			// 기능구현
+			dto =  new MoneyBookDto(amount, content, memo);
+	    	MoneyBookController.createMoneyBook(dto);
 			break;
 		case "2":
 			System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
 			System.out.println("지출 분류 선택 : ");
-			outComeType = Integer.parseInt(sc.nextLine());
+			outComeType = sc.nextLine();
 			System.out.println("금액 입력 : ");
 			amount = Integer.parseInt(sc.nextLine());
 			System.out.println("내용 입력 : ");
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			// 기능구현
+			//기능구현
+			dto =  new MoneyBookDto(outComeType, amount, content, memo);
+	    	MoneyBookController.createMoneyBook(dto);
 			System.out.println("등록 완료되었습니다.");
 			break;
 		default:
@@ -150,7 +156,8 @@ public class MoneyBookView {
 		System.out.println("수정할 날짜 입력 : ");
 		String moneyDate = sc.nextLine();
 
-		SuccessView.printDayMoneyBook(); // 하루 날짜 출력 메소드
+		//SuccessView.moneyBookSelectPrint(); // 하루 날짜 출력 메소드
+		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
 		String rownum = sc.nextLine();
