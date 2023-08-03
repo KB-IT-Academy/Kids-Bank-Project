@@ -37,10 +37,16 @@ public class LoginController {
 	/**
 	 * 자식 로그아웃하는 메서드
 	 */
-	public static void logoutChild() {
+	public static void logoutChild(String parentChild) {
+		remove(parentChild);
 		
 	}
 	
+	private static void remove(String parentChild) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * 부모 로그인하는 메서드
 	 * @param id
