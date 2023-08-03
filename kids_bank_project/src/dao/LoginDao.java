@@ -1,6 +1,6 @@
-package service;
+package dao;
 
-public interface LoginService {
+public interface LoginDao {
 	/**
 	 * 자식 로그인하는 메서드
 	 * @param id

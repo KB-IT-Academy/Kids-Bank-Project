@@ -4,7 +4,6 @@ package dto;
  * 사용자 DTO
  */
 public class UserDto {
-	private int number; // 고유번호
 	private String id; // ID
 	private String password; // 비밀번호
 	private String name; // 이름
@@ -17,8 +16,7 @@ public class UserDto {
 	 */
 	public UserDto(){}
 
-	public UserDto(int number, String id, String password, String name, String phone, String joinDate, String nickname) {
-		this.number = number;
+	public UserDto(String id, String password, String name, String phone, String joinDate) {
 		this.id = id;
 		this.password = password;
 		this.name = name;
@@ -29,14 +27,6 @@ public class UserDto {
 	/**
 	 * Getter, Setter
 	 */
-	public int getNumber() {
-		return number;
-	}
-
-	public void setNumber(int number) {
-		this.number = number;
-	}
-
 	public String getId() {
 		return id;
 	}
@@ -82,19 +72,13 @@ public class UserDto {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("number=");
-		builder.append(number);
-		builder.append(", id=");
-		builder.append(id);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", phone=");
-		builder.append(phone);
-		builder.append(", joinDate=");
-		builder.append(joinDate);
-		return builder.toString();
+		final StringBuilder sb = new StringBuilder("UserDto{");
+		sb.append("id='").append(id).append('\'');
+		sb.append(", password='").append(password).append('\'');
+		sb.append(", name='").append(name).append('\'');
+		sb.append(", phone='").append(phone).append('\'');
+		sb.append(", joinDate='").append(joinDate).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
 }

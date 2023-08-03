@@ -1,9 +1,9 @@
-package service;
+package dao;
 
 import dto.ChildDto;
 import dto.ParentDto;
 
-public interface joinService {
+public interface JoinDao {
 	/**
 	 * 자식 회원 가입하는 메서드
 	 * @param Childdto 

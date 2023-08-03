@@ -4,6 +4,7 @@ package dto;
  * 자식 DTO
  */
 public class ChildDto extends UserDto {
+	private int childNum; // 고유번호
 	private String registrationNumber; // 주민등록번호
 	private boolean isOpen; // 공개 여부
 	
@@ -11,16 +12,33 @@ public class ChildDto extends UserDto {
 	 * 생성자
 	 */
 	public ChildDto(){	}
-	
-	public ChildDto(int number, String id, String password, String name, String phone, String registrationNumber, String joinDate, String nickname) {
-		super(number, id, password, name, phone, joinDate, nickname);
+
+	public ChildDto(int childNum, String id, String password, String name, String phone, String registrationNumber, String joinDate) {
+		super(id, password, name, phone, joinDate);
+		this.childNum = childNum;
 		this.registrationNumber = registrationNumber;
 		this.isOpen = true;
 	}
-	
+
+
+	public ChildDto(String id, String password, String name, String phone, String joinDate, int childNum, String registrationNumber, boolean isOpen) {
+		super(id, password, name, phone, joinDate);
+		this.childNum = childNum;
+		this.registrationNumber = registrationNumber;
+		this.isOpen = isOpen;
+	}
+
 	/**
 	 * Getter, Setter
 	 */
+	public int getChildNum() {
+		return childNum;
+	}
+
+	public void setChildNum(int childNum) {
+		this.childNum = childNum;
+	}
+
 	public String getRegistrationNumber() {
 		return registrationNumber;
 	}
@@ -33,24 +51,20 @@ public class ChildDto extends UserDto {
 		return isOpen;
 	}
 
-	public void setOpen(boolean isOpen) {
-		this.isOpen = isOpen;
+	public void setOpen(boolean open) {
+		isOpen = open;
 	}
-	
+
 	/**
 	 * toString
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getClass().getSimpleName());
-		builder.append("[");
-		builder.append(super.toString());
-		builder.append(", registrationNumber=");
-		builder.append(registrationNumber);
-		builder.append(", isOpen=");
-		builder.append(isOpen);
-		builder.append("]");
-		return builder.toString();
+		final StringBuilder sb = new StringBuilder("ChildDto{");
+		sb.append("childNum=").append(childNum);
+		sb.append(", registrationNumber='").append(registrationNumber).append('\'');
+		sb.append(", isOpen=").append(isOpen);
+		sb.append('}');
+		return sb.toString();
 	}
 }

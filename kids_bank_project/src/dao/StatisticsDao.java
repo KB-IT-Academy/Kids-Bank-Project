@@ -1,9 +1,8 @@
-package service;
+package dao;
 
 import dto.StatisticsDto;
 
-public interface StatisticsService {
-
+public interface StatisticsDao {
 	/**
 	 * 하루 통계를 가져오는 메서드
 	 * @param 현재 날짜 

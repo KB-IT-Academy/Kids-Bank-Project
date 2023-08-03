@@ -1,4 +1,4 @@
-package view.childView;
+package view.parentView;
 
 import java.util.Scanner;
 

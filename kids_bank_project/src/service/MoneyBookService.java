@@ -24,8 +24,8 @@ public interface MoneyBookService {
 	void deleteAllMoneyBook();
 	
 	/**
-	 * 단일 기입장을 삭제하는 메서드
-	 * @param num
+	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
+	 * @param 기입장 row number 
 	 */
 	void deleteMoneyBook(int rownum);
 	
@@ -37,14 +37,14 @@ public interface MoneyBookService {
 	
 	/**
 	 * 지정한 날짜의 기입장 조회하는 메서드
-	 * @param date
+	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 * @return
 	 */
 	List<MoneyBookDto> getDayMoneyBook(String date);
 	
 	/**
-	 * 한 달치 기입장 조회하는 메서드
-	 * @param date
+	 * 기입장 한달 분을 조회하는 메서드
+	 * @param 한달 조회 => 입력 값 "2023-08"
 	 * @return
 	 */
 	List<MoneyBookDto> getMonthMoneyBook(String date);

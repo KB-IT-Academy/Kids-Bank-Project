@@ -4,39 +4,42 @@ import java.util.List;
 import dto.ChildDto;
 import dto.ParentDto;
 import dto.UserDto;
+import service.MyPageService;
+import service.MyPageServiceImpl;
 
 public class MyPageController {
+	private static MyPageService myPageService = MyPageServiceImpl.getInstance();
 	/**
-	 * 모든 자식 회원 조회
+	 * 모든 자식 회원 조회하는 메서드
 	 */
-	public void childFindAll() {
+	public static void childFindAll() {
 		
 	}
 	
 	/**
-	 * 자식 고유 번호로 회원 조회
-	 * @param 자식 고유 번호
+	 * 자식 고유 번호로 회원 조회하는 메서드
+	 * @param num 자식 고유 번호
 	 */
-	public void childFindByNumber(int num) {
+	public static void childFindByNumber(int num) {
 		
 	}
 	
 	/**
-	 * 자식 회원 탈퇴
+	 * 자식 회원 탈퇴하는 메서드
 	 */
-	public void childDelete() {
+	public static void childDelete() {
 		
 	}
 	
 	/**
-	 * 모든 부모 회원 조회
+	 * 모든 부모 회원 조회하는 메서드
 	 */
-	public void parentFindAll() {
+	public static void parentFindAll() {
 		
 	}
 	
 	/**
-	 * 부모 고유 번호로 회원 조회
+	 * 부모 고유 번호로 회원 조회하는 메서드
 	 * @param 부모 고유 번호
 	 */
 	public void parentFindByNumber(int num) {
@@ -44,30 +47,30 @@ public class MyPageController {
 	}
 	
 	/**
-	 * 부모 회원 탈퇴 
+	 * 부모 회원 탈퇴하는 메서드 
 	 */
-	public void parentDelete() {
+	public static void parentDelete() {
 		
 	}
 	
 	/**
-	 * 연결된 부모 확인
+	 * 연결된 부모 확인하는 메서드
 	 */
-	public void getParent() {
-
+	public static void getParent() {
+		List<UserDto> list = myPageService.getParent();
 	}
 	
 	/**
-	 * 연결된 자식 확인
+	 * 연결된 자식 확인하는 메서드
 	 */
-	public void getChild() {
+	public static void getChild() {
 
 	}
 	/**
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)
 	 */
-	public void createRelation(String registNum) {
+	public static void createRelation(String registNum) {
 		
 	}
 }

@@ -1,11 +1,11 @@
-package service;
+package dao;
 
 import java.util.List;
 
 import dto.CommentDto;
 import dto.EmojiDto;
 
-public interface CommentEmojiService {
+public interface CommentEmojiDao {
 	/**
 	 * 댓글 생성하는 메서드
 	 * @param dto

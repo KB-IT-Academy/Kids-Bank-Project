@@ -5,34 +5,34 @@ import dto.StatisticsDto;
 public class StatisticsController {
 	
 	/**
-	 * 하루 통계
+	 * 하루 통계를 가져오는 메서드
 	 * @param 현재 날짜 
 	 */
-	public void getDateAmountInfo(String date) {
+	public static void getDateAmountInfo(String date) {
 		
 	}
 	
 	/**
-	 * 주간 통계
+	 * 주간 통계를 가져오는 메서드
 	 * @param 현재 날짜 
 	 */
-	public void getWeekAmountInfo(String date) {
+	public static void getWeekAmountInfo(String date) {
 		
 	}
 	
 	/**
-	 * 월간 통계
+	 * 월간 통계를 가져오는 메서드
 	 * @param 현재 날짜 
 	 */
-	public void getMonthAmountInfo(String date) {
+	public static void getMonthAmountInfo(String date) {
 		
 	}
 	
 	/**
-	 * 1년 통계
+	 * 1년 통계를 가져오는 메서드
 	 * @param 현재 날짜 
 	 */
-	public void getYearAmountInfo(String date) {
+	public static void getYearAmountInfo(String date) {
 		
 	}
 }
