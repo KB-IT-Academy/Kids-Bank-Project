@@ -1,21 +1,8 @@
 package dao;
 
-import dto.ChildDto;
 import dto.ParentDto;
 
-public interface JoinDao {
-	/**
-	 * 자식 회원 가입하는 메서드
-	 * @param Childdto 
-	 */
-	void CreateChild(ChildDto dto);
-	
-	/**
-	 * 자식 회원 수정하는 메서드
-	 * @param Childdto
-	 */
-	void updateChild(ChildDto dto);
-	
+public interface ParentDao {
 	/**
 	 * 부모 회원 가입하는 메서드
 	 * @param ParentDto
@@ -28,4 +15,11 @@ public interface JoinDao {
 	 * @param Parentdto
 	 */
 	void updateParent(ParentDto dto);
+	
+	/**
+	 * 부모 로그인하는 메서드
+	 * @param id
+	 * @param password
+	 */
+	void loginParent(String id, String password);
 }
