@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import dto.RankDto;
+import dto.StatisticsDto;
 import controller.MyPageController;
 import dto.ChildDto;
 import dto.MoneyBookDto;
@@ -41,6 +42,18 @@ public class SuccessView {
 		
 	}
 
+	/**
+	 * 통계 출력창
+	 */
+	public static void printStatistics(StatisticsDto statistics) {
+		System.out.println();
+		System.out.println("----------------------------------------------------------------------------------------------");
+		
+		System.out.println("수입 총합 : " + statistics.getInComeAmount() + "원");
+		System.out.println("지출 총합 : " + statistics.getOutComeAmount() + "원");
+		System.out.println();
+	}
+	
 	/**
 	 * 랭킹 출력창
 	 * @param rankList 
