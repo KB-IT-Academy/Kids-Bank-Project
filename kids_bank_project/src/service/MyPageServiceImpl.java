@@ -38,8 +38,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public int childDelete() throws DMLException{
-		int result = myPageDao.childDelete();
+	public int childDelete(int childNum) throws DMLException{
+		int result = myPageDao.childDelete(childNum);
 		if (result == 0) {
 			throw new DMLException("탈퇴할 수 없습니다.");
 		}
@@ -66,8 +66,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public int parentDelete() throws DMLException{
-		int result = myPageDao.parentDelete();
+	public int parentDelete(int parentNum) throws DMLException{
+		int result = myPageDao.parentDelete(parentNum);
 		if (result == 0) {
 			throw new DMLException("탈퇴할 수 없습니다.");
 		}

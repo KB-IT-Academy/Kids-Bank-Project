@@ -39,9 +39,9 @@ public class MyPageController {
 	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
-	public static void childDelete() {
+	public static void childDelete(int childNum) {
 		try {			
-		int result = myPageService.childDelete();
+		int result = myPageService.childDelete(childNum);
 		System.out.println(result);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
@@ -76,9 +76,9 @@ public class MyPageController {
 	/**
 	 * 부모 회원 탈퇴하는 메서드 
 	 */
-	public static void parentDelete() {
+	public static void parentDelete(int parentNum) {
 		try {			
-		int result = myPageService.parentDelete();
+		int result = myPageService.parentDelete(parentNum);
 		System.out.println(result);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());

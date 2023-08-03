@@ -3,6 +3,7 @@ package view.childView;
 import java.util.Scanner;
 
 import controller.MyPageController;
+import session.Session;
 import view.StartView;
 import view.SuccessView;
 
@@ -11,6 +12,7 @@ import view.SuccessView;
  */
 public class MyPageView {
 	static Scanner sc = new Scanner(System.in);
+	static Session session;
 	
 	public MyPageView() {}
 
@@ -106,7 +108,7 @@ public class MyPageView {
 				String check = sc.nextLine();
 				
 				if (check.equals("1")) {
-					// 이부분에 회원 탈퇴 함수 넣기
+//					MyPageController.childDelete(session.getSessionId());
 					System.out.println("탈퇴되었습니다.");
 					StartView.printMain();
 					break;

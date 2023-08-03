@@ -2,7 +2,9 @@ package view.childView;
 
 import java.util.Scanner;
 
+import controller.JoinController;
 import controller.LoginController;
+import dto.ChildDto;
 import view.StartView;
 
 /**
@@ -64,8 +66,10 @@ public class ChildStartView {
 		String registrationNumber = sc.nextLine();
 
 		if (true) { // 4가지 항목 모두 제대로 입력한 경우 -> 메소드 추가하기
+			ChildDto dto = new ChildDto(0, id, password, name, null, registrationNumber, null);
+			JoinController.CreateChild(dto);
 			System.out.println();
-			System.out.println("아이 회원가입 성공!");
+//			System.out.println("아이 회원가입 성공!");
 		} else { // 4가지 항목 제대로 입력하지 않은 경우
 			System.out.println();
 			System.out.println("정보를 다시 입력하세요.");

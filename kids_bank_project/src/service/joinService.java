@@ -2,13 +2,14 @@ package service;
 
 import dto.ChildDto;
 import dto.ParentDto;
+import exception.DMLException;
 
 public interface joinService {
 	/**
 	 * 자식 회원 가입하는 메서드
 	 * @param Childdto 
 	 */
-	void CreateChild(ChildDto dto);
+	int CreateChild(ChildDto dto) throws DMLException;
 	
 	/**
 	 * 자식 회원 수정하는 메서드

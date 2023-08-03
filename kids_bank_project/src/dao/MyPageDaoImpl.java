@@ -132,7 +132,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * delete child where child_num = ? (자식 고유 번호)
 	 */
 	@Override
-	public int childDelete() throws DMLException{
+	public int childDelete(int childNum) throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -141,7 +141,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			// static에 있는 자식고유번호 넣기
-			ps.setInt(1, 1);
+			ps.setInt(1, childNum);
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 //			e.printStackTrace();
@@ -227,7 +227,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * delete parent where parent_num = ? (부모 고유 번호)
 	 */
 	@Override
-	public int parentDelete() throws DMLException{
+	public int parentDelete(int parentNum) throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -236,7 +236,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			// static에 있는 부모고유번호 넣기
-			ps.setInt(1, 1);
+			ps.setInt(1, parentNum);
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
 //			e.printStackTrace();

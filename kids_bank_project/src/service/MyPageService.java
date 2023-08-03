@@ -23,7 +23,7 @@ public interface MyPageService {
 	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
-	int childDelete() throws DMLException;
+	int childDelete(int childNum) throws DMLException;
 	
 	/**
 	 * 모든 부모 회원 조회하는 메서드
@@ -39,7 +39,7 @@ public interface MyPageService {
 	/**
 	 * 부모 회원 탈퇴하는 메서드 
 	 */
-	int parentDelete() throws DMLException;
+	int parentDelete(int parentNum) throws DMLException;
 	
 	/**
 	 * 연결된 부모 확인하는 메서드

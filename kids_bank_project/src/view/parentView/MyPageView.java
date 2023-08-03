@@ -2,6 +2,7 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import controller.MyPageController;
 import view.StartView;
 
 public class MyPageView {
@@ -81,7 +82,7 @@ public class MyPageView {
 				String check = sc.nextLine();
 				
 				if (check.equals("1")) {
-					// 이부분에 회원 탈퇴 함수 넣기
+//					MyPageController.parentDelete();
 					System.out.println("탈퇴되었습니다.");
 					StartView.printMain();
 					break;

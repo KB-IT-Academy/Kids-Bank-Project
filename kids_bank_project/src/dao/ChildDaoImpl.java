@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import common.DBManager;
-import dto.ChildDto; 
+import dto.ChildDto;
+import exception.DMLException; 
 
 public class ChildDaoImpl implements ChildDao  {
-	 
 	
 	/*
 	 * 아이 로그인
@@ -51,9 +51,27 @@ public class ChildDaoImpl implements ChildDao  {
 		
 	}
 	@Override
-	public void CreateChild(ChildDto dto) {
-		// TODO Auto-generated method stub
-		
+	public int CreateChild(ChildDto dto) throws DMLException{
+		Connection con = null;
+		PreparedStatement ps = null;
+		int result = 0;
+		String sql = "insert into child (child_num, id, password, name, join_date,registration_number)"
+				+ " values (child_seq.nextval, ?, ?, ?,sysdate,?)";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, dto.getId());
+			ps.setString(2, dto.getPassword());
+			ps.setString(3, dto.getName());
+			ps.setString(4, dto.getRegistrationNumber());
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new  DMLException();
+		} finally {
+			DBManager.releaseConnection(con, ps);
+		}
+		return result;
 	}
 	@Override
 	public void updateChild(ChildDto dto) {

@@ -6,6 +6,8 @@ package session;
 public class Session {
 	private String sessionId; 
 	
+	public Session() {}
+	
 	
 	public Session(String id) {
 		this.sessionId = id;
