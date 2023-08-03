@@ -12,7 +12,6 @@ public class MoneyBookDto {
 	private String content; // 내용
 	private String memo; // 메모
 	private String money_date; // 수입일 or 지출일
-
 	private String write_date; // 등록일
 	private String update_date; // 수정일
 
