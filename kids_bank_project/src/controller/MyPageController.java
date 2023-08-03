@@ -13,7 +13,8 @@ public class MyPageController {
 	 * 모든 자식 회원 조회하는 메서드
 	 */
 	public static void childFindAll() {
-		
+		List<ChildDto> list = myPageService.childFindAll();
+		System.out.println(list);
 	}
 	
 	/**
@@ -21,21 +22,24 @@ public class MyPageController {
 	 * @param num 자식 고유 번호
 	 */
 	public static void childFindByNumber(int num) {
-		
+		ChildDto dto = myPageService.childFindByNumber(num);
+		System.out.println(dto);
 	}
 	
 	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
 	public static void childDelete() {
-		
+		int result = myPageService.childDelete();
+		System.out.println(result);
 	}
 	
 	/**
 	 * 모든 부모 회원 조회하는 메서드
 	 */
 	public static void parentFindAll() {
-		
+		List<ParentDto> list = myPageService.parentFindAll();
+		System.out.println(list);
 	}
 	
 	/**

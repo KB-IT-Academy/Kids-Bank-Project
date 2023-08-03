@@ -1,1 +1,243 @@
-/.metadata/
+# https://www.toptal.com/developers/gitignore/api/java,windows,macos,intellij+all,eclipse에 의해 생성됨
+# https://www.toptal.com/developers/gitignore?templates=java,windows,macos,intellij+all,eclipse에서 편집
+
+### 이클립스 ###
+.메타데이터
+큰 상자/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.설정/
+.loadpath
+.추천자
+
+# 외부 도구 빌더
+.externalToolBuilders/
+
+# 로컬에 저장된 "Eclipse 실행 구성"
+*.시작하다
+
+# PyDev 전용(Eclipse용 Python IDE)
+*.pydevproject
+
+# CDT 전용(C/C++ 개발 도구)
+.cproject
+
+# CDT- autotools
+.autotools
+
+# 자바 주석 처리기(APT)
+.factorypath
+
+# PDT 전용(PHP 개발 도구)
+.buildpath
+
+# sbteclipse 플러그인
+.표적
+
+# 턴 플러그인
+.tern 프로젝트
+
+# TeXlipse 플러그인
+.texlipse
+
+# STS(스프링 툴 스위트)
+.springBeans
+
+# 코드 추천자
+.추천자/
+
+# 주석 처리
+.apt_generated/
+.apt_generated_test/
+
+# Scala IDE 특정(Eclipse용 Scala 및 Java 개발)
+.cache-main
+.scala_dependencies
+.워크시트
+
+# 프로젝트 설명 파일을 무시하려면 이 줄의 주석을 제거하십시오.
+# 일반적으로 이 파일은 빌드/종속성 구성을 포함하는 경우 추적됩니다.
+#.프로젝트
+
+### 이클립스 패치 ###
+# 스프링 부트 툴링
+.sts4-캐시/
+
+### IntelliJ+모두 ###
+# JetBrains IDE 포함: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm 및 Rider
+# 참조: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# 사용자별 항목
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/사전
+.idea/**/선반
+
+# AWS 사용자별
+.idea/**/aws.xml
+
+# 생성된 파일
+.idea/**/contentModel.xml
+
+# 민감하거나 변동률이 높은 파일
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# 그레이들
+.idea/**/gradle.xml
+.idea/**/라이브러리
+
+# 자동 가져오기 기능이 있는 Gradle 및 Maven
+# 자동 가져오기로 Gradle 또는 Maven을 사용할 때 모듈 파일을 제외해야 합니다.
+# 다시 생성되어 변동이 발생할 수 있기 때문입니다. 사용하는 경우 주석 해제
+# 자동 가져오기.
+# .아이디어/아티팩트
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .아이디어/모듈
+# *.iml
+# *.ipr
+
+# 씨메이크
+cmake-빌드-*/
+
+# 몽고 익스플로러 플러그인
+.idea/**/mongoSettings.xml
+
+# 파일 기반 프로젝트 형식
+*.iws
+
+# 인텔리제이
+밖으로/
+
+# mpeltonen/sbt-idea 플러그인
+.idea_modules/
+
+# 지라 플러그인
+atlassian-ide-plugin.xml
+
+# 필기체 클로저 플러그인
+.idea/replstate.xml
+
+# SonarLint 플러그인
+.idea/sonarlint/
+
+# Crashlytics 플러그인(Android Studio 및 IntelliJ용)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# 에디터 기반 레스트 클라이언트
+.idea/http요청
+
+# 안드로이드 스튜디오 3.1+ 직렬화 캐시 파일
+.idea/caches/build_file_checksums.ser
+
+### Intellij+모든 패치 ###
+# 코드 스타일 설정을 제외한 모든 것을 무시하고 구성을 실행합니다.
+# 팀 내에서 공유되어야 합니다.
+
+.아이디어/*
+
+!.idea/codeStyles
+!.idea/runConfigurations
+
+### 자바 ###
+# 컴파일된 클래스 파일
+*.수업
+
+# 로그 파일
+*.통나무
+
+# BlueJ 파일
+*.ctxt
+
+# Java용 모바일 도구(J2ME)
+.mtj.tmp/
+
+# 패키지 파일 #
+*.항아리
+*.전쟁
+*.nar
+*.귀
+*.지퍼
+*.tar.gz
+*.rar
+
+# 가상 머신 충돌 로그, http://www.java.com/en/download/help/error_hotspot.xml 참조
+hs_err_pid*
+replay_pid*
+
+### 맥 OS ###
+# 일반적인
+.DS_스토어
+.AppleDouble
+.LSOverride
+
+# 아이콘은 두 개의 \r로 끝나야 합니다.
+상
+
+
+# 썸네일
+._*
+
+# 볼륨의 루트에 나타날 수 있는 파일
+.DocumentRevisions-V100
+.fseventsd
+.스포트라이트-V100
+.임시 항목
+.쓰레기
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# 원격 AFP 공유에서 잠재적으로 생성된 디렉토리
+.AppleDB
+.AppleDesktop
+네트워크 휴지통 폴더
+임시 항목
+.apdisk
+
+### macOS 패치 ###
+# iCloud 생성 파일
+*.아이클라우드
+
+### 윈도우 ###
+# Windows 썸네일 캐시 파일
+Thumbs.db
+Thumbs.db:암호화 가능
+ehthumbs.db
+ehthumbs_vista.db
+
+# 덤프 파일
+*.stackdump
+
+# 폴더 구성 파일
+[DD]esktop.ini
+
+# 파일 공유에 사용되는 휴지통
+$RECLECLE.BIN/
+
+# 윈도우 인스톨러 파일
+*.택시
+*.msi
+*.msix
+*.msm
+*.msp
+
+# 윈도우 단축키
+*.lnk
+
+# 끝 https://www.toptal.com/developers/gitignore/api/java,windows,macos,intellij+all,eclipse

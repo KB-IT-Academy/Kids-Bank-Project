@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import controller.MyPageController;
 import view.childView.ChildStartView;
 import view.parentView.ParentStartView;
 
@@ -18,6 +19,9 @@ public class StartView {
 	 * 프로그램 시작창
 	 */
 	public static void printMain() {
+		MyPageController.parentFindAll();
+		MyPageController.childFindByNumber(1);
+//		MyPageController.childDelete();
 		Scanner sc = new Scanner(System.in);
 		
 		

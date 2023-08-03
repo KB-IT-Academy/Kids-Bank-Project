@@ -21,7 +21,7 @@ public interface MyPageService {
 	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
-	void childDelete();
+	int childDelete();
 	
 	/**
 	 * 모든 부모 회원 조회하는 메서드
@@ -37,7 +37,7 @@ public interface MyPageService {
 	/**
 	 * 부모 회원 탈퇴하는 메서드 
 	 */
-	void parentDelete();
+	int parentDelete();
 	
 	/**
 	 * 연결된 부모 확인하는 메서드
@@ -53,5 +53,5 @@ public interface MyPageService {
 	 * 가족 관계 생성(부모 => 자식)
 	 * @param 주민등록번호(registNum)
 	 */
-	void createRelation(String registNum) ;
+	int createRelation(String registNum) ;
 }

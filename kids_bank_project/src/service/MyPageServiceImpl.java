@@ -19,26 +19,27 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 	@Override
 	public List<ChildDto> childFindAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ChildDto> list = myPageDao.childFindAll();
+		return list;
 	}
 
 	@Override
 	public ChildDto childFindByNumber(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		ChildDto dto = myPageDao.childFindByNumber(num);
+		return dto;
 	}
 
 	@Override
-	public void childDelete() {
-		// TODO Auto-generated method stub
+	public int childDelete() {
+		int result = myPageDao.childDelete();
+		return result;
 
 	}
 
 	@Override
 	public List<ParentDto> parentFindAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<ParentDto> list = myPageDao.parentFindAll();
+		return list;
 	}
 
 	@Override
@@ -48,8 +49,9 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public void parentDelete() {
+	public int parentDelete() {
 		// TODO Auto-generated method stub
+		return 0;
 
 	}
 
@@ -66,9 +68,9 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public void createRelation(String registNum) {
+	public int createRelation(String registNum) {
 		// TODO Auto-generated method stub
-
+		return 0;
 	}
 
 }

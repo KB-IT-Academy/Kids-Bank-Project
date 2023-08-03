@@ -25,7 +25,7 @@ public interface MyPageDao {
 	 * 자식 회원 탈퇴하는 메서드
 	 * delete child where child_num = ? (자식 고유 번호)
 	 */
-	void childDelete();
+	int childDelete();
 	
 	/**
 	 * 모든 부모 회원 조회하는 메서드
@@ -44,7 +44,7 @@ public interface MyPageDao {
 	 * 부모 회원 탈퇴하는 메서드 
 	 * delete parent where parent_num = ? (부모 고유 번호)
 	 */
-	void parentDelete();
+	int parentDelete();
 	
 	/**
 	 * 연결된 부모 확인하는 메서드
@@ -66,5 +66,5 @@ public interface MyPageDao {
 	 * select * from child where registration_num = ? (주민등록번호)
 	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
 	 */
-	void createRelation(String registNum) ;
+	int createRelation(String registNum) ;
 }
