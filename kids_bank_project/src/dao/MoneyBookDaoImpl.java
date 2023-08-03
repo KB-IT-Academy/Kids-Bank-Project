@@ -127,15 +127,31 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "select rownum, money_book_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date from money_book where money_date = ? order by money_date ";
+		String sql = "SELECT ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, date);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				MoneyBookDto moneybook = new MoneyBookDto();
+				int rownum = rs.getInt("ROWNUM");
+				String money_date =rs.getString("MONEY_DATE");
+				int moneytype_num = rs.getInt("MONEY_TYPE");
+				String moneytype;
+				
+				if(moneytype_num==1){
+					moneytype = "지출";
+				}else {
+					moneytype= "수입";
+				}
+				
+				int amount = rs.getInt("AMOUNT");
+				String content = rs.getString("CONTENT");
+				String memo = rs.getString("MEMO");
+				
+				MoneyBookDto moneybook = new MoneyBookDto(rownum,money_date,moneytype,amount,content,memo);
 				list.add(moneybook);
+			
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -179,7 +195,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		
 		List<MoneyBookDto> list = new ArrayList<>();
 		
-		String sql = "SELECT ROWNUM,MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
+		String sql = "SELECT ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);

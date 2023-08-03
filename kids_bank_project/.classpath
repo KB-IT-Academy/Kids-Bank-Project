@@ -7,7 +7,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+=======
+	<classpathentry kind="lib" path="C:/app/98nob/product/21c/dbhomeXE/jdbc/lib/ojdbc8.jar">
+>>>>>>> 74d9fb81d3fcd2ab74a4edfb5f4c3bfccc1af870
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
