@@ -3,8 +3,8 @@ package dto;
 public class ParentChildDto {
     private int parentChildNum; // 고유번호
     // FK
-    private ChildDto childDto;
-    private ParentDto parentDto;
+    private ChildDto childDto; // childNum
+    private ParentDto parentDto; // parentNum
 
     // 자식순서: 1. 첫째, 2.둘째, 3.셋째
     private int childOrder;
