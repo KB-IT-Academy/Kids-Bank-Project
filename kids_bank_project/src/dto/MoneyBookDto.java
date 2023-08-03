@@ -22,19 +22,6 @@ public class MoneyBookDto {
 	 * 생성자
 	 */
 	public MoneyBookDto() {}
-	
-	public MoneyBookDto(int amount, String content, String memo) {
-		this.amount = amount;
-		this.content = content;
-		this.memo = memo;
-	}
-	
-	public MoneyBookDto(String outComeType, int amount, String content, String memo) {
-		this.outcomeType = outcomeType;
-		this.amount = amount;
-		this.content = content;
-		this.memo = memo;
-	}
 
 
 	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
