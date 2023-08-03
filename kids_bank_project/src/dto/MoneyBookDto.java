@@ -22,7 +22,6 @@ public class MoneyBookDto {
 	 * 생성자
 	 */
 	public MoneyBookDto() {}
-<<<<<<< HEAD
 	
 	/**
 	 * 조회 생성자
@@ -54,9 +53,6 @@ public class MoneyBookDto {
 		this.content = content;
 		this.memo = memo;
 	}
-=======
->>>>>>> e28b1ef6f11addde212f072ab0c46d9bf8c885f1
-
 
 	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
 		this.rownum = rownum;
@@ -169,14 +165,13 @@ public class MoneyBookDto {
 	 */
 	@Override
 	public String toString() {
-		final StringBuilder sb = new StringBuilder("MoneyBookDto{");
-		sb.append("rownum=").append(rownum);
-		sb.append(", money_date='").append(money_date).append('\'');
-		sb.append(", moneyType=").append(moneyType);
-		sb.append(", amount=").append(amount);
-		sb.append(", content='").append(content).append('\'');
-		sb.append(", memo='").append(memo).append('\'');
-		sb.append('}');
+		final StringBuilder sb = new StringBuilder("[");
+		sb.append(rownum).append(".");
+		sb.append(" 등록일 = ").append(money_date);
+		sb.append(" <").append(moneyType).append(">");
+		sb.append(" 금액 = ").append(amount);
+		sb.append(" 내용 = ").append(content);
+		sb.append(']');
 		return sb.toString();
 	}
 

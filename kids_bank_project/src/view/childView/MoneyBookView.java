@@ -12,7 +12,8 @@ import view.SuccessView;
  */
 public class MoneyBookView {
 	static Scanner sc = new Scanner(System.in);
-
+	private static int dateSize = 8;
+	
 	public MoneyBookView() {
 	}
 
@@ -76,7 +77,7 @@ public class MoneyBookView {
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-				String date  = sc.nextLine();
+				String date  = getNumberInput(sc, dateSize);
 				MoneyBookController.getDayMoneyBook(date);
 				break;
 			case "3":
@@ -236,4 +237,22 @@ public class MoneyBookView {
 		System.out.println("수정 완료되었습니다.");
 
 	}
+	/**
+	 * 날짜 받기
+	 * @param scanner
+	 * @param maxDigits
+	 * @return
+	 */
+	public static String getNumberInput(Scanner scanner, int maxDigits) {
+        while (true) {
+        	
+            String input = scanner.nextLine();
+
+            if (input.length() == maxDigits && input.matches("\\d+")) {
+                return input;
+            } else {
+                System.out.println("올바른 날짜를 입력하세요.");
+            }
+        }
+    }
 }
