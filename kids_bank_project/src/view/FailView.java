@@ -9,3 +9,4 @@ public class FailView {
          System.out.println(message+"\n");
     }
 }
+

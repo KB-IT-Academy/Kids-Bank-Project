@@ -2,56 +2,68 @@ package service;
 
 import java.util.List;
 
+import dao.MoneyBookDao;
+import dao.MoneyBookDaoImpl;
 import dto.MoneyBookDto;
+import dto.UserDto;
 
 public class MoneyBookServiceImpl implements MoneyBookService{
 
+	private static MoneyBookServiceImpl instance = new MoneyBookServiceImpl();
+	private MoneyBookDao moneyBookDao = MoneyBookDaoImpl.getInstance();
+	
+	public static MoneyBookServiceImpl getInstance() {
+		return instance;
+	}
+	
 	@Override
 	public int createMoneyBook(MoneyBookDto dto) {
-		// TODO Auto-generated method stub
+		int result = moneyBookDao.createMoneyBook(dto);
 		return 0;
 	}
 
 	@Override
 	public void updateMoneyBook(MoneyBookDto dto) {
-		// TODO Auto-generated method stub
+		int result = moneyBookDao.updateMoneyBook(dto);
 		
 	}
 
 	@Override
 	public void deleteAllMoneyBook() {
-		// TODO Auto-generated method stub
+		int result = moneyBookDao.deleteAllMoneyBook();
 		
 	}
 
 	@Override
 	public void deleteMoneyBook(int rownum) {
-		// TODO Auto-generated method stub
+		int result = moneyBookDao.deleteMoneyBook(rownum);
 		
 	}
 
 	@Override
 	public List<MoneyBookDto> getAllMoneyBook() {
-		// TODO Auto-generated method stub
-		return null;
+		List<MoneyBookDto> list = moneyBookDao.getAllMoneyBook();
+		return list;
 	}
 
 	@Override
 	public List<MoneyBookDto> getDayMoneyBook(String date) {
-		// TODO Auto-generated method stub
-		return null;
+		List<MoneyBookDto> list = moneyBookDao.getDayMoneyBook(date);
+		return list;
 	}
 
 	@Override
 	public List<MoneyBookDto> getMonthMoneyBook(String date) {
-		// TODO Auto-generated method stub
-		return null;
+		List<MoneyBookDto> list = moneyBookDao.getMonthMoneyBook(date);
+		return list;
+		
 	}
 
 	@Override
 	public List<MoneyBookDto> getRecentMoneyBook() {
-		// TODO Auto-generated method stub
-		return null;
+		List<MoneyBookDto> list = moneyBookDao.getRecentMoneyBook();
+		return list;
+		
 	}
 
 }

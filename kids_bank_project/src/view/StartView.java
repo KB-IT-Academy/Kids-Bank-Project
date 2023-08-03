@@ -22,7 +22,7 @@ public class StartView {
 	 */
 	public static void printMain(){
 		Scanner sc = new Scanner(System.in);
-		
+
 		
 		while(true) {
 			System.out.println("==============================================================================================");

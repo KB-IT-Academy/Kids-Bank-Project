@@ -101,7 +101,6 @@ public class MoneyBookView {
 		String moneydate = sc.nextLine();
 
 		System.out.println("1. 수입 2. 지출");
-		System.out.println("기입장 메뉴로 돌아가려면 q를 입력해주세요.");
 		System.out.print("분류 선택 : ");
 		String moneyType = sc.nextLine();
 
@@ -131,8 +130,6 @@ public class MoneyBookView {
 			// 기능구현
 			System.out.println("등록 완료되었습니다.");
 			break;
-		case "q":
-			return;
 		default:
 			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
 		}

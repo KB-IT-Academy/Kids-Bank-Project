@@ -1,7 +1,5 @@
 package dto;
 
-import dto.ChildDto;
-
 public class MoneyBookDto {
 	private int rownum;
 
@@ -18,9 +16,6 @@ public class MoneyBookDto {
 	private String write_date; // 등록일
 	private String update_date; // 수정일
 
-	// FK
-	private ChildDto childDto; // childNum
-
 
 	
 	/**
@@ -29,7 +24,7 @@ public class MoneyBookDto {
 	public MoneyBookDto() {}
 
 
-	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date, ChildDto childDto) {
+	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;
@@ -40,7 +35,6 @@ public class MoneyBookDto {
 		this.money_date = money_date;
 		this.write_date = write_date;
 		this.update_date = update_date;
-		this.childDto = childDto;
 	}
 
 	/**
@@ -126,13 +120,7 @@ public class MoneyBookDto {
 		this.update_date = update_date;
 	}
 
-	public ChildDto getChildDto() {
-		return childDto;
-	}
-
-	public void setChildDto(ChildDto childDto) {
-		this.childDto = childDto;
-	}
+	
 
 	/**
 	 * 기입장 toString
@@ -150,7 +138,6 @@ public class MoneyBookDto {
 		sb.append(", money_date='").append(money_date).append('\'');
 		sb.append(", write_date='").append(write_date).append('\'');
 		sb.append(", update_date='").append(update_date).append('\'');
-		sb.append(", childNum=").append(childDto.getChildNum());
 		sb.append('}');
 		return sb.toString();
 	}
