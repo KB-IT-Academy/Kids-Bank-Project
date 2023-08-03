@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+
 import dao.MyPageDao;
 import dao.MyPageDaoImpl;
 import dto.ChildDto;
@@ -9,6 +10,7 @@ import dto.ParentDto;
 import dto.UserDto;
 import exception.DMLException;
 import exception.SearchNotFoundException;
+import dto.ChildDto;
 
 public class MyPageServiceImpl implements MyPageService {
 	private static MyPageServiceImpl instance = new MyPageServiceImpl();
@@ -85,9 +87,12 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<UserDto> getChild() throws SearchNotFoundException{
-		List<UserDto> list = myPageDao.getChild();
+	public List<ChildDto> getChild(int num) throws SearchNotFoundException{
+		List<ChildDto> list = myPageDao.getChild(num);
+		System.out.println("list size: " + list.size());
 		if (list.isEmpty()) {
+			System.out.println("비었다.");
+		
 			throw new SearchNotFoundException();
 		}
 		return list;

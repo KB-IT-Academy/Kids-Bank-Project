@@ -5,14 +5,14 @@ public class MoneyBookDto {
 
 	private int moneyBookNum; // 고유번호
 	// 1 : 수입, 2 : 지출
-	private int moneyType;
+	private int moneyTypeInt;
+	private String moneyType;
 	// 카테고리
 	private String outcomeType; // 지출 분류
 	private int amount; // 금액
 	private String content; // 내용
 	private String memo; // 메모
 	private String money_date; // 수입일 or 지출일
-
 	private String write_date; // 등록일
 	private String update_date; // 수정일
 
@@ -22,9 +22,43 @@ public class MoneyBookDto {
 	 * 생성자
 	 */
 	public MoneyBookDto() {}
+<<<<<<< HEAD
+	
+	/**
+	 * 조회 생성자
+	 */
+	public MoneyBookDto(int rownum,String money_date, String moneyType, int amount, String content, String memo) {
+		
+		this.rownum = rownum;
+		this.money_date = money_date;
+		this.moneyType = moneyType;
+		this.amount = amount;
+		this.content = content;
+		this.memo = memo;
+	}
+	/**
+	 * 수정,삭제 생성자
+	 */
+	public MoneyBookDto(int rownum,String money_date, int moneyTypeInt, int amount, String content, String memo) {
+		
+		this.rownum = rownum;
+		this.money_date = money_date;
+		this.moneyTypeInt = moneyTypeInt;
+		this.amount = amount;
+		this.content = content;
+		this.memo = memo;
+	}
+	public MoneyBookDto(String outComeType, int amount, String content, String memo) {
+		this.outcomeType = outcomeType;
+		this.amount = amount;
+		this.content = content;
+		this.memo = memo;
+	}
+=======
+>>>>>>> e28b1ef6f11addde212f072ab0c46d9bf8c885f1
 
 
-	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
+	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;
@@ -56,14 +90,22 @@ public class MoneyBookDto {
 		this.moneyBookNum = moneyBookNum;
 	}
 
-	public int getMoneyType() {
+	public String getMoneyType() {
 		return moneyType;
 	}
 
-	public void setMoneyType(int moneyType) {
+	public void setMoneyType(String moneyType) {
 		this.moneyType = moneyType;
 	}
 
+	public int getMoneyTypeInt() {
+		return moneyTypeInt;
+	}
+
+	public void setMoneyTypeInt(int moneyType) {
+		this.moneyTypeInt = moneyTypeInt;
+	}
+	
 	public String getOutcomeType() {
 		return outcomeType;
 	}
@@ -129,16 +171,13 @@ public class MoneyBookDto {
 	public String toString() {
 		final StringBuilder sb = new StringBuilder("MoneyBookDto{");
 		sb.append("rownum=").append(rownum);
-		sb.append(", moneyBookNum=").append(moneyBookNum);
+		sb.append(", money_date='").append(money_date).append('\'');
 		sb.append(", moneyType=").append(moneyType);
-		sb.append(", outcomeType='").append(outcomeType).append('\'');
 		sb.append(", amount=").append(amount);
 		sb.append(", content='").append(content).append('\'');
 		sb.append(", memo='").append(memo).append('\'');
-		sb.append(", money_date='").append(money_date).append('\'');
-		sb.append(", write_date='").append(write_date).append('\'');
-		sb.append(", update_date='").append(update_date).append('\'');
 		sb.append('}');
 		return sb.toString();
 	}
+
 }

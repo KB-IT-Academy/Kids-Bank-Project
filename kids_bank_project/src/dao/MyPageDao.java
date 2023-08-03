@@ -58,7 +58,7 @@ public interface MyPageDao {
 	 * select * from parent_child where parent_num = ?
 	 * select * from parent where child_
 	 */
-	List<UserDto> getChild();
+	List<ChildDto> getChild(int num);
 	
 	/**
 	 * 가족 관계 생성(부모 => 자식)

@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,11 +16,13 @@ import exception.DMLException;
 import exception.SearchNotFoundException;
 import exception.SearchWrongException;
 
+import dto.ChildDto;
+
 public class MyPageDaoImpl implements MyPageDao {
 	
 	private static MyPageDao instance = new MyPageDaoImpl();
 	
-	private MyPageDaoImpl() {}
+	public MyPageDaoImpl() {}
 	public static MyPageDao getInstance() {
 		return instance;
 	}
@@ -254,23 +257,27 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * 여기도 sql parent_num 바꾸어주어야함.
 	 */
 	@Override
-	public List<UserDto> getChild() throws SearchWrongException{
+	public List<ChildDto> getChild(int num) throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<UserDto> list = new ArrayList<>();
-		String sql = "select * from parent_child where parent_num = 1";
+		List<ChildDto> list = new ArrayList<>();
+		String sql = "select * from parent_child where parent_num = ?";
 		try {
 			con = DBManager.getConnection();
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);
+			
 			rs = ps.executeQuery();
+			int childNum = 0;
 			while (rs.next()) {
-				int childNum = rs.getInt("child_num");
-				UserDto user = getChildData(con, childNum);
-				list.add(user);
+				childNum = rs.getInt("child_num");
+				ChildDto child = getChildData(con, childNum);
+				list.add(child);
 			}
 			con.commit();
+			System.out.println("parent_num: " + num + "child_num: " + childNum);
 		} catch (SQLException e) {
 //			e.printStackTrace();
 			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
@@ -354,12 +361,12 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * @param con
 	 * @param num
 	 * @return
-	 * select * from child where child_num = ?
+	 * select * from child where id = ?
 	 */
-	private UserDto getChildData(Connection con, int num) throws SQLException {
+	private ChildDto getChildData(Connection con, int num) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		UserDto dto = null;
+		ChildDto dto = null;
 		String sql = "select * from child where child_num = ?";
 		try {
 			ps = con.prepareStatement(sql);
@@ -367,13 +374,14 @@ public class MyPageDaoImpl implements MyPageDao {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				int childNum = rs.getInt("child_num");
-				String id = rs.getString("id");
+				String id1 = rs.getString("id");
 				String password = rs.getString("password");
 				String name = rs.getString("name");
 				String phone = rs.getString("phone");
 				String registrationNumber = rs.getString("registration_number");
 				String joinDate = rs.getString("join_date");
-				dto = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
+				dto = new ChildDto(childNum, id1, password, name, phone, registrationNumber, joinDate);
+				System.out.println("아이 찾음 ");
 			}
 		} finally {
 			DBManager.releaseConnection(null, ps, rs);

@@ -2,6 +2,8 @@ package view;
 
 import java.util.List;
 
+
+import dto.RankDto;
 import controller.MyPageController;
 import dto.ChildDto;
 import dto.MoneyBookDto;
@@ -16,7 +18,8 @@ public class SuccessView {
 	/**
 	 * 등록된 자식들 출력창
 	 */
-	public static List<UserDto> printChilds(List<UserDto> list) {
+	public static List<ChildDto> printChilds(List<ChildDto> list) {
+		System.out.println("---------------------------------- 연결된 아이 리스트 --------------------------------------------");
 		for (int i = 0; i<list.size(); i++) {
 			System.out.println(i+1 + ". " + list.get(i).getName());
 		}
@@ -40,32 +43,18 @@ public class SuccessView {
 
 	/**
 	 * 랭킹 출력창
+	 * @param rankList 
 	 */
-	public static void printRank() {
+	public static void printRank(List<RankDto> rankList) {
 		//DTO에 랭킹을 통해 닉네임을 출력해주기 때문에 좋아요, 지출랭킹 프린트를 같이 쓸 수 있음
 
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 
-		int[] values = { 1, 6, 11, 2, 7, 12, 3, 8, 13, 4, 9, 14, 5, 10, 15 }; // 실제로는 닉네임값 순서 { 1, 6, 11, 2, 7, 12, 3, 8, 13, 4, 9, 14, 5, 10, 15 };
-		int maxValue = 20; // 닉네임 값 길이를 지정해줘야함! -> 이게 칸 넓이
-		int interval = 3; // 세로선의 간격
-
-		for (int i = 0; i < values.length; i++) {
-			int padding = maxValue - String.valueOf(values[i]).length();// 글자수에 따른 공백
-			System.out.print(values[i]);
-
-			// 간격에 맞게 출력
-			for (int j = 0; j < padding; j++) {
-				System.out.print(" ");
-			}
-
-			if ((i + 1) % interval == 0 || i == values.length - 1) {
-				System.out.println("|");
-			} else {
-				System.out.print("|");
-			}
-		}
+		for (RankDto dto : rankList) {
+            System.out.println(dto + " ");
+        }
+		System.out.println();
 
 	}
 	/**

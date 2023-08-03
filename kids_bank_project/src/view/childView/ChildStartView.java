@@ -136,6 +136,7 @@ public class ChildStartView {
 				MyPageView.printMyPageMenu();
 				break;
 			case "5":
+				// 로그아웃 메소드 
 				System.out.println("로그아웃 되었습니다.");
 				//StartView.printMain();
 				break;

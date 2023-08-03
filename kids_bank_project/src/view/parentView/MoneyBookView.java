@@ -16,7 +16,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 메뉴 화면 출력하는 메소드
 	 */
-	static public void printMoneyBookMenu(UserDto childData) {
+	static public void printMoneyBookMenu() {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -240,5 +240,10 @@ public class MoneyBookView {
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
 			}
 		}
+	}
+
+	public static void printMoneyBookMenu() {
+		// TODO Auto-generated method stub
+		
 	}
 }

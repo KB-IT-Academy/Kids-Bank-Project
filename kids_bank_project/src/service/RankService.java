@@ -1,44 +1,33 @@
 package service;
 
+import java.util.List;
 import dto.RankDto;
+import exception.SearchNotFoundException;
 
 public interface RankService {
 
-   
-   /**
-    * 일주일 랭킹을 조회하는 메서드
-    * @param (type : true : 지출 많은 순, false : 수입 많은 순), date : 현재 날짜
-    */
-   RankDto getWeekRank(boolean type, String date);
-   
-   
-   /**
-    * 한달 랭킹을 조회하는 메서드
-    * * @param (type : true : 지출 많은 순, false : 수입 많은 순), date : 현재 날짜
-    */
+	/**
+	 * 달 별 좋아요 개수 카운팅
+	 */
+	List<RankDto> countLike(String date) throws SearchNotFoundException;
 
-   public RankDto getMonthRank(boolean type, String date);
-   
-   
-   /**
-    * 달 별 좋아요 개수 카운팅
-    */
-   public int getLikeCount();
-   
-   /**
-    * 좋아요 개수에 따라 랭킹
-    */
-   public RankDto rankChildByLike();
-      
-   /**
-    * 상위 소비자 선별
-    */
-   public RankDto getLowerSpenders();
-   
-   /**
-    * 하위 소비자 선별
-    */
-   public RankDto getTopSpenders();
+	/**
+	 * 한달 랭킹을 조회하는 메서드 
+	 * 날짜
+	 */
+	List<RankDto> getMonthRank(String date, int type) throws SearchNotFoundException;
+
+	/**
+	 * 일주일 랭킹을 조회하는 메서드
+	 * 
+	 * @param
+	 */
+	List<RankDto> getWeekRank(String date, int type) throws SearchNotFoundException;
+
+	/**
+	 * sort 하는 메서드
+	 */
+	//List<RankDto> rankSort(List<RankDto> rankList);
 
 
 }
