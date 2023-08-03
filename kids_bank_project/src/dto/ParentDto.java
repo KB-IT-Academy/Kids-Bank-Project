@@ -1,9 +1,11 @@
 package dto;
 
+import dto.UserDto;
+
 /**
  * 부모 DTO
  */
-public class ParentDto extends UserDto{
+public class ParentDto extends UserDto {
 	private int parentNum; // 고유번호
 	private String parentType; // 부모 관계("부", "모")
 	
