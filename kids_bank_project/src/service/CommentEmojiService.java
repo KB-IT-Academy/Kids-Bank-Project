@@ -20,8 +20,9 @@ public interface CommentEmojiService {
 	
 	/**
 	 * 댓글 삭제하는 메서드
+	 * @param 선택할 날짜
 	 */
-	void deleteComment();
+	void deleteComment(String date);
 	
 	/**
 	 * 자식 고유 번호와 해당 날짜로 댓글들 조회하는 메서드

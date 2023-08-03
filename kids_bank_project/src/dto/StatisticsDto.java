@@ -8,6 +8,11 @@ public class StatisticsDto {
 	private String endDate;
 	private CategoryDto categoryDto; 
 	
+	/**
+	 * 생성자
+	 */
+	public StatisticsDto() {}
+	
 	public StatisticsDto(String nickname, int inComeAmount, int outComeAmount,
 			String startDate, String endDate, CategoryDto categoryDto) {
 		super();

@@ -1,12 +1,12 @@
 package dto;
 
 public class CategoryDto {
-	private double eat;
-	private double snack;
-	private double transport;
-	private double culture;
-	private double birthday;
-	private double els;
+	private int eat;
+	private int snack;
+	private int transport;
+	private int culture;
+	private int birthday;
+	private int els;
 	
 	/**
 	 * 카테고리 생성자
@@ -23,68 +23,71 @@ public class CategoryDto {
 		this.birthday = birthday;
 		this.els = els;
 	}
+	
 	/**
 	 * getter, setter
+	 * @return
 	 */
-	public double getEat() {
+	public int getEat() {
 		return eat;
 	}
 
 
-	public void setEat(double eat) {
+	public void setEat(int eat) {
 		this.eat = eat;
 	}
 
 
-	public double getSnack() {
+	public int getSnack() {
 		return snack;
 	}
 
 
-	public void setSnack(double snack) {
+	public void setSnack(int snack) {
 		this.snack = snack;
 	}
 
 
-	public double getTransport() {
+	public int getTransport() {
 		return transport;
 	}
 
 
-	public void setTransport(double transport) {
+	public void setTransport(int transport) {
 		this.transport = transport;
 	}
 
 
-	public double getCulture() {
+	public int getCulture() {
 		return culture;
 	}
 
 
-	public void setCulture(double culture) {
+	public void setCulture(int culture) {
 		this.culture = culture;
 	}
 
 
-	public double getBirthday() {
+	public int getBirthday() {
 		return birthday;
 	}
 
 
-	public void setBirthday(double birthday) {
+	public void setBirthday(int birthday) {
 		this.birthday = birthday;
 	}
 
 
-	public double getEls() {
+	public int getEls() {
 		return els;
 	}
 
 
-	public void setEls(double els) {
+	public void setEls(int els) {
 		this.els = els;
 	}
-	
+
+
 	/**
 	 * 카테고리 toString()
 	 */

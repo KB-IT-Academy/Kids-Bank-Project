@@ -43,6 +43,7 @@ public class ParentDto extends UserDto{
 	@Override
 	public String toString() {
 		final StringBuilder sb = new StringBuilder("ParentDto{");
+		sb.append(super.toString());
 		sb.append("parentNum=").append(parentNum);
 		sb.append(", parentType='").append(parentType).append('\'');
 		sb.append('}');

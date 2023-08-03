@@ -2,6 +2,7 @@ package view;
 
 import java.util.Scanner;
 
+import controller.MyPageController;
 import view.childView.ChildStartView;
 import view.parentView.ParentStartView;
 
@@ -12,11 +13,11 @@ public class StartView {
 	public static void main(String[] args) {
 		
 		printMain();
+		
+		
 	}
-	
 	public static void printMain() {
 		Scanner sc = new Scanner(System.in);
-		
 		System.out.println("==============================================================================================");
 		System.out.println("                                       K i d s B a n k                                        ");
 		System.out.println("==============================================================================================");

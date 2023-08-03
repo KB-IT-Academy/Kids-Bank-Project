@@ -8,10 +8,6 @@ public interface LoginDao {
 	 */
 	void loginChild(String id, String password);
 
-	/**
-	 * 자식 로그아웃하는 메서드
-	 */
-	void logoutChild();
 	
 	/**
 	 * 부모 로그인하는 메서드
@@ -20,8 +16,4 @@ public interface LoginDao {
 	 */
 	void loginParent(String id, String password);
 	
-	/**
-	 * 부모 로그아웃하는 메서드
-	 */
-	void logoutParent();
 }

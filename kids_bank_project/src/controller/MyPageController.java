@@ -58,6 +58,7 @@ public class MyPageController {
 	 */
 	public static void getParent() {
 		List<UserDto> list = myPageService.getParent();
+		System.out.println(list);
 	}
 	
 	/**

@@ -12,6 +12,8 @@ public class MyPageServiceImpl implements MyPageService {
 	private static MyPageServiceImpl instance = new MyPageServiceImpl();
 	private MyPageDao myPageDao = MyPageDaoImpl.getInstance();
 	
+	
+	
 	public static MyPageServiceImpl getInstance() {
 		return instance;
 	}

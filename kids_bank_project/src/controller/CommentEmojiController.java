@@ -24,8 +24,9 @@ public class CommentEmojiController {
 	
 	/**
 	 * 댓글 삭제하는 메서드
+	 * @param 선택할 날짜
 	 */
-	public static void deleteComment() {
+	public static void deleteComment(String date) {
 		
 	}
 	

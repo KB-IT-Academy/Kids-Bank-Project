@@ -45,8 +45,6 @@ public class MyPageDaoImpl implements MyPageDao {
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
-		
-		System.out.println(list);
 		return list;
 	}
 	
