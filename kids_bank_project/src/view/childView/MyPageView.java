@@ -2,6 +2,8 @@ package view.childView;
 
 import java.util.Scanner;
 
+import view.SuccessView;
+
 /**
  * 마이페이지 View
  */
@@ -71,6 +73,8 @@ public class MyPageView {
 		
 		// 이부분에 부모 조회하는 함수 입력
 		System.out.println("                               *  연결된 부모  *                                     ");
+		
+		SuccessView.printParents();
 		//System.out.println("돌아가시려면 아무 키나 눌러주세요");
 		//String choice = sc.nextLine();
 	}
