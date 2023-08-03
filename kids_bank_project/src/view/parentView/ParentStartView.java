@@ -2,6 +2,7 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import controller.MyPageController;
 import view.StartView;
 import view.SuccessView;
 import view.childView.ChildStartView;
@@ -137,22 +138,24 @@ public class ParentStartView {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력, 자식 순서대로
-			SuccessView.printChilds();
+			MyPageController.getChild();
+//			SuccessView.printChilds();
 			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.print("자녀 선택 : ");
+			
+			// 받은 데이터 저장(인덱스 값으로 가져옴)
+			int childOrder = Integer.parseInt(sc.nextLine());
+			printMainMenu();
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
-			System.out.println("자녀 추가하려면 +를 입력해주세요.");
-			System.out.print("자녀 선택 : ");
-			String choice = sc.nextLine();
-
-			if (choice == "+") {
-				// 자녀 추가
-			} else {
-				// 자녀 번호 입력하면
-				int childOrder = Integer.parseInt(choice);
-				printMainMenu();
-				// 기능구현
-			}
+//			System.out.println("자녀 추가하려면 +를 입력해주세요.");
+//
+//			if (choice == "+") {
+//				// 자녀 추가
+//			} else {
+//				// 자녀 번호 입력하면
+//				// 기능구현
+//			}
 		}
 	}
 

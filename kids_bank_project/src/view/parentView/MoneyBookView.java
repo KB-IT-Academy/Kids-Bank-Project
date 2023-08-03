@@ -65,7 +65,7 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-	
+				
 				break;
 			case "2":
 	

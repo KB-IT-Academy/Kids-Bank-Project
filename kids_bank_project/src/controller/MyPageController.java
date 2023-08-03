@@ -7,6 +7,7 @@ import dto.UserDto;
 import service.MyPageService;
 import service.MyPageServiceImpl;
 import view.FailView;
+import view.SuccessView;
 
 public class MyPageController {
 	private static MyPageService myPageService = MyPageServiceImpl.getInstance();
@@ -90,7 +91,7 @@ public class MyPageController {
 	public static void getParent() {
 		try {			
 		List<UserDto> list = myPageService.getParent();
-		System.out.println(list);
+		SuccessView.printParents(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -102,10 +103,23 @@ public class MyPageController {
 	public static void getChild() {
 		try {			
 		List<UserDto> list = myPageService.getChild();
-		System.out.println(list);
+		SuccessView.printChilds(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
+	}
+	
+	/**
+	 * 자식 보여주는 메서드(부모 메인 view)
+	 */
+	public static List<UserDto> showChild() {
+		try {			
+		List<UserDto> list = myPageService.getChild();
+		return list;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return null;
 	}
 	/**
 	 * 가족 관계 생성(부모 => 자식)

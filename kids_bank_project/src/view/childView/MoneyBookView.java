@@ -2,6 +2,7 @@ package view.childView;
 
 import java.util.Scanner;
 
+import controller.MoneyBookController;
 import view.SuccessView;
 
 /**
@@ -69,16 +70,20 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-	
+				MoneyBookController.getRecentMoneyBook();
 				break;
 			case "2":
-	
+				System.out.println("날짜 입력 ex)20230803");
+				String date  = sc.nextLine();
+				MoneyBookController.getDayMoneyBook(date);
 				break;
 			case "3":
-	
+				System.out.println("날짜 입력 ex)20230803");
+				date = sc.nextLine();
+				MoneyBookController.getMonthMoneyBook(date);
 				break;
 			case "4":
-	
+				MoneyBookController.getAllMoneyBook();
 				break;
 			case "q":
 				flag = 0;
@@ -165,18 +170,17 @@ public class MoneyBookView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("삭제할 날짜 입력 : ");
-		String moneyDate = sc.nextLine();
+		String date = sc.nextLine();
 
-		SuccessView.printDayMoneyBook(); // 하루 날짜 출력 메소드
-
+		MoneyBookController.getDayMoneyBook(date);
+		
 		System.out.println("삭제할 번호 입력(삭제할 내역 없으면 q 입력) : ");
 		String exit = sc.nextLine();
 
 		if (exit.equals("q")) {
 			return;
 		} else {
-			// rownum int형으로 변환 뒤 메소드 실행
-			// 내역 번호 안누르면 에러처리
+			MoneyBookController.deleteMoneyBook(Integer.parseInt(exit));
 		}
 	}
 
