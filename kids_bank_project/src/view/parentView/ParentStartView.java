@@ -3,6 +3,7 @@ package view.parentView;
 import java.util.Scanner;
 
 import view.StartView;
+import view.SuccessView;
 import view.childView.ChildStartView;
 
 /**
@@ -103,6 +104,8 @@ public class ParentStartView {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력
+			SuccessView.printChilds();
+			
 			System.out.println("         1. 자녀1     2. 자녀2   ");
 			System.out.println("----------------------------------------------------------------------------------------------");
 			

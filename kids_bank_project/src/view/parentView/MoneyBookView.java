@@ -2,6 +2,8 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import view.SuccessView;
+
 /**
  * 용돈기입장 View
  */
@@ -102,6 +104,8 @@ public class MoneyBookView {
 			System.out.println("댓글 수정할 날짜 입력 : ");		
 			moneyDate = sc.nextLine();
 			//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
+			SuccessView.printComments();
+			
 			System.out.println("수정할 번호 입력(수정할 내역 없으면 -1 입력) : ");
 			rownum = sc.nextLine();
 			
@@ -122,7 +126,10 @@ public class MoneyBookView {
 			System.out.println("----------------------------------------------------------------------------------");
 			System.out.println("댓글 삭제할 날짜 입력: ");		
 			moneyDate = sc.nextLine();
+			
 			//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
+			SuccessView.printComments();
+			
 			System.out.println("삭제할 번호 입력(삭제할 내역이 없으면 -1 입력) : ");
 			rownum = sc.nextLine();
 			
@@ -171,7 +178,7 @@ public class MoneyBookView {
 			System.out.println("----------------------------------------------------------------------------------");
 			System.out.println("좋아요 삭제할 날짜 입력 : ");		
 			moneyDate = sc.nextLine();
-			//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
+			//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
 			System.out.println("삭제할 번호 입력(수정할 내역 없으면 -1 입력) : ");
 			rownum = sc.nextLine();
 			
