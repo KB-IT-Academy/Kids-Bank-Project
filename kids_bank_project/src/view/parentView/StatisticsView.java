@@ -55,10 +55,10 @@ public class StatisticsView {
 	 */
 	public static void printWeekStaticsInfo() {
 		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		
 		// 7일 계산 출력
-		System.out.println("                  **"+"0월 0일"+"~"+"0월 0일"+" 7일간 주간 통계"+"**                     ");
+		System.out.println("                        **"+"0월 0일"+"~"+"0월 0일"+" 7일간 주간 통계"+"**                           ");
 		printCategoryStaticsInfo();
 	}
 	
@@ -67,11 +67,11 @@ public class StatisticsView {
 	 */
 	public static void printMonthStaticsInfo() {
 		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("월 입력 : ");
 		
 		// 월 계산 출력
-		System.out.println("                          **"+"0월"+" 한달간 월간 통계"+"**                             ");
+		System.out.println("                                **"+"0월"+" 한달간 월간 통계"+"**                                   ");
 		printCategoryStaticsInfo();
 	}
 	
@@ -80,11 +80,11 @@ public class StatisticsView {
 	 */
 	public static void printYearStaticsInfo() {
 		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("년도 입력 : ");
 		
 		// 년도 계산 출력
-		System.out.println("                         **"+"0000년"+" 1년간 연간 통계"+"**                           ");
+		System.out.println("                               **"+"0000년"+" 1년간 연간 통계"+"**                                 ");
 		printCategoryStaticsInfo();
 	}
 	
@@ -93,14 +93,14 @@ public class StatisticsView {
 	 */
 	public static void printRangeStaticsInfo() {
 		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("시작 날짜 입력 : ");
 		String startDate = sc.nextLine();
 		System.out.println("종료 날짜 입력 : ");
 		String endDate = sc.nextLine();
 		
 		// 년도 계산 출력
-		System.out.println("                     **"+"0월 0일"+"~"+"0월 0일"+" 기간 통계"+"**                       ");
+		System.out.println("                            **"+"0월 0일"+"~"+"0월 0일"+" 기간 통계"+"**                           ");
 		printCategoryStaticsInfo();
 	}
 	
