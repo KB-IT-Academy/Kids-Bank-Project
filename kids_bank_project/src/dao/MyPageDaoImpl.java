@@ -34,6 +34,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		String sql = "select * from parent_child where child_num = 1";
 		try {
 			con = DBManager.getConnection();
+			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -41,6 +42,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				UserDto user = getParentData(con, parentNum);
 				list.add(user);
 			}
+			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -239,6 +241,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * 연결된 자식 확인하는 메서드
 	 * select * from parent_child where parent_num = ?
 	 * select * from parent where child_
+	 * 여기도 sql parent_num 바꾸어주어야함.
 	 */
 	@Override
 	public List<UserDto> getChild() {
@@ -249,6 +252,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		String sql = "select * from parent_child where parent_num = 1";
 		try {
 			con = DBManager.getConnection();
+			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -256,6 +260,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				UserDto user = getChildData(con, childNum);
 				list.add(user);
 			}
+			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -280,6 +285,7 @@ public class MyPageDaoImpl implements MyPageDao {
 		ResultSet rs = null;
 		try {
 			con = DBManager.getConnection();
+			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
 			// static에 있는 부모고유번호 넣기
 			ps.setString(1, registNum);
@@ -289,6 +295,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				// con, 자식 고유 번호, 부모 고유번호, 순서
 				result = insertRelation(con, childNum, 1, order);
 			}
+			con.commit();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
