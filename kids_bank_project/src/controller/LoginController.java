@@ -1,15 +1,37 @@
 package controller;
 
+import dto.ChildDto;
+import service.LoginService;
+import view.FailView;
+import view.childView.ChildStartView;
+import exception.SearchNotFoundException;
+
 public class LoginController {
 	// 생각해보니 로그아웃은 controller없어도 될것같은느낌?
-	
+	static LoginService loginService = new LoginService();
+	public static boolean loginCheck = true;
+	  
 	
 	/**
 	 * 자식 로그인하는 메서드
 	 * @param id
 	 * @param password
 	 */
-	public static void loginChild(String id, String password) {
+	public static boolean loginChild(String id, String password) {
+		try {
+			ChildDto child = loginService.loginChild(id, password); 
+			//ChildStartView.printChildStart(child.getId()); // 아이 id 넘겨주기
+			//ChildStartView.printMainMenu(); 
+			return loginCheck;
+		 
+			
+		}catch(Exception e) { 
+			loginCheck = false; 
+			FailView.errorMessage("다시 로그인 해주세요.");
+			return loginCheck; 
+ 
+			
+		} 
 		
 	}
 	

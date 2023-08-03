@@ -2,6 +2,7 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import dto.UserDto;
 import view.SuccessView;
 
 /**
@@ -15,7 +16,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 메뉴 화면 출력하는 메소드
 	 */
-	static public void printMoneyBookMenu() {
+	static public void printMoneyBookMenu(UserDto childData) {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -65,7 +66,7 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-	
+				
 				break;
 			case "2":
 	

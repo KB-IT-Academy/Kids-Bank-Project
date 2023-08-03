@@ -1,6 +1,9 @@
 package dao;
 
+import java.sql.SQLException;
+
 import dto.ChildDto;
+import exception.SearchNotFoundException;
 
 public interface ChildDao {
 	/**
@@ -19,6 +22,9 @@ public interface ChildDao {
 	 * 자식 로그인하는 메서드
 	 * @param id
 	 * @param password
-	 */
-	void loginChild(String id, String password);
+	 * @throws SQLException 
+	 * @throws SearchNotFoundException 
+	 */ 
+
+	ChildDto loginChild(String id, String password) throws SQLException;
 }
