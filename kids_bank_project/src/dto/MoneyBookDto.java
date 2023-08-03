@@ -26,8 +26,9 @@ public class MoneyBookDto {
 	/**
 	 * 조회 생성자
 	 */
-	public MoneyBookDto(int rownum,String money_date, String moneyType, int amount, String content, String memo) {
+	public MoneyBookDto(int moneyBookNum, int rownum,String money_date, String moneyType, int amount, String content, String memo) {
 		
+		this.moneyBookNum = moneyBookNum;
 		this.rownum = rownum;
 		this.money_date = money_date;
 		this.moneyType = moneyType;
@@ -171,6 +172,7 @@ public class MoneyBookDto {
 		sb.append(" <").append(moneyType).append(">");
 		sb.append(" 금액 = ").append(amount);
 		sb.append(" 내용 = ").append(content);
+		sb.append(" 메모 = ").append(content);
 		sb.append(']');
 		return sb.toString();
 	}

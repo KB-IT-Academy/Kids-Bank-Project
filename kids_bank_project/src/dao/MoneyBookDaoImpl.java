@@ -59,14 +59,33 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "update board set amount = ?, content = ?, memo = ? from money_book where money_date = ?";
+		List<MoneyBookDto> moneybook = getDayMoneyBook(dto.getMoney_date());
+		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1);
+		
+		String sql = null;
+		int type = dto.getMoneyTypeInt();
+		if(type == 1) {
+			sql = "UPDATE MONEY_BOOK SET AMOUNT = ? WHERE MONEY_BOOK_NUM = ?";
+		}else if(type ==2 ) {
+			sql = "UPDATE MONEY_BOOK SET CONTENT = ? WHERE MONEY_BOOK_NUM = ?";
+		}else if(type == 3) {
+			sql = "UPDATE MONEY_BOOK SET MEMO = ? WHERE MONEY_BOOK_NUM = ?";
+		}
+		
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getAmount());
-			ps.setString(2, dto.getContent());
-			ps.setString(3, dto.getMemo());
-			ps.setString(4, dto.getMoney_date());
+			
+			if(type == 1) {
+				ps.setInt(1, dto.getAmount());
+				ps.setInt(2, dto2.getMoneyBookNum());
+			}else if(type ==2 ) {
+				ps.setString(1, dto.getContent());
+				ps.setInt(2, dto2.getMoneyBookNum());
+			}else if(type == 3) {
+				ps.setString(1, dto.getMemo());
+				ps.setInt(2, dto2.getMoneyBookNum());
+			}
 
 			result = ps.executeUpdate();
 
@@ -127,13 +146,14 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "SELECT ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, date);
 			rs = ps.executeQuery();
 			while (rs.next()) {
+				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
 				int rownum = rs.getInt("ROWNUM");
 				String money_date =rs.getString("MONEY_DATE");
 				int moneytype_num = rs.getInt("MONEY_TYPE");
@@ -149,7 +169,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 				String content = rs.getString("CONTENT");
 				String memo = rs.getString("MEMO");
 				
-				MoneyBookDto moneybook = new MoneyBookDto(rownum,money_date,moneytype,amount,content,memo);
+				MoneyBookDto moneybook = new MoneyBookDto(moneyBookNum,rownum,money_date,moneytype,amount,content,memo);
 				list.add(moneybook);
 			
 			}
@@ -195,12 +215,13 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		
 		List<MoneyBookDto> list = new ArrayList<>();
 		
-		String sql = "SELECT ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
+				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
 				int rownum = rs.getInt("ROWNUM");
 				String money_date =rs.getString("MONEY_DATE");
 				int moneytype_num = rs.getInt("MONEY_TYPE");
@@ -216,7 +237,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 				String content = rs.getString("CONTENT");
 				String memo = rs.getString("MEMO");
 				
-				MoneyBookDto moneybook = new MoneyBookDto(rownum,money_date,moneytype,amount,content,memo);
+				MoneyBookDto moneybook = new MoneyBookDto(moneyBookNum, rownum,money_date,moneytype,amount,content,memo);
 				list.add(moneybook);
 			
 			}
