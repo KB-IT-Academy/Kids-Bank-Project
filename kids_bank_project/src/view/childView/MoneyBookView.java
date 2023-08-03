@@ -154,9 +154,9 @@ public class MoneyBookView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("수정할 날짜 입력 : ");
-		String moneyDate = sc.nextLine();
+		String date = sc.nextLine();
 
-		//SuccessView.moneyBookSelectPrint(); // 하루 날짜 출력 메소드
+		MoneyBookController.getDayMoneyBook(date); // 하루 날짜 출력 메소드
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -202,28 +202,28 @@ public class MoneyBookView {
 		System.out.println("1.금액 2.내용 3.메모");
 		System.out.println("기입장 메뉴로 돌아가려면 q를 입력해주세요.");
 		System.out.print("수정할 항목 선택 : ");
+		MoneyBookDto dto =  new MoneyBookDto();
 
 		String menu = sc.nextLine();
 		switch (menu) {
 		case "1":
 			System.out.println("수정할 금액 입력 : ");
 			int amount = Integer.parseInt(sc.nextLine());
-			// rownum int형으로 변환 뒤 메소드 실행
-			// 내역 번호 안누르면 에러처리
-
+			dto =  new MoneyBookDto(dto.getRownum(), 0, 0, null, amount, null, null, null, null, null);
+			MoneyBookController.updateMoneyBook(dto);
 			break;
 		case "2":
 			System.out.println("수정할 내용 입력 : ");
 			String content = sc.nextLine();
-			// rownum int형으로 변환 뒤 메소드 실행
-			// 내역 번호 안누르면 에러처리
+			dto =  new MoneyBookDto();
+	    	 MoneyBookController.updateMoneyBook(dto);
 
 			break;
 		case "3":
 			System.out.println("수정할 메모 입력: ");
 			String memo = sc.nextLine();
-			// rownum int형으로 변환 뒤 메소드 실행
-			// 내역 번호 안누르면 에러처리
+			dto =  new MoneyBookDto();
+			MoneyBookController.updateMoneyBook(dto);
 
 			break;
 		case "q":

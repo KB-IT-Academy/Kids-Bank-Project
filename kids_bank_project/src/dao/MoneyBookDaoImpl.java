@@ -55,12 +55,14 @@ private static MoneyBookDao instance = new MoneyBookDaoImpl();
 		Connection con = null;
 		PreparedStatement ps= null;
 		int result = 0;
-		String sql = "update board set content = ? from money_book where money_date = ?";
+		String sql = "update board set amount = ?, content = ?, memo = ? from money_book where money_date = ?";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getContent());
-			ps.setString(2, dto.getMoney_date());
+			ps.setInt(1, dto.getAmount());
+			ps.setString(2, dto.getContent());
+			ps.setString(3, dto.getMemo());
+			ps.setString(4, dto.getMoney_date());
 		
 			result = ps.executeUpdate();
 			

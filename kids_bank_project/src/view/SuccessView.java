@@ -2,7 +2,11 @@ package view;
 
 import java.util.List;
 
+import controller.MyPageController;
+import dto.ChildDto;
 import dto.MoneyBookDto;
+import dto.ParentDto;
+import dto.UserDto;
 import view.childView.RankView;
 
 public class SuccessView {
@@ -12,14 +16,20 @@ public class SuccessView {
 	/**
 	 * 등록된 자식들 출력창
 	 */
-	public static void printChilds() {
+	public static List<UserDto> printChilds(List<UserDto> list) {
+		for (int i = 0; i<list.size(); i++) {
+			System.out.println(i+1 + ". " + list.get(i).getName());
+		}
+		return list;
 		
 	}
 	/**
 	 * 등록된 부모들 출력창
 	 */
-	public static void printParents() {
-		
+	public static void printParents(List<UserDto> list) {
+		for (UserDto dto : list) {
+			System.out.println(dto);
+		}
 	}
 	/**
 	 * 하루 날짜에 대한 출력창

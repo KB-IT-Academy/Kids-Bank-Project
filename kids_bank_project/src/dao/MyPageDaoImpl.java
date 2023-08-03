@@ -11,6 +11,9 @@ import common.DBManager;
 import dto.ChildDto;
 import dto.ParentDto;
 import dto.UserDto;
+import exception.DMLException;
+import exception.SearchNotFoundException;
+import exception.SearchWrongException;
 
 public class MyPageDaoImpl implements MyPageDao {
 	
@@ -26,7 +29,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * child_num을 넣어주어야 함.
 	 */
 	@Override
-	public List<UserDto> getParent() {
+	public List<UserDto> getParent() throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -44,7 +47,8 @@ public class MyPageDaoImpl implements MyPageDao {
 			}
 			con.commit();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("부모 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -56,7 +60,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * select * from child;
 	 */
 	@Override
-	public List<ChildDto> childFindAll() {
+	public List<ChildDto> childFindAll() throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -78,7 +82,8 @@ public class MyPageDaoImpl implements MyPageDao {
 				list.add(cd);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -91,7 +96,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * select * from child where child_num = ? (자식 고유 번호)
 	 */
 	@Override
-	public ChildDto childFindByNumber(int num) {
+	public ChildDto childFindByNumber(int num) throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -114,7 +119,8 @@ public class MyPageDaoImpl implements MyPageDao {
 				dto = new ChildDto(childNum, id, password, name, phone, registrationNumber, joinDate);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -126,7 +132,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * delete child where child_num = ? (자식 고유 번호)
 	 */
 	@Override
-	public int childDelete() {
+	public int childDelete() throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -138,7 +144,8 @@ public class MyPageDaoImpl implements MyPageDao {
 			ps.setInt(1, 1);
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new DMLException("탈퇴할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
@@ -149,7 +156,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * select * from parent
 	 */
 	@Override
-	public List<ParentDto> parentFindAll() {
+	public List<ParentDto> parentFindAll() throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -171,7 +178,8 @@ public class MyPageDaoImpl implements MyPageDao {
 				list.add(cd);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("부모 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -184,7 +192,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * select * from parent where parent_num = ? (부모 고유 번호)
 	 */
 	@Override
-	public ParentDto parentFindByNumber(int num) {
+	public ParentDto parentFindByNumber(int num) throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -207,7 +215,8 @@ public class MyPageDaoImpl implements MyPageDao {
 				dto = new ParentDto(parentNum, id, password, name, phone, joinDate, parentType);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("부모 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -218,7 +227,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * delete parent where parent_num = ? (부모 고유 번호)
 	 */
 	@Override
-	public int parentDelete() {
+	public int parentDelete() throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -230,7 +239,8 @@ public class MyPageDaoImpl implements MyPageDao {
 			ps.setInt(1, 1);
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new DMLException("탈퇴할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
@@ -244,7 +254,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * 여기도 sql parent_num 바꾸어주어야함.
 	 */
 	@Override
-	public List<UserDto> getChild() {
+	public List<UserDto> getChild() throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -262,7 +272,8 @@ public class MyPageDaoImpl implements MyPageDao {
 			}
 			con.commit();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
 		}
@@ -277,7 +288,7 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
 	 */
 	@Override
-	public int createRelation(String registNum, int order) {
+	public int createRelation(String registNum, int order) throws DMLException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -297,7 +308,8 @@ public class MyPageDaoImpl implements MyPageDao {
 			}
 			con.commit();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			throw new DMLException("관계를 설정할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
