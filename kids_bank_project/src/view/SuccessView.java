@@ -2,16 +2,14 @@ package view;
 
 import java.util.List;
 
-<<<<<<< HEAD
+
 import dto.RankDto;
-=======
 import controller.MyPageController;
 import dto.ChildDto;
 import dto.MoneyBookDto;
 import dto.ParentDto;
 import dto.UserDto;
 import view.childView.RankView;
->>>>>>> 15ae4814bcaf4c8f73213d507c7403f3625ca416
 
 public class SuccessView {
 	

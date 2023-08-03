@@ -210,20 +210,20 @@ public class MoneyBookView {
 		case "1":
 			System.out.println("수정할 금액 입력 : ");
 			int amount = Integer.parseInt(sc.nextLine());
-			dto =  new MoneyBookDto(0, 0, 0, null, amount, null, null, null, null, null);
+			dto =  new MoneyBookDto();
 			MoneyBookController.updateMoneyBook(dto);
 			break;
 		case "2":
 			System.out.println("수정할 내용 입력 : ");
 			String content = sc.nextLine();
-			dto =  new MoneyBookDto(0, 0, 0, null, 0, content, null, null, null, null);
+			dto =  new MoneyBookDto();
 	    	 MoneyBookController.updateMoneyBook(dto);
 
 			break;
 		case "3":
 			System.out.println("수정할 메모 입력: ");
 			String memo = sc.nextLine();
-			dto =  new MoneyBookDto(0, 0, 0, null, 0, null, memo, null, null, null);
+			dto =  new MoneyBookDto();
 			MoneyBookController.updateMoneyBook(dto);
 
 			break;
