@@ -18,24 +18,30 @@ public class ParentStartView {
 	 * 시작 화면 출력하는 메소드
 	 */
 	public static void printParentStart() {
-		System.out.println();
-		System.out.println("==============================================================================================");
-		System.out.println("                                         <부모 회원>                                             ");
-		System.out.println("                               1.로그인                   2.회원가입							      ");
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.print("메뉴선택 >> ");
+		int flag = 1;
+		while (flag == 1) {
+			System.out.println();
+			System.out.println("==============================================================================================");
+			System.out.println("                                         <부모 회원>                                             ");
+			System.out.println("                               1.로그인                   2.회원가입							      ");
+			System.out.println("----------------------------------------------------------------------------------------------");
+			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
+			System.out.print("메뉴선택 >> ");
 
-		String menu = sc.nextLine();
-		switch (menu) {
-		case "1":
-			printLogin();
-			break;
-		case "2":
-			printJoin();
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-
+			String menu = sc.nextLine();
+			switch (menu) {
+			case "1":
+				printLogin();
+				break;
+			case "2":
+				printJoin();
+				break;
+			case "q":
+				flag = 0;
+				return;
+			default:
+				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+			}
 		}
 	}
 
