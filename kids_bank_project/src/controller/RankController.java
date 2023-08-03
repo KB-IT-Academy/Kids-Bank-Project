@@ -20,4 +20,6 @@ public class RankController {
 	public static void getMonthRank(boolean type, String date) {
 		
 	}
+	
+
 }
