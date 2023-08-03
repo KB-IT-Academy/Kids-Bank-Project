@@ -2,8 +2,8 @@ package dto;
 
 public class MoneyBookDto {
 	private int rownum;
-	// number : 고유번호
-	private int number;
+
+	private int moneyBookNum; // 고유번호
 	// 1 : 수입, 2 : 지출
 	private int moneyType;
 	// 카테고리
@@ -17,10 +17,10 @@ public class MoneyBookDto {
 	 * 생성자
 	 */
 	public MoneyBookDto() {}
-	
-	public MoneyBookDto(int number, int moneyType, String exportType, int amount, String content, String memo,
-			String money_date) {
-		this.number = number;
+
+	public MoneyBookDto(int rownum, int moneyBookNum, int moneyType, String exportType, int amount, String content, String memo, String money_date) {
+		this.rownum = rownum;
+		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;
 		this.exportType = exportType;
 		this.amount = amount;
@@ -28,74 +28,90 @@ public class MoneyBookDto {
 		this.memo = memo;
 		this.money_date = money_date;
 	}
+
 	/**
 	 * getter, setter
 	 */
-	public int getNumber() {
-		return number;
+	public int getRownum() {
+		return rownum;
 	}
-	public void setNumber(int number) {
-		this.number = number;
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
 	}
+
+	public int getMoneyBookNum() {
+		return moneyBookNum;
+	}
+
+	public void setMoneyBookNum(int moneyBookNum) {
+		this.moneyBookNum = moneyBookNum;
+	}
+
 	public int getMoneyType() {
 		return moneyType;
 	}
+
 	public void setMoneyType(int moneyType) {
 		this.moneyType = moneyType;
 	}
+
 	public String getExportType() {
 		return exportType;
 	}
+
 	public void setExportType(String exportType) {
 		this.exportType = exportType;
 	}
+
 	public int getAmount() {
 		return amount;
 	}
+
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	public String getMoney_date() {
 		return money_date;
 	}
+
 	public void setMoney_date(String money_date) {
 		this.money_date = money_date;
 	}
+
 	/**
 	 * 기입장 toString
 	 */
+
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("MoneyBookDto [number=");
-		builder.append(number);
-		builder.append(", moneyType=");
-		builder.append(moneyType);
-		builder.append(", exportType=");
-		builder.append(exportType);
-		builder.append(", amount=");
-		builder.append(amount);
-		builder.append(", content=");
-		builder.append(content);
-		builder.append(", memo=");
-		builder.append(memo);
-		builder.append(", money_date=");
-		builder.append(money_date);
-		builder.append("]");
-		return builder.toString();
+		final StringBuilder sb = new StringBuilder("MoneyBookDto{");
+		sb.append("rownum=").append(rownum);
+		sb.append(", moneyBookNum=").append(moneyBookNum);
+		sb.append(", moneyType=").append(moneyType);
+		sb.append(", exportType='").append(exportType).append('\'');
+		sb.append(", amount=").append(amount);
+		sb.append(", content='").append(content).append('\'');
+		sb.append(", memo='").append(memo).append('\'');
+		sb.append(", money_date='").append(money_date).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
-	
-	
 }

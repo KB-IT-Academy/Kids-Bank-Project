@@ -4,6 +4,7 @@ package dto;
  * 부모 DTO
  */
 public class ParentDto extends UserDto{
+	private int parentNum; // 고유번호
 	private String parentType; // 부모 관계("부", "모")
 	
 	/**
@@ -11,14 +12,23 @@ public class ParentDto extends UserDto{
 	 */
 	public ParentDto() {}
 
-	public ParentDto(int number, String id, String password, String name, String phone, String joinDate, String parentType) {
-		super(number, id, password, name, phone, joinDate);
+	public ParentDto(int parentNum, String id, String password, String name, String phone, String joinDate, String parentType) {
+		super(id, password, name, phone, joinDate);
+		this.parentNum = parentNum;
 		this.parentType = parentType;
 	}
-	
+
 	/**
 	 * Getter, Setter
 	 */
+	public int getParentNum() {
+		return parentNum;
+	}
+
+	public void setParentNum(int parentNum) {
+		this.parentNum = parentNum;
+	}
+
 	public String getParentType() {
 		return parentType;
 	}
@@ -32,13 +42,10 @@ public class ParentDto extends UserDto{
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(getClass().getSimpleName());
-		builder.append("[");
-		builder.append(super.toString());
-		builder.append(", parentType=");
-		builder.append(parentType);
-		builder.append("]");
-		return builder.toString();
+		final StringBuilder sb = new StringBuilder("ParentDto{");
+		sb.append("parentNum=").append(parentNum);
+		sb.append(", parentType='").append(parentType).append('\'');
+		sb.append('}');
+		return sb.toString();
 	}
 }
