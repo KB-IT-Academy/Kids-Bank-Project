@@ -3,6 +3,7 @@ package view.parentView;
 import java.util.List;
 import java.util.Scanner;
 
+import controller.JoinController;
 import controller.LoginController;
 import controller.MyPageController;
 import dto.UserDto;
@@ -84,13 +85,22 @@ public class ParentStartView {
 				break;
 			default:
 				boolean existChild = false; // 자녀 가입되어 있으면
-				// 자녀 찾는 controller
+				int childNumber = MyPageController.childFindByRegistNum(registrationNumber);
+				if (childNumber != -1) {
+					existChild = true;
+				}
 				if (existChild) { // 자녀가 가입되어 있으면 -> 메소드 추가하기
 					System.out.println();
 					System.out.println("자녀 찾기 성공!");
 					
 					System.out.print("자식 순서 입력 : ");
 					int childOrder = Integer.parseInt(sc.nextLine());
+					if (childCount == 0) {
+						ParentDto dto = new ParentDto(0, id, password, name, null, null, parentType);
+						JoinController.createParent(dto, registrationNumber);
+						int	parentNumber = JoinController.getParentNum(id);
+						MyPageController.createRelation(parentNumber, registrationNumber, childOrder);
+					}					
 					// 자녀 연결(관계 설정)하는 controller
 					childCount++;
 					System.out.println(childCount+"자녀 연결 완료");

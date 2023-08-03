@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.ChildDto;
 import dto.ParentDto;
+import exception.SearchNotFoundException;
 import service.JoinServiceImpl;
 import service.MyPageService;
 import service.MyPageServiceImpl;
@@ -45,10 +46,25 @@ public class JoinController {
 	 * @param ParentDto
 	 * @param registNum(자식 주민등록번호)
 	 */
-	public static void createParent(ParentDto dto, String registNum) {
-		
+	public static int createParent(ParentDto dto, String registNum) {
+		try {			
+			int result = joinservice.createParent(dto, registNum);
+			return result;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return -1;
 	}
 	
+	public static int getParentNum(String id) {
+		try {
+			int parentNum = joinservice.getParentNum(id);
+			return parentNum;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return -1;
+	}
 	/**
 	 * 부모 회원 수정하는 메서드
 	 * @param Parentdto

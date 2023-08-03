@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -37,6 +38,15 @@ public class MyPageServiceImpl implements MyPageService {
 			throw new SearchNotFoundException();
 		}
 		return dto;
+	}
+	
+	@Override
+	public int childFindByRegistNum(String registNum) throws SearchNotFoundException {
+		int result = myPageDao.childFindByRegistNum(registNum);
+		if (result == -1) {
+			throw new SearchNotFoundException();
+		}
+		return result;
 	}
 
 	@Override
@@ -99,12 +109,13 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public int createRelation(String registNum, int order) throws DMLException{
-		int result = myPageDao.createRelation(registNum, order);
+	public int createRelation(int parentNum, String registNum, int order) throws DMLException{
+		int result = myPageDao.createRelation(parentNum, registNum, order);
 		if (result == 0) {
 			throw new DMLException("관계를 생성할 수 없습니다.");
 		}
 		return result;
 	}
+	
 
 }
