@@ -27,7 +27,7 @@ public class StatisticsView {
 	/**
 	 * 통계 메뉴 화면 출력하는 메소드
 	 */
-	public static void printStatisticsMenu() {
+	public static void printStatisticsMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -44,16 +44,16 @@ public class StatisticsView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printWeekStaticsInfo();
+				printWeekStaticsInfo(num);
 				break;
 			case "2":
-				printMonthStaticsInfo();
+				printMonthStaticsInfo(num);
 				break;
 			case "3":
-				printYearStaticsInfo();
+				printYearStaticsInfo(num);
 				break;
 			case "4":
-				printRangeStaticsInfo();
+				printRangeStaticsInfo(num);
 				break;
 			case "q":
 				flag = 0;
@@ -67,7 +67,7 @@ public class StatisticsView {
 	/**
 	 * 통계-주간 통계 화면 출력하는 메소드
 	 */
-	public static void printWeekStaticsInfo() {
+	public static void printWeekStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("                         **"+monthString+"월"+dayString+"일"+" 7일간 주간 통계"+"**                           ");
@@ -79,7 +79,7 @@ public class StatisticsView {
 	/**
 	 * 통계-월간 통계 화면 출력하는 메소드
 	 */
-	public static void printMonthStaticsInfo() {
+	public static void printMonthStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("월 입력 : ");
@@ -95,7 +95,7 @@ public class StatisticsView {
 	/**
 	 * 통계-연간 통계 화면 출력하는 메소드
 	 */
-	public static void printYearStaticsInfo() {
+	public static void printYearStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("년도 입력 : ");
@@ -111,7 +111,7 @@ public class StatisticsView {
 	/**
 	 * 통계-기간 통계 화면 출력하는 메소드
 	 */
-	public static void printRangeStaticsInfo() {
+	public static void printRangeStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("시작 날짜 입력 : ");
@@ -129,7 +129,7 @@ public class StatisticsView {
 	/**
 	 * 통계 화면(상세 카테고리 통계) 화면 출력하는 메소드
 	 */
-	private static void printCategoryStaticsInfo() {
+	private static void printCategoryStaticsInfo(int num) {
 		System.out.println("-지출 : "+"0"+"원");
 		System.out.println("+수입 : "+"0"+"원");
 		System.out.println();

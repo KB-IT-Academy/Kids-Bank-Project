@@ -5,6 +5,7 @@ import java.util.Scanner;
 import controller.JoinController;
 import controller.LoginController;
 import dto.ChildDto;
+import session.Session;
 import session.SessionSet;
 import view.StartView;
 
@@ -95,16 +96,18 @@ public class ChildStartView {
 		String password = sc.nextLine();
 		
 
-		boolean loginCheck = LoginController.loginChild(id, password);  
-		if (loginCheck) {
+		int userNum = LoginController.loginChild(id, password);  
+		if (userNum != 0) {
 			System.out.println();
 			System.out.println("                                       로그인 성공!");
 			System.out.println();
+			
 			SessionSet ss = SessionSet.getInstance();
 			System.out.println(ss.getSet().toString());
 			 
+			//Session num = ss.get(userNum);
 		
-			printMainMenu();
+			printMainMenu(userNum);
 		}else {
 			System.out.println("아이디, 비밀번호를 다시 확인해주세요.");
 		}
@@ -113,8 +116,8 @@ public class ChildStartView {
 	/**
 	 * 메인 메뉴 화면 출력하는 메소드
 	 */
-	public static void printMainMenu() {
-		
+	public static void printMainMenu(int num) {
+		 
 		while (true) {
 			System.out.println();
 			System.out.println(
@@ -127,17 +130,17 @@ public class ChildStartView {
 
 			String menu = sc.nextLine();
 			switch (menu) {
-			case "1":
-				MoneyBookView.printMoneyBookMenu();
+			case "1": 
+				MoneyBookView.printMoneyBookMenu(num);
 				break;
 			case "2":
-				StatisticsView.printStatisticsMenu();
+				StatisticsView.printStatisticsMenu(num);
 				break;
 			case "3":
 				RankView.printRankView();
 				break;
 			case "4":
-				MyPageView.printMyPageMenu();
+				MyPageView.printMyPageMenu(num);
 				break;
 			case "5":
 				//logoutChild(id)// 로그아웃 메소드 

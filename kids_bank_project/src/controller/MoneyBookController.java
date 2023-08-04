@@ -17,8 +17,8 @@ public class MoneyBookController{
 	 * @param MoneyBookdto
 	 * @return total_amount(잔액)
 	 */
-	public static void createMoneyBook(MoneyBookDto dto) {
-		moneyBookService.createMoneyBook(dto);
+	public static void createMoneyBook(int num, MoneyBookDto dto) {
+		moneyBookService.createMoneyBook(num, dto);
 		
 	}
 	
@@ -26,9 +26,9 @@ public class MoneyBookController{
 	 * 기입장 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
-	public static void updateMoneyBook(MoneyBookDto dto) {
+	public static void updateMoneyBook(int num, MoneyBookDto dto) {
 		try {
-			moneyBookService.updateMoneyBook(dto);
+			moneyBookService.updateMoneyBook(num, dto);
 			SuccessView.messagePrint("게시물 수정 성공");
 		}catch(SearchNotFoundException e){
 			FailView.errorMessage(e.getMessage());
@@ -39,10 +39,10 @@ public class MoneyBookController{
 	/**
 	 * 자신의 전체 기입장을 삭제하는 메서드
 	 */
-	public static void deleteAllMoneyBook() {
+	public static void deleteAllMoneyBook(int num) {
 	
 		try{
-			moneyBookService.deleteAllMoneyBook();
+			moneyBookService.deleteAllMoneyBook(num);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
 		}catch(SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
@@ -53,9 +53,9 @@ public class MoneyBookController{
 	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
 	 * @param 기입장 row number 
 	 */
-	public static void deleteMoneyBook(int rownum) {
+	public static void deleteMoneyBook(int num, int rownum) {
 		try{
-			moneyBookService.deleteMoneyBook(rownum);
+			moneyBookService.deleteMoneyBook(num, rownum);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
 		}catch(SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
@@ -65,10 +65,10 @@ public class MoneyBookController{
 	/**
 	 * 작성한 전체 기입장을 조회하는 메서드
 	 */
-	public static void getAllMoneyBook() {
+	public static void getAllMoneyBook(int num) {
 		
 		 try {
-			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook();
+			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
 				 SuccessView.moneyBookSelectPrint(list);
 			  }catch (SearchNotFoundException e) {
 				  FailView.errorMessage(e.getMessage());
@@ -79,10 +79,10 @@ public class MoneyBookController{
 	 * 지정한 날짜의 기입장 조회하는 메서드
 	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 */
-	public static void getDayMoneyBook(String date) {
+	public static void getDayMoneyBook(int num, String date) {
 
 		try {
-			List<MoneyBookDto> list = moneyBookService.getDayMoneyBook(date);
+			List<MoneyBookDto> list = moneyBookService.getDayMoneyBook(num, date);
 			 SuccessView.moneyBookSelectPrint(list);
 		  }catch (SearchNotFoundException e) {
 			  FailView.errorMessage(e.getMessage());
@@ -94,10 +94,10 @@ public class MoneyBookController{
 	 * 기입장 한달 분을 조회하는 메서드
 	 * @param 한달 조회 => 입력 값 "2023-08"
 	 */
-	public static void getMonthMoneyBook(String date) {
+	public static void getMonthMoneyBook(int num, String date) {
 		
 		try {
-			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(date);
+			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(num, date);
 			 SuccessView.moneyBookSelectPrint(list);
 		  }catch (SearchNotFoundException e) {
 			  FailView.errorMessage(e.getMessage());
@@ -108,10 +108,10 @@ public class MoneyBookController{
 	 * 최근 5개의 기입장을 조회하는 메서드
 	 * @return
 	 */
-	public static void getRecentMoneyBook() {
+	public static void getRecentMoneyBook(int num) {
 		
 		try {
-			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook();
+			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(num);
 			 SuccessView.moneyBookSelectPrint(list);
 		  }catch (SearchNotFoundException e) {
 			  FailView.errorMessage(e.getMessage());

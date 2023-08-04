@@ -20,7 +20,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 메뉴 화면 출력하는 메소드
 	 */
-	static public void printMoneyBookMenu() {
+	static public void printMoneyBookMenu(int num) {
 		int flag = 1;
 		while (flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -37,16 +37,16 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printSearchMenu();
+				printSearchMenu(num);
 				break;
 			case "2":
-				printInsertMoneyBook();
+				printInsertMoneyBook(num);
 				break;
 			case "3":
-				printUpdateMoneyBook();
+				printUpdateMoneyBook(num);
 				break;
 			case "4":
-				printDeleteMoneyBook();
+				printDeleteMoneyBook(num);
 				break;
 			case "q":
 				flag = 0;
@@ -60,7 +60,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 조회 화면 출력하는 메소드
 	 */
-	static public void printSearchMenu() {
+	static public void printSearchMenu(int num) {
 		
 		int flag = 1;
 		while (flag == 1) {
@@ -73,20 +73,20 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				MoneyBookController.getRecentMoneyBook();
+				MoneyBookController.getRecentMoneyBook(num);
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
 				String date  = getNumberInput(sc, dateSize);
-				MoneyBookController.getDayMoneyBook(date);
+				MoneyBookController.getDayMoneyBook(num, date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
 				date = sc.nextLine();
-				MoneyBookController.getMonthMoneyBook(date);
+				MoneyBookController.getMonthMoneyBook(num, date);
 				break;
 			case "4":
-				MoneyBookController.getAllMoneyBook();
+				MoneyBookController.getAllMoneyBook(num);
 				break;
 			case "q":
 				flag = 0;
@@ -100,7 +100,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 등록 화면 출력하는 메소드
 	 */
-	static public void printInsertMoneyBook() {
+	static public void printInsertMoneyBook(int num) {
 		
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
@@ -124,7 +124,7 @@ public class MoneyBookView {
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
 			dto =  new MoneyBookDto(); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(dto);
+	    	MoneyBookController.createMoneyBook(num, dto);
 			break;
 		case 2:
 			System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
@@ -138,7 +138,7 @@ public class MoneyBookView {
 			memo = sc.nextLine();
 			//기능구현
 			dto =  new MoneyBookDto();//적어야될곳
-	    	MoneyBookController.createMoneyBook(dto);
+	    	MoneyBookController.createMoneyBook(num, dto);
 			System.out.println("등록 완료되었습니다.");
 			break;
 		default:
@@ -149,14 +149,14 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 수정 화면 출력하는 메소드
 	 */
-	static public void printUpdateMoneyBook() {
+	static public void printUpdateMoneyBook(int num) {
 
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("수정할 날짜 입력 ex)20230803 :");
 		String date = sc.nextLine();
 
-		MoneyBookController.getDayMoneyBook(date); // 하루 날짜 출력 메소드
+		MoneyBookController.getDayMoneyBook(num, date); // 하루 날짜 출력 메소드
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -166,7 +166,7 @@ public class MoneyBookView {
 			return;
 		} else {
 			int rownum = Integer.parseInt(str_rownum);
-			selectContentOfBook(date,rownum);
+			selectContentOfBook(num, date,rownum);
 		}
 	
 	}
@@ -174,13 +174,13 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 삭제 화면 출력하는 메소드
 	 */
-	static public void printDeleteMoneyBook() {
+	static public void printDeleteMoneyBook(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("삭제할 날짜 입력 : ");
 		String date = sc.nextLine();
 
-		MoneyBookController.getDayMoneyBook(date);
+		MoneyBookController.getDayMoneyBook(num, date);
 		
 		System.out.println("삭제할 번호 입력(삭제할 내역 없으면 q 입력) : ");
 		String exit = sc.nextLine();
@@ -188,14 +188,14 @@ public class MoneyBookView {
 		if (exit.equals("q")) {
 			return;
 		} else {
-			MoneyBookController.deleteMoneyBook(Integer.parseInt(exit));
+			MoneyBookController.deleteMoneyBook(num, Integer.parseInt(exit));
 		}
 	}
 
 	/**
 	 * 용돈기입장 수정(상세 수정) 화면 출력하는 메소드
 	 */
-	static private void selectContentOfBook(String date, int rownum) {
+	static private void selectContentOfBook(int num, String date, int rownum) {
 		
 	
 		System.out.println();
@@ -213,19 +213,19 @@ public class MoneyBookView {
 			System.out.println("수정할 금액 입력 : ");
 			int amount = Integer.parseInt(sc.nextLine());
 			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), amount, null, null) ;
-			MoneyBookController.updateMoneyBook(dto);
+			MoneyBookController.updateMoneyBook(num, dto);
 			break;
 		case "2":
 			System.out.println("수정할 내용 입력 : ");
 			String content = sc.nextLine();
 			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), 0, content, null) ;
-			MoneyBookController.updateMoneyBook(dto);
+			MoneyBookController.updateMoneyBook(num, dto);
 			break;
 		case "3":
 			System.out.println("수정할 메모 입력: ");
 			String memo = sc.nextLine();
 			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), 0, null, memo) ;
-			MoneyBookController.updateMoneyBook(dto);
+			MoneyBookController.updateMoneyBook(num, dto);
 			break;
 			//////////////////////////////////////////////
 		case "q":

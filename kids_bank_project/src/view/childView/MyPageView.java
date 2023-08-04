@@ -20,7 +20,7 @@ public class MyPageView {
 	 * 마이페이지 메뉴 화면 출력하는 메소드
 	 */
 	//마이페이지 메인 화면 만약 한가지 업무 끝나고 마이페이지에 있게 하려면 while문 넣기
-	public static void printMyPageMenu() {
+	public static void printMyPageMenu(int num) {
 		int flag = 1;
 		while (flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -37,13 +37,13 @@ public class MyPageView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printUpdatePassword();
+				printUpdatePassword(num);
 				break;
 			case "2":
-				printParentInfo();
+				printParentInfo(num);
 				break;
 			case "3":
-				printLeaveUser();
+				printLeaveUser(num);
 				break;
 			case "q":
 				flag = 0;
@@ -58,7 +58,7 @@ public class MyPageView {
 	/**
 	 * 마이페이지 비밀번호 변경 화면 출력하는 메소드 
 	 */
-	public static void printUpdatePassword() {
+	public static void printUpdatePassword(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("변경 PW 입력: ");
@@ -78,7 +78,7 @@ public class MyPageView {
 	/**
 	 * 마이페이지 연결된 부모 확인 화면 출력하는 메소드
 	 */
-	public static void printParentInfo() {
+	public static void printParentInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		
@@ -94,7 +94,7 @@ public class MyPageView {
 	/**
 	 * 마이페이지 회원 탈퇴 화면 출력하는 메소드
 	 */
-	public static void printLeaveUser() {
+	public static void printLeaveUser(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.print("PW 입력 : ");

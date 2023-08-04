@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int createMoneyBook(MoneyBookDto dto) throws SearchNotFoundException {
+	public int createMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -54,12 +55,12 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int updateMoneyBook(MoneyBookDto dto) throws SearchNotFoundException {
+	public int updateMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		List<MoneyBookDto> moneybook = getDayMoneyBook(dto.getMoney_date());
+		List<MoneyBookDto> moneybook = getDayMoneyBook(num, dto.getMoney_date());
 		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1);
 		
 		String sql = null;
@@ -98,7 +99,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int deleteAllMoneyBook() throws SearchNotFoundException {
+	public int deleteAllMoneyBook(int num) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -117,7 +118,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getAllMoneyBook() throws SearchNotFoundException {
+	public List<MoneyBookDto> getAllMoneyBook(int num) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -141,7 +142,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getDayMoneyBook(String date) throws SearchNotFoundException {
+	public List<MoneyBookDto> getDayMoneyBook(int num, String date) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -183,7 +184,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getMonthMoneyBook(String date) throws SearchNotFoundException {
+	public List<MoneyBookDto> getMonthMoneyBook(int num, String date) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -208,7 +209,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getRecentMoneyBook() throws SearchNotFoundException{
+	public List<MoneyBookDto> getRecentMoneyBook(int num) throws SearchNotFoundException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -251,7 +252,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int deleteMoneyBook(int rownum) throws SearchNotFoundException {
+	public int deleteMoneyBook(int num, int rownum) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
