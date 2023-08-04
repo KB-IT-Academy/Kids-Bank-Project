@@ -22,7 +22,7 @@ public class RankController {
 	public static void countLike(String currentMonth) {
 		try {
 			List<RankDto> rankList = rankService.countLike(currentMonth);
-			SuccessView.printRank(rankList);
+			SuccessView.printLikeRank(rankList);
 		} catch (SearchNotFoundException e) {
 			// e.printStackTrace();
 			FailView.errorMessage(e.getMessage());
