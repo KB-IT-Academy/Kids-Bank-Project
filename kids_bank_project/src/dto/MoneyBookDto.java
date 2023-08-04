@@ -20,8 +20,16 @@ public class MoneyBookDto {
 	
 	/**
 	 * 생성자
+<<<<<<< HEAD
 	 */
 	public MoneyBookDto() {}
+=======
+<<<<<<< HEAD
+	 */ 
+	public MoneyBookDto() {} 
+ 
+	
+>>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 	/**
 	 * 조회 생성자
 	 */
@@ -50,11 +58,20 @@ public class MoneyBookDto {
 	public MoneyBookDto(String outComeType, int amount, String content, String memo) {
 		this.outcomeType = outcomeType;
 		this.amount = amount;
+<<<<<<< HEAD
 		this.content = content;
 		this.memo = memo;
 	}
 
 	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, int outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
+=======
+		this.content = content; 
+		this.memo = memo; 
+	}   
+	
+	
+	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
+>>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;

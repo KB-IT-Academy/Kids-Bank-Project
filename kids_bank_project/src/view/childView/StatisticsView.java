@@ -1,11 +1,25 @@
 package view.childView;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import controller.StatisticsController;
+import session.SessionSet;
 
 /**
  * 통계 View
  */
 public class StatisticsView {
+	private static LocalDate currentDate = LocalDate.now();
+
+	private static DateTimeFormatter yearFormatter = DateTimeFormatter.ofPattern("yyyy");
+	private static DateTimeFormatter monthFormatter = DateTimeFormatter.ofPattern("MM");
+	private static DateTimeFormatter dayFormatter = DateTimeFormatter.ofPattern("dd");
+	private static String yearString = currentDate.format(yearFormatter);
+	private static String monthString = currentDate.format(monthFormatter);
+	private static String dayString = currentDate.format(dayFormatter);
+	
 	static Scanner sc = new Scanner(System.in);
 	
 	public StatisticsView() {}
@@ -13,9 +27,9 @@ public class StatisticsView {
 	/**
 	 * 통계 메뉴 화면 출력하는 메소드
 	 */
-	public static void printStatisticsMenu() {
+	public static void printStatisticsMenu(int num) {
 		int flag = 1;
-		while (flag == 1) {
+		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("                                            통 계                                              ");
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -30,16 +44,16 @@ public class StatisticsView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printWeekStaticsInfo();
+				printWeekStaticsInfo(num);
 				break;
 			case "2":
-				printMonthStaticsInfo();
+				printMonthStaticsInfo(num);
 				break;
 			case "3":
-				printYearStaticsInfo();
+				printYearStaticsInfo(num);
 				break;
 			case "4":
-				printRangeStaticsInfo();
+				printRangeStaticsInfo(num);
 				break;
 			case "q":
 				flag = 0;
@@ -53,47 +67,51 @@ public class StatisticsView {
 	/**
 	 * 통계-주간 통계 화면 출력하는 메소드
 	 */
-	public static void printWeekStaticsInfo() {
+	public static void printWeekStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
-		
-		// 7일 계산 출력
-		System.out.println("                        **"+"0월 0일"+"~"+"0월 0일"+" 7일간 주간 통계"+"**                           ");
-		printCategoryStaticsInfo();
+		System.out.println("                         **"+monthString+"월"+dayString+"일"+" 7일간 주간 통계"+"**                           ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getWeekAmountInfo(Integer.parseInt(ss.getSet().toString()), yearString+"-"+monthString+"-"+dayString);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
 	 * 통계-월간 통계 화면 출력하는 메소드
 	 */
-	public static void printMonthStaticsInfo() {
+	public static void printMonthStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("월 입력 : ");
 		int month = Integer.parseInt(sc.nextLine());
 		
 		// 월 계산 출력
-		System.out.println("                                **"+"0월"+" 한달간 월간 통계"+"**                                   ");
-		printCategoryStaticsInfo();
+		System.out.println("                              **"+month+"월 한달간 월간 통계"+"**                                  ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getMonthAmountInfo(Integer.parseInt(ss.getSet().toString()), month);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
 	 * 통계-연간 통계 화면 출력하는 메소드
 	 */
-	public static void printYearStaticsInfo() {
+	public static void printYearStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("년도 입력 : ");
 		int year = Integer.parseInt(sc.nextLine());
 		
 		// 년도 계산 출력
-		System.out.println("                               **"+"0000년"+" 1년간 연간 통계"+"**                                 ");
-		printCategoryStaticsInfo();
+		System.out.println("                                  **"+year+"년 1년간 연간 통계"+"**                               ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getYearAmountInfo(Integer.parseInt(ss.getSet().toString()), year);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
 	 * 통계-기간 통계 화면 출력하는 메소드
 	 */
-	public static void printRangeStaticsInfo() {
+	public static void printRangeStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("시작 날짜 입력 : ");
@@ -102,14 +120,16 @@ public class StatisticsView {
 		String endDate = sc.nextLine();
 		
 		// 년도 계산 출력
-		System.out.println("                            **"+"0월 0일"+"~"+"0월 0일"+" 기간 통계"+"**                           ");
-		printCategoryStaticsInfo();
+		System.out.println("                               **"+startDate+"~"+endDate+" 기간 통계"+"**                        ");
+		SessionSet ss = SessionSet.getInstance();
+		StatisticsController.getRangeAmountInfo(Integer.parseInt(ss.getSet().toString()), startDate, endDate);
+		//printCategoryStaticsInfo();
 	}
 	
 	/**
 	 * 통계 화면(상세 카테고리 통계) 화면 출력하는 메소드
 	 */
-	private static void printCategoryStaticsInfo() {
+	private static void printCategoryStaticsInfo(int num) {
 		System.out.println("-지출 : "+"0"+"원");
 		System.out.println("+수입 : "+"0"+"원");
 		System.out.println();

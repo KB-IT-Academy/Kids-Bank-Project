@@ -1,6 +1,7 @@
 package session;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class SessionSet {
@@ -34,6 +35,8 @@ public class SessionSet {
 			return set;
 	}
 	
+ 
+	
 	/**
 	* 로그인 된 사용자 추가
 	* */
@@ -47,6 +50,16 @@ public class SessionSet {
 	public void remove(Session session) {
 		set.remove(session);
 	}
-	
+
+	/*
+	public String getSet2() {
+        Iterator<Session> iterator = set.iterator();
+  	   
+        return iterator.next().getSessionId();
+        	//return iterator.next().getSessionId();
+    
+		//return null;
+	}
+	*/
 	
 }

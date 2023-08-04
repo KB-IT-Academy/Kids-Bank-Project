@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+
 import dao.MoneyBookDao;
 import dao.MoneyBookDaoImpl;
 import dto.MoneyBookDto;
@@ -20,8 +21,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 	
 	@Override
-	public int createMoneyBook(MoneyBookDto dto) throws SearchNotFoundException{
-		 int result = moneyBookDao.createMoneyBook(dto);
+	public int createMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException{
+		 int result = moneyBookDao.createMoneyBook(num, dto);
 		 if(result == 0)
 				throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		 return 0;
@@ -30,34 +31,39 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public void updateMoneyBook(MoneyBookDto dto)throws SearchNotFoundException {
+	public void updateMoneyBook(int num,MoneyBookDto dto)throws SearchNotFoundException {
 		
-		int result = moneyBookDao.updateMoneyBook(dto);
+		int result = moneyBookDao.updateMoneyBook(num, dto);
 		if(result == 0)
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		
 	}
 
 	@Override
-	public void deleteAllMoneyBook()throws SearchNotFoundException  {
+	public void deleteAllMoneyBook(int num)throws SearchNotFoundException  {
 		 
-		int result = moneyBookDao.deleteAllMoneyBook();
+		int result = moneyBookDao.deleteAllMoneyBook(num);
 		if(result == 0) 
 			throw new SearchNotFoundException("게시물 삭제되지 않았습니다.");
 		
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void deleteMoneyBook(String date, int rownum) {
 		int result = moneyBookDao.deleteMoneyBook(date, rownum);
+=======
+	public void deleteMoneyBook(int num, int rownum) {
+		int result = moneyBookDao.deleteMoneyBook(num, rownum);
+>>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 		if(result == 0) 
 			throw new SearchNotFoundException("게시물 삭제되지 않았습니다.");
 		
 	}
 
 	@Override
-	public List<MoneyBookDto> getAllMoneyBook() throws SearchNotFoundException{
-		List<MoneyBookDto> list = moneyBookDao.getAllMoneyBook();
+	public List<MoneyBookDto> getAllMoneyBook(int num) throws SearchNotFoundException{
+		List<MoneyBookDto> list = moneyBookDao.getAllMoneyBook(num);
 		if(list.isEmpty()) {
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		}
@@ -66,8 +72,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public List<MoneyBookDto> getDayMoneyBook(String date) throws SearchNotFoundException{
-		List<MoneyBookDto> list = moneyBookDao.getDayMoneyBook(date);
+	public List<MoneyBookDto> getDayMoneyBook(int num, String date) throws SearchNotFoundException{
+		List<MoneyBookDto> list = moneyBookDao.getDayMoneyBook(num, date);
 		if(list.isEmpty()) {
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		}
@@ -76,8 +82,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public List<MoneyBookDto> getMonthMoneyBook(String date) throws SearchNotFoundException{
-		List<MoneyBookDto> list = moneyBookDao.getMonthMoneyBook(date);
+	public List<MoneyBookDto> getMonthMoneyBook(int num, String date) throws SearchNotFoundException{
+		List<MoneyBookDto> list = moneyBookDao.getMonthMoneyBook(num, date);
 		if(list.isEmpty()) {
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		}
@@ -86,8 +92,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public List<MoneyBookDto> getRecentMoneyBook() throws SearchNotFoundException{
-		List<MoneyBookDto> list = moneyBookDao.getRecentMoneyBook();
+	public List<MoneyBookDto> getRecentMoneyBook(int num) throws SearchNotFoundException{
+		List<MoneyBookDto> list = moneyBookDao.getRecentMoneyBook(num);
 		if(list.isEmpty()) {
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		}

@@ -25,13 +25,27 @@ public class SuccessView {
 			System.out.println(i+1 + ". " + list.get(i).getName());
 		}
 		return list;
-		
 	}
+	
+	/**
+	 * 자식 단일 데이터 조회
+	 */
+	public static void printOneChild(ChildDto dto) {
+		System.out.println(dto);
+	}
+	
+	/**
+	 * 자식 부모 데이터 조회
+	 */
+	public static void printOneParent(ParentDto dto) {
+		System.out.println(dto);
+	}
+	
 	/**
 	 * 등록된 부모들 출력창
 	 */
-	public static void printParents(List<UserDto> list) {
-		for (UserDto dto : list) {
+	public static void printParents(List<ParentDto> list) {
+		for (ParentDto dto : list) {
 			System.out.println(dto);
 		}
 	}
@@ -105,4 +119,5 @@ public class SuccessView {
 		System.out.println(message);
 		
 	}
+
 }

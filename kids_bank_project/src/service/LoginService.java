@@ -44,7 +44,9 @@ public class LoginService {
 	/**
 	 * 자식 로그아웃하는 메서드
 	 */
-	//void logoutChild();
+	void logoutChild() {
+		
+	}
 	
 	/**
 	 * 부모 로그인하는 메서드

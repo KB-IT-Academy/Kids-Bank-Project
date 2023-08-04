@@ -88,8 +88,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<UserDto> getParent() throws SearchNotFoundException{
-		List<UserDto> list = myPageDao.getParent();
+	public List<ParentDto> getParent() throws SearchNotFoundException{
+		List<ParentDto> list = myPageDao.getParent();
 		if (list.isEmpty()) {
 			throw new SearchNotFoundException();
 		}

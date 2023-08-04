@@ -2,12 +2,13 @@ package controller;
 
 import java.util.List;
 
+
 import dto.RankDto;
 import exception.SearchNotFoundException;
 import service.RankService;
 import service.RankServiceImpl;
 import view.FailView;
-import view.SuccessView;
+import view.SuccessView; 
 
 public class RankController {
 

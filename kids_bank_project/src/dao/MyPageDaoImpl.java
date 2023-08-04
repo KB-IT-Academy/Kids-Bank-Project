@@ -32,11 +32,11 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * child_num을 넣어주어야 함.
 	 */
 	@Override
-	public List<UserDto> getParent() throws SearchWrongException{
+	public List<ParentDto> getParent() throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		List<UserDto> list = new ArrayList<>();
+		List<ParentDto> list = new ArrayList<>();
 		String sql = "select * from parent_child where child_num = 1";
 		try {
 			con = DBManager.getConnection();
@@ -45,7 +45,7 @@ public class MyPageDaoImpl implements MyPageDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int parentNum = rs.getInt("parent_num");
-				UserDto user = getParentData(con, parentNum);
+				ParentDto user = getParentData(con, parentNum);
 				list.add(user);
 			}
 			con.commit();
@@ -359,10 +359,10 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * @return
 	 * select * from parent where parent_num = ?
 	 */
-	private UserDto getParentData(Connection con, int num) throws SQLException {
+	private ParentDto getParentData(Connection con, int num) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		UserDto dto = null;
+		ParentDto dto = null;
 		String sql = "select * from parent where parent_num = ?";
 		try {
 			ps = con.prepareStatement(sql);

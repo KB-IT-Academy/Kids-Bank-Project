@@ -16,18 +16,21 @@ public class LoginController {
 	 * @param id
 	 * @param password
 	 */
-	public static boolean loginChild(String id, String password) {
+	public static int loginChild(String id, String password) {
 		try {
 			ChildDto child = loginService.loginChild(id, password); 
 			//ChildStartView.printChildStart(child.getId()); // 아이 id 넘겨주기
 			//ChildStartView.printMainMenu(); 
-			return loginCheck;
+			System.out.println("loginController userId: " + child.getChildNum()); // 지우기 
+			return child.getChildNum();
+			//return loginCheck;
 		 
 			
 		}catch(Exception e) { 
 			loginCheck = false; 
 			FailView.errorMessage("다시 로그인 해주세요.");
-			return loginCheck; 
+			//return loginCheck; 
+			return 0;
  
 			
 		} 
@@ -37,10 +40,16 @@ public class LoginController {
 	/**
 	 * 자식 로그아웃하는 메서드
 	 */
-	public static void logoutChild() {
+	public static void logoutChild(String parentChild) {
+		remove(parentChild);
 		
 	}
 	
+	private static void remove(String parentChild) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * 부모 로그인하는 메서드
 	 * @param id
