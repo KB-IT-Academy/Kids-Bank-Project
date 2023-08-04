@@ -211,7 +211,7 @@ public class MoneyBookView {
 				SuccessView.printDayMoneyBook();
 				
 				//댓글 등록 기능 실행
-				System.out.println("좋아요 등록 완료되었습니다.");
+				System.out.println("좋아요 등록 완료되었습니다. ");
 				break;
 			case "2":
 				System.out.println();
