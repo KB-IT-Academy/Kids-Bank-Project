@@ -71,8 +71,7 @@ public class StatisticsView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
 		System.out.println("                         **"+monthString+"월"+dayString+"일"+" 7일간 주간 통계"+"**                           ");
-		SessionSet ss = SessionSet.getInstance();
-		StatisticsController.getWeekAmountInfo(Integer.parseInt(ss.getSet().toString()), yearString+"-"+monthString+"-"+dayString);
+		StatisticsController.getWeekAmountInfo(num, yearString+"-"+monthString+"-"+dayString);
 		//printCategoryStaticsInfo();
 	}
 	
@@ -87,8 +86,7 @@ public class StatisticsView {
 		
 		// 월 계산 출력
 		System.out.println("                              **"+month+"월 한달간 월간 통계"+"**                                  ");
-		SessionSet ss = SessionSet.getInstance();
-		StatisticsController.getMonthAmountInfo(Integer.parseInt(ss.getSet().toString()), month);
+		StatisticsController.getMonthAmountInfo(num, month);
 		//printCategoryStaticsInfo();
 	}
 	
@@ -103,8 +101,7 @@ public class StatisticsView {
 		
 		// 년도 계산 출력
 		System.out.println("                                  **"+year+"년 1년간 연간 통계"+"**                               ");
-		SessionSet ss = SessionSet.getInstance();
-		StatisticsController.getYearAmountInfo(Integer.parseInt(ss.getSet().toString()), year);
+		StatisticsController.getYearAmountInfo(num, year);
 		//printCategoryStaticsInfo();
 	}
 	
@@ -121,8 +118,7 @@ public class StatisticsView {
 		
 		// 년도 계산 출력
 		System.out.println("                               **"+startDate+"~"+endDate+" 기간 통계"+"**                        ");
-		SessionSet ss = SessionSet.getInstance();
-		StatisticsController.getRangeAmountInfo(Integer.parseInt(ss.getSet().toString()), startDate, endDate);
+		StatisticsController.getRangeAmountInfo(num, startDate, endDate);
 		//printCategoryStaticsInfo();
 	}
 	
