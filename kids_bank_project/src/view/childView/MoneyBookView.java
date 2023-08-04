@@ -157,10 +157,10 @@ public class MoneyBookView {
 
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
+		
 		System.out.println("수정할 날짜 입력 ex)20230803 :");
-		String date = sc.nextLine();
-
-		MoneyBookController.getDayMoneyBook(childNum, 0, date); // 하루 날짜 출력 메소드
+		String date  = getNumberInput(sc, dateSize);
+		MoneyBookController.getDayMoneyBook(childNum, date); // 하루 날짜 출력 메소드
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -179,7 +179,7 @@ public class MoneyBookView {
 	 * 용돈기입장 삭제 화면 출력하는 메소드
 	 */
 	static public void printDeleteMoneyBook(int childNum) {
-		childNum = 0;
+
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("삭제할 날짜 입력 : ");

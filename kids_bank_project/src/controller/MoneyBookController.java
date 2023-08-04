@@ -43,21 +43,6 @@ public class MoneyBookController {
 	}
 
 	/**
-	 * 자신의 전체 기입장을 삭제하는 메서드
-	 * 
-	 * @param childNum 자식 고유번호
-	 */
-	public static void deleteAllMoneyBook(int childNum) {
-
-		try {
-			moneyBookService.deleteAllMoneyBook(childNum);
-			SuccessView.messagePrint("게시물을 삭제하였습니다");
-		} catch (SearchNotFoundException e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-
-	/**
 	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
 	 * 
 	 * @param 기입장 row number
@@ -65,34 +50,6 @@ public class MoneyBookController {
 	public static void deleteAllMoneyBook(String date, int childNum, int rownum) {
 		try {
 			moneyBookService.deleteMoneyBook(date, childNum, rownum);
-			SuccessView.messagePrint("게시물을 삭제하였습니다");
-		} catch (SearchNotFoundException e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-
-	/**
-	 * 작성한 전체 기입장을 조회하는 메서드
-	 */
-	public static void getAllMoneyBook(int num, int childNum) {
-
-		try {
-			List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
-			SuccessView.moneyBookSelectPrint(list);
-		} catch (SearchNotFoundException e) {
-			FailView.errorMessage(e.getMessage());
-		}
-	}
-
-	/**
-	 * 지정한 날짜의 기입장 조회하는 메서드
-	 * 
-	 * @param 날짜 조회 => 입력 값 "2023-08-03"
-	 */
-	public static void getDayMoneyBook(int num, int childNum, String date) {
-
-		try {
-			moneyBookService.deleteAllMoneyBook(childNum);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
