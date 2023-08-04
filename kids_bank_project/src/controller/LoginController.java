@@ -19,10 +19,8 @@ public class LoginController {
 	 */
 	public static int loginChild(String id, String password) {
 		try {
-			ChildDto child = loginService.loginChild(id, password); 
-			//ChildStartView.printChildStart(child.getId()); // 아이 id 넘겨주기
-			//ChildStartView.printMainMenu(); 
-			System.out.println("loginController userId: " + child.getChildNum()); // 지우기 
+			ChildDto child = loginService.loginChild(id, password);  
+			//System.out.println("loginController userId: " + child.getChildNum()); // 지우기 
 			return child.getChildNum();
 			//return loginCheck;
 		 

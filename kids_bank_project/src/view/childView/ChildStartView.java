@@ -102,10 +102,10 @@ public class ChildStartView {
 			System.out.println("                                       로그인 성공!");
 			System.out.println();
 			
-			SessionSet ss = SessionSet.getInstance();
-			System.out.println(ss.getSet().toString());
-			 
-			//Session num = ss.get(userNum);
+			
+			//SessionSet ss = SessionSet.getInstance();
+			//System.out.println(ss.getSet().toString());
+			  
 		
 			printMainMenu(userNum);
 		}else {
