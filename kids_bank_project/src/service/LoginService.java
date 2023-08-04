@@ -10,8 +10,7 @@ import session.SessionSet;
 import dao.ParentDao;
 import dao.ParentDaoImpl;
 
-public class LoginService {
-	//public static boolean loginCheck = true;
+public class LoginService { 
 	static ChildDao childDao = new ChildDaoImpl();  
 	static ParentDao parentDao = new ParentDaoImpl();  
 	

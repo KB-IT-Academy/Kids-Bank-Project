@@ -65,7 +65,7 @@ public class MoneyBookController{
 	/**
 	 * 작성한 전체 기입장을 조회하는 메서드
 	 */
-	public static void getAllMoneyBook(int num) {
+	public static void getAllMoneyBook(int num, int childNum) {
 		
 		 try {
 			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
@@ -79,7 +79,7 @@ public class MoneyBookController{
 	 * 지정한 날짜의 기입장 조회하는 메서드
 	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 */
-	public static void getDayMoneyBook(int num, String date) {
+	public static void getDayMoneyBook(int num, int childNum, String date) {
 
 		try {
 			List<MoneyBookDto> list = moneyBookService.getDayMoneyBook(num, date);
@@ -94,7 +94,7 @@ public class MoneyBookController{
 	 * 기입장 한달 분을 조회하는 메서드
 	 * @param 한달 조회 => 입력 값 "2023-08"
 	 */
-	public static void getMonthMoneyBook(int num, String date) {
+	public static void getMonthMoneyBook(int num, int childNum, String date) {
 		
 		try {
 			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(num, date);
@@ -108,7 +108,7 @@ public class MoneyBookController{
 	 * 최근 5개의 기입장을 조회하는 메서드
 	 * @return
 	 */
-	public static void getRecentMoneyBook(int num) {
+	public static void getRecentMoneyBook(int num, int childNum) {
 		
 		try {
 			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(num);
