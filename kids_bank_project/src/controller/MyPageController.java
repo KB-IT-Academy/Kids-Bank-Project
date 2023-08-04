@@ -152,10 +152,10 @@ public class MyPageController {
 	 */ 
 	public static List<ChildDto> getChild(int num) {
 		try {			
-			List<ChildDto> list = myPageService.getChild(num); 
-			System.out.println("자식찾기 성공 ");
+			List<ChildDto> list = myPageService.getChild(num);  
 			
-			SuccessView.printChildName(list);
+			//SuccessView.printChildName(list);
+			SuccessView.printChilds(list);
 			return list;
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage()); 

@@ -161,8 +161,7 @@ public class ParentStartView {
 			// 자녀 정보 불러와서 출력, 자식 순서대로
 
 			List<ChildDto> childList = MyPageController.getChild(num);
-			if(childList != null) { 
-//				SuccessView.printChilds();
+			if(childList != null) {  
 				System.out.println("----------------------------------------------------------------------------------------------");
 				System.out.print("자녀 선택 : ");
 				 
@@ -171,12 +170,7 @@ public class ParentStartView {
 				System.out.println();
 				System.out.print("자식 등록부터 해주세요!");
 				return;
-			}
-  
-			//List<ChildDto> childs = MyPageController.getChild(num);
-//			SuccessView.printChilds();
-			//System.out.println("----------------------------------------------------------------------------------------------");
-			//System.out.print("자녀 선택 : "); 
+			} 
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
