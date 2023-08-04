@@ -6,10 +6,7 @@ import java.util.List;
 import dao.MoneyBookDao;
 import dao.MoneyBookDaoImpl;
 import dto.MoneyBookDto;
-import dto.UserDto;
 import exception.SearchNotFoundException;
-import view.FailView;
-import view.SuccessView;
 
 public class MoneyBookServiceImpl implements MoneyBookService{
 
@@ -24,7 +21,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	public int createMoneyBook(int childNum, MoneyBookDto dto) throws SearchNotFoundException{
 		 int result = moneyBookDao.createMoneyBook(childNum, dto);
 		 if(result == 0)
-				throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+				throw new SearchNotFoundException("등록되지 않았습니다.");
 		 return 0;
 				
 				
@@ -35,7 +32,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 		
 		int result = moneyBookDao.updateMoneyBook(type, childNum, dto);
 		if(result == 0)
-			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+			throw new SearchNotFoundException("게시판 수정되지 않았습니다.");
 		
 	}
 
@@ -61,7 +58,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	public List<MoneyBookDto> getAllMoneyBook(int childNum) throws SearchNotFoundException{
 		List<MoneyBookDto> list = moneyBookDao.getAllMoneyBook(childNum);
 		if(list.isEmpty()) {
-			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+			throw new SearchNotFoundException("등록된 내역이 없습니다");
 		}
 		return list;
 		
@@ -71,7 +68,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	public List<MoneyBookDto> getDayMoneyBook(int childNum, String date) throws SearchNotFoundException{
 		List<MoneyBookDto> list = moneyBookDao.getDayMoneyBook(childNum, date);
 		if(list.isEmpty()) {
-			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+			throw new SearchNotFoundException("등록된 내역이 없습니다");
 		}
 		return list;
 	
@@ -81,7 +78,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	public List<MoneyBookDto> getMonthMoneyBook(int childNum, String date) throws SearchNotFoundException{
 		List<MoneyBookDto> list = moneyBookDao.getMonthMoneyBook(childNum, date);
 		if(list.isEmpty()) {
-			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+			throw new SearchNotFoundException("등록된 내역이 없습니다");
 		}
 		return list;
 		
@@ -91,7 +88,7 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	public List<MoneyBookDto> getRecentMoneyBook(int childNum) throws SearchNotFoundException{
 		List<MoneyBookDto> list = moneyBookDao.getRecentMoneyBook(childNum);
 		if(list.isEmpty()) {
-			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
+			throw new SearchNotFoundException("등록된 내역이 없습니다");
 		}
 		return list;
 		

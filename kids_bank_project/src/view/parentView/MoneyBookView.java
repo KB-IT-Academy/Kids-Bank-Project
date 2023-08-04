@@ -76,7 +76,7 @@ public class MoneyBookView {
 				System.out.println("날짜 입력 ex)20230803");
 				date  = getNumberInput(sc, dateSize); 
 				//MoneyBookController.getDayMoneyBook(date); 
-				MoneyBookController.getDayMoneyBook(num, childNum, date); 
+				MoneyBookController.getDayMoneyBook(childNum, date); 
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
