@@ -173,13 +173,13 @@ public class ParentStartView {
   
 			//List<ChildDto> childs = MyPageController.getChild(num);
 //			SuccessView.printChilds();
-			System.out.println("----------------------------------------------------------------------------------------------");
-			System.out.print("자녀 선택 : "); 
+			//System.out.println("----------------------------------------------------------------------------------------------");
+			//System.out.print("자녀 선택 : "); 
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
 			//UserDto childData = childs.get(childOrder-1);
-			printMainMenu(num);
+			printMainMenu(num, childOrder);
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
 //			System.out.println("자녀 추가하려면 +를 입력해주세요.");
@@ -196,7 +196,7 @@ public class ParentStartView {
 	/**
 	 * 메인 메뉴 화면 출력하는 메소드
 	 */
-	public static void printMainMenu(int num) {
+	public static void printMainMenu(int num, int childNum) {
 		while (true) {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
@@ -207,7 +207,7 @@ public class ParentStartView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				MoneyBookView.printMoneyBookMenu(num);
+				MoneyBookView.printMoneyBookMenu(num, childNum);
 				break;
 			case "2":
 				StatisticsView.printStatisticsMenu(num);

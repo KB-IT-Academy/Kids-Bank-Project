@@ -72,7 +72,7 @@ public class SuccessView {
 	/**
 	 * 하루 날짜에 대한 출력창
 	 */
-	public static void printDayMoneyBook(int num) {
+	public static void printDayMoneyBook(int num, int childNum) {
 		
 	}
 
@@ -123,7 +123,7 @@ public class SuccessView {
 	/**
 	 * 날짜에 대한 댓글들 출력
 	 */
-	public static void printComments(int num) {
+	public static void printComments(int num, int childNum) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -47,7 +47,51 @@ public class MoneyBookController {
 	 * 
 	 * @param childNum 자식 고유번호
 	 */
+<<<<<<< HEAD
 	public static void deleteAllMoneyBook(int childNum) {
+=======
+	public static void deleteAllMoneyBook(int num) {
+	
+		try{
+			moneyBookService.deleteAllMoneyBook(num);
+			SuccessView.messagePrint("게시물을 삭제하였습니다");
+		}catch(SearchNotFoundException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
+	/**
+	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
+	 * @param 기입장 row number 
+	 */
+	public static void deleteMoneyBook(String date, int num, int rownum) {
+		try{
+			moneyBookService.deleteMoneyBook(date, num, rownum);
+			SuccessView.messagePrint("게시물을 삭제하였습니다");
+		}catch(SearchNotFoundException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+	}
+	
+	/**
+	 * 작성한 전체 기입장을 조회하는 메서드
+	 */
+	public static void getAllMoneyBook(int num, int childNum) {
+		
+		 try {
+			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
+				 SuccessView.moneyBookSelectPrint(list);
+			  }catch (SearchNotFoundException e) {
+				  FailView.errorMessage(e.getMessage());
+			  }
+	}
+	
+	/**
+	 * 지정한 날짜의 기입장 조회하는 메서드
+	 * @param 날짜 조회 => 입력 값 "2023-08-03"
+	 */
+	public static void getDayMoneyBook(int num, int childNum, String date) {
+>>>>>>> b48af06267b0d0b7db1de1883391ef026d5f07a3
 
 		try {
 			moneyBookService.deleteAllMoneyBook(childNum);
@@ -111,8 +155,13 @@ public class MoneyBookController {
 	 * @param childNum 자식 고유번호
 	 * @param 한달       조회 => 입력 값 "YYYYMM
 	 */
+<<<<<<< HEAD
 	public static void getMonthMoneyBook(int childNum, String date) {
 
+=======
+	public static void getMonthMoneyBook(int num, int childNum, String date) {
+		
+>>>>>>> b48af06267b0d0b7db1de1883391ef026d5f07a3
 		try {
 			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(childNum, date);
 			SuccessView.moneyBookSelectPrint(list);
@@ -126,8 +175,13 @@ public class MoneyBookController {
 	 * 
 	 * @param childNum 자식 고유번호
 	 */
+<<<<<<< HEAD
 	public static void getRecentMoneyBook(int childNum) {
 
+=======
+	public static void getRecentMoneyBook(int num, int childNum) {
+		
+>>>>>>> b48af06267b0d0b7db1de1883391ef026d5f07a3
 		try {
 			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(childNum);
 			SuccessView.moneyBookSelectPrint(list);
