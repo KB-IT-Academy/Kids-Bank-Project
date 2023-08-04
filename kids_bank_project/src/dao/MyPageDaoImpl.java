@@ -151,7 +151,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				result = rs.getInt("child_num");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);

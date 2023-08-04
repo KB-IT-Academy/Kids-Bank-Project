@@ -136,13 +136,13 @@ public class ParentStartView {
 
 		
 		//boolean loginCheck = LoginController.loginParent(id, password);
-		ParentDto parent = LoginController.loginParent(id, password); 
-		if (parent != null) {
+		int parentNum = LoginController.loginParent(id, password); 
+		if (parentNum != 0) {
 			System.out.println();
 			System.out.println("                                         로그인 성공!");
 			System.out.println();
 
-			printSelectChild(parent.getParentNum()); // 자녀 선택
+			printSelectChild(parentNum); // 자녀 선택
 		} else {
 			System.out.println("아이디, 비밀번호를 다시 확인해주세요.");
 		}
@@ -162,6 +162,7 @@ public class ParentStartView {
 //				SuccessView.printChilds();
 				System.out.println("----------------------------------------------------------------------------------------------");
 				System.out.print("자녀 선택 : ");
+				 
 				
 			}else {
 				System.out.println();
@@ -176,7 +177,7 @@ public class ParentStartView {
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
 			//UserDto childData = childs.get(childOrder-1);
-			printMainMenu();
+			printMainMenu(num);
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
 //			System.out.println("자녀 추가하려면 +를 입력해주세요.");
@@ -193,7 +194,7 @@ public class ParentStartView {
 	/**
 	 * 메인 메뉴 화면 출력하는 메소드
 	 */
-	public static void printMainMenu() {
+	public static void printMainMenu(int num) {
 		while (true) {
 			System.out.println();
 			System.out.println("**********************************************************************************************");
@@ -204,10 +205,10 @@ public class ParentStartView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				MoneyBookView.printMoneyBookMenu();
+				MoneyBookView.printMoneyBookMenu(num);
 				break;
 			case "2":
-				StatisticsView.printStatisticsMenu();
+				StatisticsView.printStatisticsMenu(num);
 				break;
 			case "3":
 				MyPageView.printMyPageMenu();

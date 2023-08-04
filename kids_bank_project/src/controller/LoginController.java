@@ -55,18 +55,18 @@ public class LoginController {
 	 * @param id
 	 * @param password
 	 */
-	public static ParentDto loginParent(String id, String password) {
+	public static int loginParent(String id, String password) {
 		try {
 			ParentDto parent = LoginService.loginParent(id, password); 
 			//ChildStartView.printChildStart(child.getId()); // 아이 id 넘겨주기
 			//ChildStartView.printMainMenu(); 
-			return parent;
+			return parent.getParentNum();
 		 
 			
 		}catch(Exception e) { 
 			loginCheck = false; 
 			FailView.errorMessage("다시 로그인 해주세요.");
-			return null; 
+			return 0; 
  
 			
 		} 
