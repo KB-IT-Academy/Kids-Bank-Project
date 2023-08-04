@@ -211,7 +211,7 @@ public class ParentStartView {
 				StatisticsView.printStatisticsMenu(num);
 				break;
 			case "3":
-				MyPageView.printMyPageMenu();
+				MyPageView.printMyPageMenu(num);
 				break;
 			case "4":
 				System.out.println("로그아웃 되었습니다.");

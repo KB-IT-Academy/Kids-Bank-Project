@@ -62,7 +62,7 @@ public interface MyPageDao {
 	 * select * from parent_child where child_num = ? (자식 고유 번호)
 	 * select * from parent where parent_num = ? (부모 고유 번호)
 	 */
-	List<ParentDto> getParent() throws SearchWrongException;
+	List<ParentDto> getParent(int childNum) throws SearchWrongException;
 	
 	/**
 	 * 연결된 자식 확인하는 메서드
@@ -79,4 +79,8 @@ public interface MyPageDao {
 	 * insert into parent_child values (?, ?, ?, ?) (1. parent_child_num, 2. child_num, 3. parent_num, 4. child_order) 
 	 */
 	int createRelation(int parentNum,String registNum, int order) throws DMLException;
+	
+	String getChildPassword(int num) throws SearchWrongException;
+
+	String getParentPassword(int num) throws SearchWrongException;
 }

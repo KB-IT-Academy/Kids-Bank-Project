@@ -14,7 +14,7 @@ public class MyPageView {
 	 * 마이페이지 메뉴 화면 출력하는 메소드
 	 */
 	//마이페이지 메인 화면 만약 한가지 업무 끝나고 마이페이지에 있게 하려면 while문 넣기
-	public static void printMyPageMenu() {
+	public static void printMyPageMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -34,7 +34,7 @@ public class MyPageView {
 				printUpdatePassword();
 				break;
 			case "2":
-				printLeaveUser();
+				printLeaveUser(num);
 				break;
 			case "q":
 				flag = 0;
@@ -68,13 +68,13 @@ public class MyPageView {
 	/**
 	 * 마이페이지 회원 탈퇴 화면 출력하는 메소드
 	 */
-	public static void printLeaveUser() {
+	public static void printLeaveUser(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.print("PW 입력 : ");
 		String password = sc.nextLine();
-		// 비밀번호 확인 함수 넣기
-		if (password != "") {
+		String checkPassword = MyPageController.getParentPassword(num);
+		if (password.equals(checkPassword)) {
 			System.out.println("탈퇴하시겠습니까?");
 			while (true) {
 				System.out.println("1. 탈퇴하기 2. 취소하기");
@@ -82,7 +82,7 @@ public class MyPageView {
 				String check = sc.nextLine();
 				
 				if (check.equals("1")) {
-//					MyPageController.parentDelete();
+					MyPageController.parentDelete(num);
 					System.out.println("탈퇴되었습니다.");
 					StartView.printMain();
 					break;

@@ -28,6 +28,23 @@ public interface MyPageService {
 	int childFindByRegistNum(String registNum) throws SearchNotFoundException;
 	
 	/**
+	 * 자식의 비밀번호를 가져오는 메서드
+	 * @param num
+	 * @return
+	 * @throws SearchNotFoundException
+	 */
+	String getChildPassword(int num) throws SearchNotFoundException;
+	
+	
+	/**
+	 * 부모의 비밀번호를 가져오는 메서드
+	 * @param num
+	 * @return
+	 * @throws SearchNotFoundException
+	 */
+	String getParentPassword(int num) throws SearchNotFoundException;
+	
+	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
 	int childDelete(int childNum) throws DMLException;
@@ -51,7 +68,7 @@ public interface MyPageService {
 	/**
 	 * 연결된 부모 확인하는 메서드
 	 */
-	List<ParentDto> getParent() throws SearchNotFoundException;
+	List<ParentDto> getParent(int childNum) throws SearchNotFoundException;
 	
 	/**
 	 * 연결된 자식 확인하는 메서드
