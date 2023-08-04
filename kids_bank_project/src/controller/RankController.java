@@ -2,20 +2,19 @@ package controller;
 
 import java.util.List;
 
-
 import dto.RankDto;
 import exception.SearchNotFoundException;
 import service.RankService;
 import service.RankServiceImpl;
 import view.FailView;
-import view.SuccessView; 
+import view.SuccessView;
 
 public class RankController {
 
 	private static RankService rankService = RankServiceImpl.getInstance();
 
 	/**
-	 * 한달 동안의 좋아요 개수 세기
+	 * 현재 시스템 달의 좋아요 개수 세기
 	 * 
 	 * @param currentMonth 현재 달
 	 */
@@ -30,9 +29,10 @@ public class RankController {
 	}
 
 	/**
-	 * 한달 랭킹을 조회하는 메서드 
+	 * 한달 랭킹을 조회하는 메서드
 	 * 
-	 * @param (type : true : 지출 많은 순, false : 수입 많은 순), date : 현재
+	 * @param date: 현재 날짜
+	 * @param type  : 1.지출 2. 수입
 	 */
 	public static void getMonthRank(String date, int type) {
 		try {
@@ -47,7 +47,8 @@ public class RankController {
 	/**
 	 * 일주일 랭킹을 조회하는 메서드
 	 * 
-	 * @param date: 현재 날짜, type : 1.지출 2. 수입
+	 * @param date: 현재 날짜
+	 * @param type  : 1.지출 2. 수입
 	 */
 	public static void getWeekRank(String date, int type) {
 		try {

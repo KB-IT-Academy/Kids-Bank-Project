@@ -79,12 +79,12 @@ public class MoneyBookView {
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-				date  = getNumberInput(sc, dateSize);
+				date  = getNumberInput(sc, dateSize);	//알맞은 형식으로 쓰도록
 				MoneyBookController.getDayMoneyBook(num, date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
-				month  = getNumberInputMonth(sc, MonthSize);
+				month  = getNumberInputMonth(sc, MonthSize);	//알맞은 형식으로 쓰도록
 				MoneyBookController.getMonthMoneyBook(num, month);
 				break;
 			case "4":
@@ -116,7 +116,7 @@ public class MoneyBookView {
 
 		int outComeType;
 		int amount;
-		String content, memo, moneyDate;
+		String content, memo;
 		MoneyBookDto dto = new MoneyBookDto();
 		switch (moneyType) {
 		case "1":

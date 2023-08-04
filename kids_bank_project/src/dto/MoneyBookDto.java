@@ -19,13 +19,15 @@ public class MoneyBookDto {
 	/**
 	 * 생성자
 	 */
-	public MoneyBookDto() {} 
- 
+	public MoneyBookDto() {
+	}
+
 	/**
 	 * 조회 생성자
 	 */
-	public MoneyBookDto(int moneyBookNum, int rownum,String money_date, String moneyType, int amount, String content, String memo) {
-		
+	public MoneyBookDto(int moneyBookNum, int rownum, String money_date, String moneyType, int amount, String content,
+			String memo) {
+
 		this.moneyBookNum = moneyBookNum;
 		this.rownum = rownum;
 		this.money_date = money_date;
@@ -34,11 +36,12 @@ public class MoneyBookDto {
 		this.content = content;
 		this.memo = memo;
 	}
+
 	/**
 	 * 수정,삭제 생성자
 	 */
-	public MoneyBookDto(int rownum,String money_date, int moneyTypeInt, int amount, String content, String memo) {
-		
+	public MoneyBookDto(int rownum, String money_date, int moneyTypeInt, int amount, String content, String memo) {
+
 		this.rownum = rownum;
 		this.money_date = money_date;
 		this.moneyTypeInt = moneyTypeInt;
@@ -46,15 +49,14 @@ public class MoneyBookDto {
 		this.content = content;
 		this.memo = memo;
 	}
-	public MoneyBookDto(String outComeType, int amount, String content, String memo) {
-		this.outcomeType = outcomeType;
-		this.amount = amount;
-		this.content = content;
-		this.memo = memo;
-	}
 
-	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, int outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
-		
+	/**
+	 * 등록 생성자
+	 * 
+	 */
+	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, int outcomeType, int amount, String content,
+			String memo, String money_date, String write_date, String update_date) {
+
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;
@@ -157,6 +159,7 @@ public class MoneyBookDto {
 	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
 	}
+
 	/**
 	 * 기입장 toString
 	 */
