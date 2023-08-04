@@ -66,38 +66,27 @@ public class MoneyBookView {
 			System.out.print("메뉴선택 >> ");
 	
 			String menu = sc.nextLine();
+			String date = "";
 			switch (menu) {
-			case "1":
-<<<<<<< HEAD
-				//MoneyBookController.getRecentMoneyBook();
-=======
-				MoneyBookController.getRecentMoneyBook(num);
->>>>>>> 43a09cfc4796fa643275c1090abd46eb23554208
+			case "1": 
+				MoneyBookController.getRecentMoneyBook(num); 
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-				String date  = getNumberInput(sc, dateSize);
-<<<<<<< HEAD
-				//MoneyBookController.getDayMoneyBook(date);
-=======
-				MoneyBookController.getDayMoneyBook(num, date);
->>>>>>> 43a09cfc4796fa643275c1090abd46eb23554208
+				date  = getNumberInput(sc, dateSize); 
+				//MoneyBookController.getDayMoneyBook(date); 
+				MoneyBookController.getDayMoneyBook(num, date); 
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
-				date = sc.nextLine();
-<<<<<<< HEAD
+				date = sc.nextLine(); 
 				//MoneyBookController.getMonthMoneyBook(date);
 				break;
 			case "4":
-				//MoneyBookController.getAllMoneyBook();
-=======
+				date  = getNumberInput(sc, dateSize); 
+				//MoneyBookController.getAllMoneyBook(); 
 				MoneyBookController.getMonthMoneyBook(num, date);
-				break;
-			case "4":
-				MoneyBookController.getAllMoneyBook(num);
->>>>>>> 43a09cfc4796fa643275c1090abd46eb23554208
-				break;
+				break; 
 			case "q":
 				flag = 0;
 				return;
