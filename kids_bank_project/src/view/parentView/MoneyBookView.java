@@ -18,7 +18,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 메뉴 화면 출력하는 메소드
 	 */
-	static public void printMoneyBookMenu() {
+	static public void printMoneyBookMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -35,13 +35,13 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printSearchMenu();
+				printSearchMenu(num);
 				break;
 			case "2":
-				printCommentsMoneyBookMenu();
+				printCommentsMoneyBookMenu(num);
 				break;
 			case "3":
-				printLikeMoneyBookMenu();
+				printLikeMoneyBookMenu(num);
 				break;
 			case "q":
 				flag = 0;
@@ -56,7 +56,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 조회 화면 출력하는 메소드
 	 */
-	static public void printSearchMenu() {
+	static public void printSearchMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			System.out.println();
@@ -68,20 +68,20 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				MoneyBookController.getRecentMoneyBook();
+				MoneyBookController.getRecentMoneyBook(num);
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
 				String date  = getNumberInput(sc, dateSize);
-				MoneyBookController.getDayMoneyBook(date);
+				MoneyBookController.getDayMoneyBook(num, date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
 				date = sc.nextLine();
-				MoneyBookController.getMonthMoneyBook(date);
+				MoneyBookController.getMonthMoneyBook(num, date);
 				break;
 			case "4":
-				MoneyBookController.getAllMoneyBook();
+				MoneyBookController.getAllMoneyBook(num);
 				break;
 			case "q":
 				flag = 0;
@@ -95,7 +95,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 댓글 화면 출력하는 메소드
 	 */
-	static public void printCommentsMoneyBookMenu() {
+	static public void printCommentsMoneyBookMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			//날짜가 잘 등록하면
@@ -118,7 +118,7 @@ public class MoneyBookView {
 				System.out.println("댓글 작성할 날짜 입력 : ");		
 				moneyDate = sc.nextLine();
 				//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
-				SuccessView.printComments();
+				SuccessView.printComments(num);
 				
 				//날짜에 댓글 내역 있으면 댓글 등록 못하게 해야함
 				
@@ -134,7 +134,7 @@ public class MoneyBookView {
 				System.out.println("댓글 수정할 날짜 입력 : ");		
 				moneyDate = sc.nextLine();
 				//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
-				SuccessView.printComments();
+				SuccessView.printComments(num);
 				
 				System.out.println("수정할 번호 입력(수정할 내역 없으면 -1 입력) : ");
 				rownum = sc.nextLine();
@@ -158,7 +158,7 @@ public class MoneyBookView {
 				moneyDate = sc.nextLine();
 				
 				//날짜가 알맞게 들어오면 날짜에 따른 댓글들 출력(rownum사용)
-				SuccessView.printComments();
+				SuccessView.printComments(num);
 				
 				System.out.println("삭제할 번호 입력(삭제할 내역이 없으면 -1 입력) : ");
 				rownum = sc.nextLine();
@@ -184,7 +184,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 좋아요 화면 출력하는 메소드
 	 */
-	static public void printLikeMoneyBookMenu() {
+	static public void printLikeMoneyBookMenu(int num) {
 		int flag = 1;
 		while(flag == 1) {
 			//날짜가 잘 등록하면
@@ -208,7 +208,7 @@ public class MoneyBookView {
 				//날짜가 알맞게 들어오면
 				
 				//좋아요 누르려는 날짜에 대한 내역들 출력
-				SuccessView.printDayMoneyBook();
+				SuccessView.printDayMoneyBook(num);
 				
 				//댓글 등록 기능 실행
 				System.out.println("좋아요 등록 완료되었습니다. ");
@@ -223,7 +223,7 @@ public class MoneyBookView {
 				//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
 				
 				//좋아요 누른 날짜에 대한 내역들 출력(좋아요 하지 않았으면 출력 안함)
-				SuccessView.printDayMoneyBook();
+				SuccessView.printDayMoneyBook(num);
 				
 				System.out.println("좋아요 삭제 하시겠습니까?(Yes or No)");
 				String choice = sc.nextLine();

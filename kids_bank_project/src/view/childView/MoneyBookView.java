@@ -61,6 +61,7 @@ public class MoneyBookView {
 	 * 용돈기입장 조회 화면 출력하는 메소드
 	 */
 	static public void printSearchMenu(int num) {
+		 
 		
 		int flag = 1;
 		while (flag == 1) {

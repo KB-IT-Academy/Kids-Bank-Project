@@ -123,7 +123,7 @@ public class MyPageController {
 	public static int getChild(int num) {
 		try {			
 			List<ChildDto> list = myPageService.getChild(num); 
-			//System.out.println("자식찾기 성공 ");
+			System.out.println("자식찾기 성공 ");
 			
 			SuccessView.printChilds(list);
 			return 0;
