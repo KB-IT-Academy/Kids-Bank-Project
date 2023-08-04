@@ -51,7 +51,7 @@ public interface MyPageService {
 	/**
 	 * 연결된 부모 확인하는 메서드
 	 */
-	List<UserDto> getParent() throws SearchNotFoundException;
+	List<ParentDto> getParent() throws SearchNotFoundException;
 	
 	/**
 	 * 연결된 자식 확인하는 메서드

@@ -24,7 +24,7 @@ public class MyPageController {
 	public static void childFindAll() {
 		try {			
 		List<ChildDto> list = mypageDao.childFindAll();
-		System.out.println(list);
+		SuccessView.printChilds(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -37,7 +37,7 @@ public class MyPageController {
 	public static void childFindByNumber(int num) {
 		try {			
 		ChildDto dto = myPageService.childFindByNumber(num);
-		System.out.println(dto);
+		SuccessView.printOneChild(dto);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -75,7 +75,7 @@ public class MyPageController {
 	public static void parentFindAll() {
 		try {			
 		List<ParentDto> list = myPageService.parentFindAll();
-		System.out.println(list);
+		SuccessView.printParents(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -88,7 +88,7 @@ public class MyPageController {
 	public static void parentFindByNumber(int num) {
 		try {			
 		ParentDto dto = myPageService.parentFindByNumber(num);
-		System.out.println(dto);
+		SuccessView.printOneParent(dto);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -100,7 +100,6 @@ public class MyPageController {
 	public static void parentDelete(int parentNum) {
 		try {			
 		int result = myPageService.parentDelete(parentNum);
-		System.out.println(result);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -111,7 +110,7 @@ public class MyPageController {
 	 */
 	public static void getParent() {
 		try {			
-		List<UserDto> list = mypageDao.getParent();
+		List<ParentDto> list = mypageDao.getParent();
 		SuccessView.printParents(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());

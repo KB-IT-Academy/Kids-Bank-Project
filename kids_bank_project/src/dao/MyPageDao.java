@@ -62,7 +62,7 @@ public interface MyPageDao {
 	 * select * from parent_child where child_num = ? (자식 고유 번호)
 	 * select * from parent where parent_num = ? (부모 고유 번호)
 	 */
-	List<UserDto> getParent() throws SearchWrongException;
+	List<ParentDto> getParent() throws SearchWrongException;
 	
 	/**
 	 * 연결된 자식 확인하는 메서드
