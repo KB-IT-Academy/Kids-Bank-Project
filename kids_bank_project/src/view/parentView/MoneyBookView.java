@@ -2,6 +2,7 @@ package view.parentView;
 
 import java.util.Scanner;
 
+import controller.CommentEmojiController;
 import controller.MoneyBookController;
 import dto.UserDto;
 import view.SuccessView;
@@ -187,6 +188,7 @@ public class MoneyBookView {
 	
 	/**
 	 * 용돈기입장 좋아요 화면 출력하는 메소드
+	 * num : parent, 
 	 */
 	static public void printLikeMoneyBookMenu(int num, int childNum) {
 		int flag = 1;
@@ -215,6 +217,7 @@ public class MoneyBookView {
 				SuccessView.printDayMoneyBook(num, childNum);
 				
 				//댓글 등록 기능 실행
+				CommentEmojiController.craeteEmoji(childNum, num, 1, moneyDate);
 				System.out.println("좋아요 등록 완료되었습니다. ");
 				break;
 			case "2":
@@ -223,7 +226,7 @@ public class MoneyBookView {
 				System.out.println("좋아요 삭제할 날짜 입력 : ");		
 				moneyDate = sc.nextLine();
 				
-				
+				CommentEmojiController.deleteEmoji(num, moneyDate);
 				//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
 				
 				//좋아요 누른 날짜에 대한 내역들 출력(좋아요 하지 않았으면 출력 안함)

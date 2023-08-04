@@ -2,15 +2,22 @@ package controller;
 
 import java.util.List;
 
+import dao.CommentEmojiDao;
+import dao.CommentEmojiDaoImpl;
 import dto.CommentDto;
 import dto.EmojiDto;
+import service.CommentEmojiService;
+import service.JoinServiceImpl;
+import service.joinService;
+import view.FailView;
 
 public class CommentEmojiController {
+	static CommentEmojiService commentEmojiService = new CommentEmojiService();  
 	/**
 	 * 댓글 생성하는 메서드
 	 * @param dto
 	 */
-	public static void createComment(CommentDto dto) {
+	public static void createComment(int childNum, int parentNum, String content, String date) {
 		
 	}
 	
@@ -44,7 +51,13 @@ public class CommentEmojiController {
 	 * 이모지 생성하는 메서드
 	 * @param EmojiDto
 	 */
-	public static void craeteEmoji(EmojiDto dto) {
+	public static void craeteEmoji(int childNum, int parentNum, int emoji, String date) {
+		try {			
+			int result = commentEmojiService.craeteEmoji(childNum, parentNum, emoji, date);
+	
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
 		
 	}
 	
@@ -52,8 +65,13 @@ public class CommentEmojiController {
 	 * 해당 날짜와 자기 자신(부모)의 num 값으로 이모지 삭제하는 메서드
 	 * @param moneyDate
 	 */
-	public static void deleteEmoji(String moneyDate) {
-		
+	public static void deleteEmoji(int num, String date) {
+		try {			
+			int result = commentEmojiService.deleteEmoji(num, date);
+	
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
 	}
 	
 	/**

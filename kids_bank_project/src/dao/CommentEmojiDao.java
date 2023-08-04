@@ -4,6 +4,7 @@ import java.util.List;
 
 import dto.CommentDto;
 import dto.EmojiDto;
+import exception.DMLException;
 
 public interface CommentEmojiDao {
 	/**
@@ -12,7 +13,7 @@ public interface CommentEmojiDao {
 	 * insert into comments(comments_num ,child_num, parent_num, content, money_date, write_date) values (comment_seq.nextval,?, ?, ?, ?, sysdate);
 	 * 1. child_num, 2. parent_num, 3. content, 4. money_date
 	 */
-	void createComment(CommentDto dto);
+	void createComment(int childNum, int parentNum, String content, String date) throws DMLException;
 	
 	/**
 	 * 댓글 수정하는 메서드
@@ -49,7 +50,7 @@ public interface CommentEmojiDao {
 	 * insert into emoji (parent_num, child_num, emoji_type, money_date, write_date) values (?, ?, ?, ?, sysdate)
 	 * 1. parentNum, 2. childNum, 3. emojiType, 4. moneyDate 
 	 */
-	void craeteEmoji(EmojiDto dto);
+	public int craeteEmoji(int childNum, int parentNum, int emoji, String date);
 	
 	/**
 	 * 해당 날짜와 자기 자신(부모)의 num 값으로 이모지 삭제하는 메서드
@@ -58,7 +59,7 @@ public interface CommentEmojiDao {
 	 * where parent_num = ? and money_date = ?
 	 * 1. parentNum, 2. moneyDate
 	 */
-	public void deleteEmoji(String moneyDate);
+	public int deleteEmoji(int num, String date) throws DMLException;
 	
 	/**
 	 * 자식 고유번호와 찾을 날짜를 활용하여 이모지를 조회하는 메서드
