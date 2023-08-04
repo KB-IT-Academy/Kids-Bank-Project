@@ -17,7 +17,7 @@ public interface MoneyBookService {
 	 * 기입장을 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
-	void updateMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException;
+	void updateMoneyBook(int type, int num, MoneyBookDto dto) throws SearchNotFoundException;
 	
 	/**
 	 * 자신의 전체 기입장을 삭제하는 메서드

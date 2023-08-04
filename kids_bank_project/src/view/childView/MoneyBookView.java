@@ -211,25 +211,29 @@ public class MoneyBookView {
 		MoneyBookDto dto;
 
 		String type = sc.nextLine();
+		int typeInt=0;
 		switch (type) {
 		
 		case "1":
 			System.out.println("수정할 금액 입력 : ");
 			int amount = Integer.parseInt(sc.nextLine());
-			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), amount, null, null) ;
-			MoneyBookController.updateMoneyBook(num, dto);
+			dto = new MoneyBookDto(rownum,date, 0, amount, null, null) ;
+			typeInt = Integer.parseInt(type);
+			MoneyBookController.updateMoneyBook(typeInt, num, dto);
 			break;
 		case "2":
 			System.out.println("수정할 내용 입력 : ");
 			String content = sc.nextLine();
-			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), 0, content, null) ;
-			MoneyBookController.updateMoneyBook(num, dto);
+			dto = new MoneyBookDto(rownum,date, 0, 0, content, " ") ;
+			typeInt = Integer.parseInt(type);
+			MoneyBookController.updateMoneyBook(typeInt, num, dto);
 			break;
 		case "3":
 			System.out.println("수정할 메모 입력: ");
 			String memo = sc.nextLine();
-			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), 0, null, memo) ;
-			MoneyBookController.updateMoneyBook(num, dto);
+			dto = new MoneyBookDto(rownum,date, 0, 0, " ", memo) ;
+			typeInt = Integer.parseInt(type);
+			MoneyBookController.updateMoneyBook(typeInt, num, dto);
 			break;
 		case "q":
 			return;

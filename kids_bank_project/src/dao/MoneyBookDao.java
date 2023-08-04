@@ -17,7 +17,7 @@ public interface MoneyBookDao {
 	 * 기입장을 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
-	public int updateMoneyBook(int childNum, MoneyBookDto dto);
+	public int updateMoneyBook(int type, int childNum, MoneyBookDto dto);
 	
 	/**
 	 * 자신의 전체 기입장을 삭제하는 메서드

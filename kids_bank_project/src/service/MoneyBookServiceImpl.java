@@ -31,9 +31,9 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public void updateMoneyBook(int num,MoneyBookDto dto)throws SearchNotFoundException {
+	public void updateMoneyBook(int type, int num, MoneyBookDto dto)throws SearchNotFoundException {
 		
-		int result = moneyBookDao.updateMoneyBook(num, dto);
+		int result = moneyBookDao.updateMoneyBook(type, num, dto);
 		if(result == 0)
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		

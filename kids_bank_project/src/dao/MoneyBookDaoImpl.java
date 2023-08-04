@@ -53,7 +53,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int updateMoneyBook(int childNum, MoneyBookDto dto) throws SearchNotFoundException {
+	public int updateMoneyBook(int type, int childNum, MoneyBookDto dto) throws SearchNotFoundException {
 			//dto 수정할 내용 => 수정할 내용, 날짜, rownum, type
 
 		Connection con = null;
@@ -63,7 +63,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1);
 		
 		String sql = null;
-		int type = dto.getMoneyTypeInt();
+		
 		if(type == 1) {
 			sql = "UPDATE MONEY_BOOK SET UPDATE_DATE = SYSDATE, AMOUNT = ? WHERE MONEY_BOOK_NUM = ?";
 		}else if(type ==2 ) {

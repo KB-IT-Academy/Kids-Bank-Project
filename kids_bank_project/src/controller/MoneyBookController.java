@@ -26,9 +26,9 @@ public class MoneyBookController{
 	 * 기입장 수정하는 메서드
 	 * @param MoneyBookDto
 	 */
-	public static void updateMoneyBook(int num, MoneyBookDto dto) {
+	public static void updateMoneyBook(int type, int num, MoneyBookDto dto) {
 		try {
-			moneyBookService.updateMoneyBook(num, dto);
+			moneyBookService.updateMoneyBook(type, num, dto);
 			SuccessView.messagePrint("게시물 수정 성공");
 		}catch(SearchNotFoundException e){
 			FailView.errorMessage(e.getMessage());

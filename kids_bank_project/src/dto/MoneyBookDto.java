@@ -16,8 +16,6 @@ public class MoneyBookDto {
 	private String write_date; // 등록일
 	private String update_date; // 수정일
 
-
-	
 	/**
 	 * 생성자
 	 */
@@ -88,6 +86,14 @@ public class MoneyBookDto {
 		this.moneyBookNum = moneyBookNum;
 	}
 
+	public int getMoneyTypeInt() {
+		return moneyTypeInt;
+	}
+
+	public void setMoneyTypeInt(int moneyTypeInt) {
+		this.moneyTypeInt = moneyTypeInt;
+	}
+
 	public String getMoneyType() {
 		return moneyType;
 	}
@@ -96,14 +102,6 @@ public class MoneyBookDto {
 		this.moneyType = moneyType;
 	}
 
-	public int getMoneyTypeInt() {
-		return moneyTypeInt;
-	}
-
-	public void setMoneyTypeInt(int moneyType) {
-		this.moneyTypeInt = moneyTypeInt;
-	}
-	
 	public int getOutcomeType() {
 		return outcomeType;
 	}
@@ -159,9 +157,6 @@ public class MoneyBookDto {
 	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
 	}
-
-	
-
 	/**
 	 * 기입장 toString
 	 */
@@ -173,7 +168,7 @@ public class MoneyBookDto {
 		sb.append(" <").append(moneyType).append(">");
 		sb.append(" 금액 = ").append(amount);
 		sb.append(" 내용 = ").append(content);
-		sb.append(" 메모 = ").append(content);
+		sb.append(" 메모 = ").append(memo);
 		sb.append("]");
 		return sb.toString();
 	}
