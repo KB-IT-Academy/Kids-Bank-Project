@@ -72,6 +72,7 @@ public class MoneyBookView {
 	
 			String menu = sc.nextLine();
 			String date;
+			String month;
 			switch (menu) {
 			case "1":
 				MoneyBookController.getRecentMoneyBook(num);
@@ -83,8 +84,7 @@ public class MoneyBookView {
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
-				date = getNumberInputMonth(sc, MonthSize);
-				String month  = getNumberInput(sc, dateSize);
+				month  = getNumberInputMonth(sc, MonthSize);
 				MoneyBookController.getMonthMoneyBook(num, month);
 				break;
 			case "4":
@@ -126,11 +126,9 @@ public class MoneyBookView {
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			System.out.println("내역 날짜 입력 : ");
-			moneyDate = sc.nextLine();
 			outComeType = 0;
 			
-			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
+			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
 	    	MoneyBookController.createMoneyBook(num,dto);
 			break;
 			
@@ -144,9 +142,7 @@ public class MoneyBookView {
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			System.out.println("내역 날짜 입력 : ");
-			moneyDate = sc.nextLine();
-			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
+			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
 	    	MoneyBookController.createMoneyBook(num, dto);
 			System.out.println("등록 완료되었습니다.");
 			break;
@@ -217,7 +213,6 @@ public class MoneyBookView {
 		String type = sc.nextLine();
 		switch (type) {
 		
-		///////////모르겠음///////////////////////////
 		case "1":
 			System.out.println("수정할 금액 입력 : ");
 			int amount = Integer.parseInt(sc.nextLine());
@@ -236,7 +231,6 @@ public class MoneyBookView {
 			dto = new MoneyBookDto(rownum,date, Integer.parseInt(type), 0, null, memo) ;
 			MoneyBookController.updateMoneyBook(num, dto);
 			break;
-			//////////////////////////////////////////////
 		case "q":
 			return;
 		default:

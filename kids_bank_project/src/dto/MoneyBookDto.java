@@ -20,7 +20,6 @@ public class MoneyBookDto {
 	
 	/**
 	 * 생성자
-<<<<<<< HEAD
 	 */
 	public MoneyBookDto() {} 
  

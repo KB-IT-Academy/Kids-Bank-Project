@@ -17,6 +17,26 @@ public class SuccessView {
 	public SuccessView() {}
 	
 	/**
+	 * 연결된 부모 출력을 위한 출력창
+	 */
+	public static void printParentName(List<ParentDto> list) {
+		for (ParentDto dto : list) {
+			System.out.print(dto.getName() + "(" + dto.getParentType() + ")");
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * 연결된 자식 출력을 위한 출력창
+	 */
+	public static void printChildName(List<ChildDto> list) {
+		for (ChildDto dto : list) {
+			System.out.print(dto.getName());
+		}
+		System.out.println();
+	}
+	
+	/**
 	 * 등록된 자식들 출력창
 	 */
 	public static List<ChildDto> printChilds(List<ChildDto> list) {

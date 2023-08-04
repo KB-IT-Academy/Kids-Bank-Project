@@ -32,16 +32,17 @@ public class MyPageDaoImpl implements MyPageDao {
 	 * child_num을 넣어주어야 함.
 	 */
 	@Override
-	public List<ParentDto> getParent() throws SearchWrongException{
+	public List<ParentDto> getParent(int childNum) throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<ParentDto> list = new ArrayList<>();
-		String sql = "select * from parent_child where child_num = 1";
+		String sql = "select * from parent_child where child_num = ?";
 		try {
 			con = DBManager.getConnection();
 			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
+			ps.setInt(1, childNum);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int parentNum = rs.getInt("parent_num");
@@ -151,7 +152,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				result = rs.getInt("child_num");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps, rs);
@@ -446,6 +447,56 @@ public class MyPageDaoImpl implements MyPageDao {
 			DBManager.releaseConnection(null, ps);
 		}
 		return result;
+	}
+	/**
+	 * 자식 비밀번호 가져오는 함수
+	 * sql : select password from child where child_num = ?
+	 */
+	@Override
+	public String getChildPassword(int num) throws SearchWrongException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String password = null;
+		String sql = "select password from child where child_num = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);			
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				password = rs.getString("password");
+			}
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new SearchWrongException("데이터를 조회할 수 없습니다.");
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return password;
+	}
+	@Override
+	public String getParentPassword(int num) throws SearchWrongException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String password = null;
+		String sql = "select password from parent where parent_num = ?";
+		try {
+			con = DBManager.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, num);			
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				password = rs.getString("password");
+			}
+		} catch (SQLException e) {
+//			e.printStackTrace();
+			throw new SearchWrongException("데이터를 조회할 수 없습니다.");
+		} finally {
+			DBManager.releaseConnection(con, ps, rs);
+		}
+		return password;
 	}
 	
 

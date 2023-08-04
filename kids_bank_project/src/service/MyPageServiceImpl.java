@@ -44,7 +44,7 @@ public class MyPageServiceImpl implements MyPageService {
 	public int childFindByRegistNum(String registNum) throws SearchNotFoundException {
 		int result = myPageDao.childFindByRegistNum(registNum);
 		if (result == -1) {
-			throw new SearchNotFoundException();
+			throw new SearchNotFoundException("주민등록번호가 일치하는 자식이 없습니다.");
 		}
 		return result;
 	}
@@ -88,8 +88,8 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<ParentDto> getParent() throws SearchNotFoundException{
-		List<ParentDto> list = myPageDao.getParent();
+	public List<ParentDto> getParent(int childNum) throws SearchNotFoundException{
+		List<ParentDto> list = myPageDao.getParent(childNum);
 		if (list.isEmpty()) {
 			throw new SearchNotFoundException();
 		}
@@ -115,6 +115,24 @@ public class MyPageServiceImpl implements MyPageService {
 			throw new DMLException("관계를 생성할 수 없습니다.");
 		}
 		return result;
+	}
+	
+	
+	@Override
+	public String getChildPassword(int num) throws SearchNotFoundException {
+		String password = myPageDao.getChildPassword(num);
+		if (password == null) {
+			throw new SearchNotFoundException("데이터가 존재하지 않습니다.");
+		}
+		return password;
+	}
+	@Override
+	public String getParentPassword(int num) throws SearchNotFoundException {
+		String password = myPageDao.getParentPassword(num);
+		if (password == null) {
+			throw new SearchNotFoundException("데이터가 존재하지 않습니다.");
+		}
+		return password;
 	}
 	
 

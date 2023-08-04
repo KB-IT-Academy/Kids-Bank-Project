@@ -85,7 +85,7 @@ public class MyPageView {
 		// 이부분에 부모 조회하는 함수 입력
 		System.out.println("                               *  연결된 부모  *                                     ");
 		
-		MyPageController.getParent();
+		MyPageController.getParent(num);
 //		SuccessView.printParents();
 		//System.out.println("돌아가시려면 아무 키나 눌러주세요");
 		//String choice = sc.nextLine();
@@ -99,8 +99,8 @@ public class MyPageView {
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.print("PW 입력 : ");
 		String password = sc.nextLine();
-		// 비밀번호 확인 함수 넣기
-		if (password != "") {
+		String checkPassword = MyPageController.getChildPassword(num);
+		if (password.equals(checkPassword)) {
 			System.out.println("탈퇴하시겠습니까?");
 			while (true) {
 				System.out.println("1. 탈퇴하기 2. 취소하기");
@@ -108,8 +108,8 @@ public class MyPageView {
 				String check = sc.nextLine();
 				
 				if (check.equals("1")) {
-//					MyPageController.childDelete(session.getSessionId());
-					System.out.println("탈퇴되었습니다.");
+					MyPageController.childDelete(num);
+//					System.out.println("탈퇴되었습니다.");
 					StartView.printMain();
 					break;
 				} else if (check.equals("2")) {

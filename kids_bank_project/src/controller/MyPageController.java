@@ -57,6 +57,36 @@ public class MyPageController {
 		}
 		return -1;
 	}
+	
+	/**
+	 * 자식의 비밀번호 가져오는 함수
+	 * @param num
+	 * @return
+	 */
+	public static String getChildPassword(int num) {
+		try {
+			String password = myPageService.getChildPassword(num);
+			return password;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return null;
+	}
+	
+	/**
+	 * 부모의 비밀번호 가져오는 함수
+	 * @param num
+	 * @return
+	 */
+	public static String getParentPassword(int num) {
+		try {
+			String password = myPageService.getParentPassword(num);
+			return password;
+		} catch (RuntimeException e) {
+			FailView.errorMessage(e.getMessage());
+		}
+		return null;
+	}
 	/**
 	 * 자식 회원 탈퇴하는 메서드
 	 */
@@ -108,10 +138,10 @@ public class MyPageController {
 	/**
 	 * 연결된 부모 확인하는 메서드
 	 */
-	public static void getParent() {
+	public static void getParent(int childNum) {
 		try {			
-		List<ParentDto> list = mypageDao.getParent();
-		SuccessView.printParents(list);
+		List<ParentDto> list = mypageDao.getParent(childNum);
+		SuccessView.printParentName(list);
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
@@ -125,7 +155,7 @@ public class MyPageController {
 			List<ChildDto> list = myPageService.getChild(num); 
 			System.out.println("자식찾기 성공 ");
 			
-			SuccessView.printChilds(list);
+			SuccessView.printChildName(list);
 			return 0;
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());

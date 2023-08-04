@@ -17,7 +17,7 @@ public class ParentDaoImpl implements ParentDao {
 	 * @throws SQLException 
 	 */
 	@Override
-	public ParentDto loginParent(String id, String password) throws SQLException{
+	public ParentDto loginParent(String id, String password) throws SearchWrongException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -47,7 +47,10 @@ public class ParentDaoImpl implements ParentDao {
 				
 				 
 			}
-		}finally {
+		} catch (SQLException e) {
+			throw new SearchWrongException("로그인 입력이 잘못되었습니다.");
+		}
+		finally {
 			 DBManager.releaseConnection(con, ps, rs);
 		}
 		
@@ -80,7 +83,8 @@ public class ParentDaoImpl implements ParentDao {
 			result = ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			throw new  DMLException();
+//			e.printStackTrace();
+			throw new  DMLException("회원가입을 할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
@@ -103,8 +107,8 @@ public class ParentDaoImpl implements ParentDao {
 				result = rs.getInt("parent_num");
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
-			throw new  DMLException();
+//			e.printStackTrace();
+			throw new  SearchWrongException("데이터를 조회할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
