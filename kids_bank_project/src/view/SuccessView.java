@@ -65,7 +65,23 @@ public class SuccessView {
 		System.out.println("----------------------------------------------------------------------------------------------");
 
 		for (RankDto dto : rankList) {
-            System.out.println(dto + " ");
+            System.out.println(dto.toString() + " ");
+        }
+		System.out.println();
+
+	}
+	/**
+	 * 좋아요 랭킹 출력창
+	 * @param rankList 
+	 */
+	public static void printLikeRank(List<RankDto> rankList) {
+		//DTO에 랭킹을 통해 닉네임을 출력해주기 때문에 좋아요, 지출랭킹 프린트를 같이 쓸 수 있음
+
+		System.out.println();
+		System.out.println("----------------------------------------------------------------------------------------------");
+
+		for (RankDto dto : rankList) {
+            System.out.println(dto.toString(dto.getEmojiCount()) + " ");
         }
 		System.out.println();
 

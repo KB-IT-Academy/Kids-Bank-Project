@@ -65,18 +65,27 @@ public class RankDto {
 		this.total_money = total_money;
 	}
 	/**
-	 * 랭크 toString()
+	 * 금액 랭크 toString()
 	 */
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("RankDto [id=");
-		builder.append(id);
-		builder.append(", total_money=");
-		builder.append(total_money);
-		builder.append(", emojiCount=");
-		builder.append(emojiCount);
-		builder.append("]");
+		StringBuilder builder = new StringBuilder("[ ");
+		builder.append(id).append(" : ");
+		builder.append(" 총 금액 = ").append(total_money);
+		builder.append(" ] ");
+		
+		return builder.toString();
+	}
+	
+	/**
+	 * 좋아요 랭크 toString()
+	 */
+	public String toString(int emojiCount) {
+		StringBuilder builder = new StringBuilder("[ ");
+		builder.append(id).append(" : ");
+		builder.append(" 좋아요 개수 = ").append(emojiCount);
+		builder.append(" ] ");
+		
 		return builder.toString();
 	}
 

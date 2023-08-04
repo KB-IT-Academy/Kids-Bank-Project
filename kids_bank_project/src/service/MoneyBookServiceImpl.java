@@ -48,8 +48,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public void deleteMoneyBook(int rownum) {
-		int result = moneyBookDao.deleteMoneyBook(rownum);
+	public void deleteMoneyBook(String date, int rownum) {
+		int result = moneyBookDao.deleteMoneyBook(date, rownum);
 		if(result == 0) 
 			throw new SearchNotFoundException("게시물 삭제되지 않았습니다.");
 		

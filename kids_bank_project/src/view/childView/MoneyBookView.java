@@ -1,11 +1,9 @@
 package view.childView;
 
-import java.util.List;
 import java.util.Scanner;
 
 import controller.MoneyBookController;
 import dto.MoneyBookDto;
-import view.SuccessView;
 
 /**
  * 용돈기입장 View
@@ -13,6 +11,7 @@ import view.SuccessView;
 public class MoneyBookView {
 	static Scanner sc = new Scanner(System.in);
 	private static int dateSize = 8;
+	private static int MonthSize = 6;
 	
 	public MoneyBookView() {
 	}
@@ -71,18 +70,19 @@ public class MoneyBookView {
 			System.out.print("메뉴선택 >> ");
 	
 			String menu = sc.nextLine();
+			String date;
 			switch (menu) {
 			case "1":
 				MoneyBookController.getRecentMoneyBook();
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-				String date  = getNumberInput(sc, dateSize);
+				date  = getNumberInput(sc, dateSize);
 				MoneyBookController.getDayMoneyBook(date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
-				date = sc.nextLine();
+				date = getNumberInputMonth(sc, MonthSize);
 				MoneyBookController.getMonthMoneyBook(date);
 				break;
 			case "4":
@@ -105,40 +105,46 @@ public class MoneyBookView {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("작성할 날짜 입력 : ");
-		String moneydate = getNumberInput(sc, dateSize);
+		
+		String moneydate = getNumberInput(sc, dateSize); 	
 
 		System.out.println("1. 수입 2. 지출");
 		System.out.print("분류 선택 : ");
-		int moneyTypeInt = Integer.parseInt(sc.nextLine());
+		String moneyType = sc.nextLine();
 
-		String outComeType;
+		int outComeType;
 		int amount;
-		String content, memo;
+		String content, memo, moneyDate;
 		MoneyBookDto dto = new MoneyBookDto();
-		switch (moneyTypeInt) {
-		case 1:
+		switch (moneyType) {
+		case "1":
 			System.out.println("금액 입력 : ");
 			amount = Integer.parseInt(sc.nextLine());
 			System.out.println("내용 입력 : ");
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			dto =  new MoneyBookDto(); // 적어야될곳
+			System.out.println("내역 날짜 입력 : ");
+			moneyDate = sc.nextLine();
+			outComeType = 0;
+			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
 	    	MoneyBookController.createMoneyBook(dto);
 			break;
-		case 2:
+		case "2":
 			System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
 			System.out.println("지출 분류 선택 : ");
-			outComeType = "-";
+			outComeType = Integer.parseInt(sc.nextLine());
 			System.out.println("금액 입력 : ");
 			amount = Integer.parseInt(sc.nextLine());
 			System.out.println("내용 입력 : ");
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-			//기능구현
-			dto =  new MoneyBookDto();//적어야될곳
+			System.out.println("내역 날짜 입력 : ");
+			moneyDate = sc.nextLine();
+			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
 	    	MoneyBookController.createMoneyBook(dto);
+	    	
 			System.out.println("등록 완료되었습니다.");
 			break;
 		default:
@@ -156,7 +162,7 @@ public class MoneyBookView {
 		System.out.println("수정할 날짜 입력 ex)20230803 :");
 		String date = sc.nextLine();
 
-		MoneyBookController.getDayMoneyBook(date); // 하루 날짜 출력 메소드
+		MoneyBookController.getDayMoneyBook(date); //날짜별 내역 출력
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -188,7 +194,7 @@ public class MoneyBookView {
 		if (exit.equals("q")) {
 			return;
 		} else {
-			MoneyBookController.deleteMoneyBook(Integer.parseInt(exit));
+			MoneyBookController.deleteMoneyBook(date, Integer.parseInt(exit));
 		}
 	}
 
@@ -243,6 +249,24 @@ public class MoneyBookView {
 	 * @return
 	 */
 	public static String getNumberInput(Scanner scanner, int maxDigits) {
+        while (true) {
+        	
+            String input = scanner.nextLine();
+
+            if (input.length() == maxDigits && input.matches("\\d+")) {
+                return input;
+            } else {
+                System.out.println("올바른 날짜를 입력하세요.");
+            }
+        }
+    }
+	/**
+	 * 월 받기
+	 * @param scanner
+	 * @param maxDigits
+	 * @return
+	 */
+	public static String getNumberInputMonth(Scanner scanner, int maxDigits) {
         while (true) {
         	
             String input = scanner.nextLine();

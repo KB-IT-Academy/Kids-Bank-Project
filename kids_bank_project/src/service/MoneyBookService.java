@@ -28,7 +28,7 @@ public interface MoneyBookService {
 	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
 	 * @param 기입장 row number 
 	 */
-	void deleteMoneyBook(int rownum)throws SearchNotFoundException;
+	void deleteMoneyBook(String date, int rownum)throws SearchNotFoundException;
 	
 	/**
 	 * 작성한 전체 기입장을 조회하는 메서드

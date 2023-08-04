@@ -27,49 +27,51 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "insert into money_book (money_book_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date )from money_book values (?, ?, ?, ?, ?, ?, ?, ?, sysdate, sysdate)";
+		String sql = "INSERT INTO MONEY_BOOK(MONEY_BOOK_NUM, CHILD_NUM, MONEY_TYPE, OUTCOME_TYPE, AMOUNT, CONTENT, MEMO, MONEY_DATE, WRITE_DATE, UPDATE_DATE) VALUES(money_book_seq.nextval, ? , ? , ? , ? , ? , ? ,TO_DATE(?,'YYYYMMDD'), SYSDATE, SYSDATE)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, dto.getMoneyBookNum());
-			// static 으로 자식 고유번호 가져오기
-			ps.setInt(2, 1);
-			ps.setInt(3, dto.getMoneyTypeInt());
-			ps.setString(4, dto.getOutcomeType());
-			ps.setInt(5, dto.getAmount());
-			ps.setString(6, dto.getContent());
-			ps.setString(7, dto.getMemo());
-			ps.setString(8, dto.getMoney_date());
-			ps.setString(9, dto.getWrite_date());
-			ps.setString(10, dto.getUpdate_date());
+//			ps.setInt(1, dto.getMoneyBookNum());
+//			// static 으로 자식 고유번호 가져오기
+//			ps.setInt(2, 1);
+//			ps.setInt(3, dto.getMoneyTypeInt());
+//			ps.setString(4, dto.getOutcomeType());
+//			ps.setInt(5, dto.getAmount());
+//			ps.setString(6, dto.getContent());
+//			ps.setString(7, dto.getMemo());
+//			ps.setString(8, dto.getMoney_date());
+//			ps.setString(9, dto.getWrite_date());
+//			ps.setString(10, dto.getUpdate_date());
 
 			result = ps.executeUpdate();
 			int amount = dto.getAmount();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}
-		return 0;
+		return result;
 	}
 
 	@Override
 	public int updateMoneyBook(MoneyBookDto dto) throws SearchNotFoundException {
-
+			//dto 수정할 내용 => 수정할 내용, 날짜, rownum, type
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		List<MoneyBookDto> moneybook = getDayMoneyBook(dto.getMoney_date());
-		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1);
+		
+		List<MoneyBookDto> moneybook = getDayMoneyBook(dto.getMoney_date());	
+		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1); 	//출력된 내역 중 rownum에 해당하는 내역
 		
 		String sql = null;
 		int type = dto.getMoneyTypeInt();
 		if(type == 1) {
-			sql = "UPDATE MONEY_BOOK SET AMOUNT = ? WHERE MONEY_BOOK_NUM = ?";
+			sql = "UPDATE MONEY_BOOK SET UPDATE_DATE = SYSDATE, AMOUNT = ? WHERE MONEY_BOOK_NUM = ?";
 		}else if(type ==2 ) {
-			sql = "UPDATE MONEY_BOOK SET CONTENT = ? WHERE MONEY_BOOK_NUM = ?";
+			sql = "UPDATE MONEY_BOOK SET UPDATE_DATE = SYSDATE, CONTENT = ? WHERE MONEY_BOOK_NUM = ?";
 		}else if(type == 3) {
-			sql = "UPDATE MONEY_BOOK SET MEMO = ? WHERE MONEY_BOOK_NUM = ?";
+			sql = "UPDATE MONEY_BOOK SET UPDATE_DATE = SYSDATE, MEMO = ? WHERE MONEY_BOOK_NUM = ?";
 		}
 		
 		try {
@@ -86,7 +88,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 				ps.setString(1, dto.getMemo());
 				ps.setInt(2, dto2.getMoneyBookNum());
 			}
-
+			
 			result = ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -102,10 +104,13 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "delete money_book";
+		String sql = "DELETE FROM MONEY_BOOK WHERE CHILD_NUM = ?";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			//ps.setInt(1, childNum);
+			
 			result = ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -113,7 +118,6 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			DBManager.releaseConnection(con, ps);
 		}
 		return result;
-
 	}
 
 	@Override
@@ -122,10 +126,13 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "select rownum, money_book_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date from money_book order by money_date ";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE CHILD_NUM = ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			//ps.setInt(1, childNum);
+			
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				MoneyBookDto moneybook = new MoneyBookDto();
@@ -146,11 +153,14 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, date);
+			
+			//ps.setInt(1, childNum);
+			ps.setString(2, date);
+			
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
@@ -188,11 +198,14 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "select rownum, money_book_num, money_type, export_type, amount, content, memo, money_date, write_date, update_date from money_book where substr(money_date,0,6) = ? order by money_date ";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMM')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-			ps.setString(1, date);
+			
+			//ps.setString(1, childNum);
+			ps.setString(2, date);
+			
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				MoneyBookDto moneybook = new MoneyBookDto();
@@ -215,10 +228,14 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		
 		List<MoneyBookDto> list = new ArrayList<>();
 		
-		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM, TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE CHILD_NUM = ? ORDER BY MONEY_DATE DESC) WHERE ROWNUM <= 5";
+		
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			//ps.setInt(1, childNum);
+			
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
@@ -251,14 +268,24 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int deleteMoneyBook(int rownum) throws SearchNotFoundException {
+	public int deleteMoneyBook(String date, int rownum) throws SearchNotFoundException {
+		
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "delete * from money_book where rownum = ? ";
+		
+		List<MoneyBookDto> moneybook = getDayMoneyBook(date);
+		MoneyBookDto dto2 = moneybook.get(rownum-1);
+		
+		String sql = "DELETE FROM MONEY_BOOK WHERE MONEY_BOOK_NUM  = ? ";
+		
+		
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, dto2.getMoneyBookNum());
+			
 			result = ps.executeUpdate();
 
 		} catch (SQLException e) {

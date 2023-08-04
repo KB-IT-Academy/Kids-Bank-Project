@@ -8,7 +8,7 @@ public class MoneyBookDto {
 	private int moneyTypeInt;
 	private String moneyType;
 	// 카테고리
-	private String outcomeType; // 지출 분류
+	private int outcomeType; // 지출 분류
 	private int amount; // 금액
 	private String content; // 내용
 	private String memo; // 메모
@@ -54,7 +54,7 @@ public class MoneyBookDto {
 		this.memo = memo;
 	}
 
-	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, String outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
+	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, int outcomeType, int amount, String content, String memo, String money_date, String write_date, String update_date) {
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
 		this.moneyType = moneyType;
@@ -102,11 +102,11 @@ public class MoneyBookDto {
 		this.moneyTypeInt = moneyTypeInt;
 	}
 	
-	public String getOutcomeType() {
+	public int getOutcomeType() {
 		return outcomeType;
 	}
 
-	public void setOutcomeType(String outcomeType) {
+	public void setOutcomeType(int outcomeType) {
 		this.outcomeType = outcomeType;
 	}
 
@@ -172,7 +172,7 @@ public class MoneyBookDto {
 		sb.append(" 금액 = ").append(amount);
 		sb.append(" 내용 = ").append(content);
 		sb.append(" 메모 = ").append(content);
-		sb.append(']');
+		sb.append("]");
 		return sb.toString();
 	}
 
