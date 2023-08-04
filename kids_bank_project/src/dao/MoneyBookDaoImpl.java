@@ -133,7 +133,23 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				MoneyBookDto moneybook = new MoneyBookDto();
+				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
+				int rownum = rs.getInt("ROWNUM");
+				String money_date =rs.getString("MONEY_DATE");
+				int moneytype_num = rs.getInt("MONEY_TYPE");
+				String moneytype;
+				
+				if(moneytype_num==1){
+					moneytype = "지출";
+				}else {
+					moneytype= "수입";
+				}
+				
+				int amount = rs.getInt("AMOUNT");
+				String content = rs.getString("CONTENT");
+				String memo = rs.getString("MEMO");
+				
+				MoneyBookDto moneybook = new MoneyBookDto(moneyBookNum, rownum,money_date,moneytype,amount,content,memo);
 				list.add(moneybook);
 			}
 		} catch (SQLException e) {
@@ -196,7 +212,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMM')= ? ORDER BY MONEY_DATE DESC)";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMM')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
@@ -207,7 +223,23 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				MoneyBookDto moneybook = new MoneyBookDto();
+				int moneyBookNum = rs.getInt("MONEY_BOOK_NUM");
+				int rownum = rs.getInt("ROWNUM");
+				String money_date =rs.getString("MONEY_DATE");
+				int moneytype_num = rs.getInt("MONEY_TYPE");
+				String moneytype;
+				
+				if(moneytype_num==1){
+					moneytype = "지출";
+				}else {
+					moneytype= "수입";
+				}
+				
+				int amount = rs.getInt("AMOUNT");
+				String content = rs.getString("CONTENT");
+				String memo = rs.getString("MEMO");
+				
+				MoneyBookDto moneybook = new MoneyBookDto(moneyBookNum, rownum,money_date,moneytype,amount,content,memo);
 				list.add(moneybook);
 			}
 		} catch (SQLException e) {
