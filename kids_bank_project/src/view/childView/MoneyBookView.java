@@ -80,13 +80,23 @@ public class MoneyBookView {
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
+<<<<<<< HEAD
 				date  = getNumberInput(sc, dateSize);	//알맞은 형식으로 쓰도록
 				MoneyBookController.getDayMoneyBook(num, date);
+=======
+
+				date  = getNumberInput(sc, dateSize);
+				MoneyBookController.getDayMoneyBook(num, childNum, date);
+>>>>>>> 21c6720935e8a32a68550e12f32a578920e516ec
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
 				month  = getNumberInputMonth(sc, MonthSize);
+<<<<<<< HEAD
 				MoneyBookController.getMonthMoneyBook(num, childNum, month);
+=======
+				MoneyBookController.getMonthMoneyBook(num, childNum, month); 
+>>>>>>> 21c6720935e8a32a68550e12f32a578920e516ec
 				break;
 			case "4":
 				MoneyBookController.getAllMoneyBook(num, childNum);
