@@ -50,7 +50,7 @@ public interface CommentEmojiDao {
 	 * insert into emoji (parent_num, child_num, emoji_type, money_date, write_date) values (?, ?, ?, ?, sysdate)
 	 * 1. parentNum, 2. childNum, 3. emojiType, 4. moneyDate 
 	 */
-	public int craeteEmoji(int childNum, int parentNum, String content, String date);
+	public int craeteEmoji(int childNum, int parentNum, int emoji, String date);
 	
 	/**
 	 * 해당 날짜와 자기 자신(부모)의 num 값으로 이모지 삭제하는 메서드

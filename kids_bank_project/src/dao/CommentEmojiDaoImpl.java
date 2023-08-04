@@ -65,7 +65,7 @@ public class CommentEmojiDaoImpl implements CommentEmojiDao {
 	}
 
 	@Override
-	public int craeteEmoji(int childNum, int parentNum, String content, String date) throws DMLException {
+	public int craeteEmoji(int childNum, int parentNum, int emoji, String date) throws DMLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = "insert into emoji (parent_num, child_num, emoji_type, money_date, write_date, update_date)"
@@ -76,7 +76,7 @@ public class CommentEmojiDaoImpl implements CommentEmojiDao {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, parentNum);
 			ps.setInt(2, childNum);
-			ps.setString(3, content);
+			ps.setInt(3, emoji);
 			ps.setString(4, date);
 			result = ps.executeUpdate();
 			

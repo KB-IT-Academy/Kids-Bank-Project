@@ -6,11 +6,15 @@ import dao.ChildDao;
 import dao.ChildDaoImpl;
 import dao.CommentEmojiDao;
 import dao.CommentEmojiDaoImpl;
+import dao.ParentDao;
+import dao.ParentDaoImpl;
 import dto.CommentDto;
 import dto.EmojiDto;
 import exception.DMLException;
 
 public class CommentEmojiService {
+	
+	
 	static CommentEmojiDao commentEmojiDao = new CommentEmojiDaoImpl();  
 	/**
 	 * 댓글 생성하는 메서드
@@ -47,8 +51,8 @@ public class CommentEmojiService {
 	 * 이모지 생성하는 메서드
 	 * @param EmojiDto
 	 */
-	public int craeteEmoji(int childNum, int parentNum, String content, String date) throws DMLException {
-		int result = commentEmojiDao.craeteEmoji(childNum, parentNum, content, date);
+	public int craeteEmoji(int childNum, int parentNum, int emoji, String date) throws DMLException {
+		int result = commentEmojiDao.craeteEmoji(childNum, parentNum, emoji, date);
 		if (result == 0) {
 			throw new DMLException("이모지를 생성할 수 없습니다.");
 		}
