@@ -151,10 +151,10 @@ public class MoneyBookController {
 	 * @param childNum 자식 고유번호
 	 * @param 한달       조회 => 입력 값 "YYYYMM
 	 */
-	public static void getMonthMoneyBook(int num, int childNum, String date) {
+	public static void getMonthMoneyBook(int num, String date) {
 		
 		try {
-			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(childNum, date);
+			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(num, date);
 			SuccessView.moneyBookSelectPrint(list);
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
@@ -166,10 +166,10 @@ public class MoneyBookController {
 	 * 
 	 * @param childNum 자식 고유번호
 	 */
-	public static void getRecentMoneyBook(int num, int childNum) {
+	public static void getRecentMoneyBook(int num) {
 		
 		try {
-			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(childNum);
+			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(num);
 			SuccessView.moneyBookSelectPrint(list);
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
