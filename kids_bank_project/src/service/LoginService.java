@@ -4,6 +4,7 @@ import dao.ChildDao;
 import dao.ChildDaoImpl;
 import dto.ChildDto;
 import dto.ParentDto;
+import exception.SearchNotFoundException;
 import session.Session;
 import session.SessionSet;
 
@@ -21,11 +22,11 @@ public class LoginService {
 	 * @param password
 	 * @throws Exception 
 	 */
-	public static ChildDto loginChild(String id, String password) throws Exception {
+	public static ChildDto loginChild(String id, String password) throws SearchNotFoundException {
 		ChildDto child = childDao.loginChild(id, password);
 		if(child == null) { 
 			//System.out.println("로그인 틀림 "); // 지우기  
-			throw new Exception("정보를 다시 확인해주세요.");
+			throw new SearchNotFoundException("정보를 다시 확인해주세요.");
 		} 
 		
 		//로그인 된 정보 저장하기
@@ -54,11 +55,11 @@ public class LoginService {
 	 * @param id
 	 * @param password
 	 */
-	public static ParentDto loginParent(String id, String password) throws Exception {
+	public static ParentDto loginParent(String id, String password) throws SearchNotFoundException {
 		ParentDto parent = parentDao.loginParent(id, password);
 		if(parent == null) { 
 			System.out.println("로그인 틀림 "); // 지우기  
-			throw new Exception("정보를 다시 확인해주세요.");
+			throw new SearchNotFoundException("정보를 다시 확인해주세요.");
 		} 
 		
 		//로그인 된 정보 저장하기

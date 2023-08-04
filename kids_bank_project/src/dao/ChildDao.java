@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import dto.ChildDto;
 import exception.SearchNotFoundException;
+import exception.SearchWrongException;
 
 public interface ChildDao {
 	/**
@@ -26,5 +27,5 @@ public interface ChildDao {
 	 * @throws SearchNotFoundException 
 	 */ 
 
-	ChildDto loginChild(String id, String password) throws SQLException;
+	ChildDto loginChild(String id, String password) throws SearchWrongException;
 }

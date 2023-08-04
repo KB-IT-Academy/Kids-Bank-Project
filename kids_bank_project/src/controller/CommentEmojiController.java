@@ -51,9 +51,9 @@ public class CommentEmojiController {
 	 * 이모지 생성하는 메서드
 	 * @param EmojiDto
 	 */
-	public static void craeteEmoji(int childNum, int parentNum, String content, String date) {
+	public static void craeteEmoji(int childNum, int parentNum, int emoji, String date) {
 		try {			
-			int result = commentEmojiService.craeteEmoji(childNum, parentNum, content, date);
+			int result = commentEmojiService.craeteEmoji(childNum, parentNum, emoji, date);
 	
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());

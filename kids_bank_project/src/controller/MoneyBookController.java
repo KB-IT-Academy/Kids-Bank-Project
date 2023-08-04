@@ -48,43 +48,45 @@ public class MoneyBookController {
 	 * @param childNum 자식 고유번호
 	 */
 	public static void deleteAllMoneyBook(int childNum) {
-	
-		try{
+
+		try {
 			moneyBookService.deleteAllMoneyBook(childNum);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
-		}catch(SearchNotFoundException e) {
+		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
-	 * @param 기입장 row number 
+	 * 
+	 * @param 기입장 row number
 	 */
 	public static void deleteAllMoneyBook(String date, int childNum, int rownum) {
-		try{
+		try {
 			moneyBookService.deleteMoneyBook(date, childNum, rownum);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
-		}catch(SearchNotFoundException e) {
+		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * 작성한 전체 기입장을 조회하는 메서드
 	 */
 	public static void getAllMoneyBook(int num, int childNum) {
-		
-		 try {
-			 List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
-				 SuccessView.moneyBookSelectPrint(list);
-			  }catch (SearchNotFoundException e) {
-				  FailView.errorMessage(e.getMessage());
-			  }
+
+		try {
+			List<MoneyBookDto> list = moneyBookService.getAllMoneyBook(num);
+			SuccessView.moneyBookSelectPrint(list);
+		} catch (SearchNotFoundException e) {
+			FailView.errorMessage(e.getMessage());
+		}
 	}
-	
+
 	/**
 	 * 지정한 날짜의 기입장 조회하는 메서드
+	 * 
 	 * @param 날짜 조회 => 입력 값 "2023-08-03"
 	 */
 	public static void getDayMoneyBook(int num, int childNum, String date) {
@@ -151,8 +153,13 @@ public class MoneyBookController {
 	 * @param childNum 자식 고유번호
 	 * @param 한달       조회 => 입력 값 "YYYYMM
 	 */
+<<<<<<< HEAD
 	public static void getMonthMoneyBook(int num, String date) {
 		
+=======
+	public static void getMonthMoneyBook(int childNum, String date) {
+
+>>>>>>> c20c313694f4c52c81069c63f04870ec0b4f01f6
 		try {
 			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(num, date);
 			SuccessView.moneyBookSelectPrint(list);
@@ -166,8 +173,13 @@ public class MoneyBookController {
 	 * 
 	 * @param childNum 자식 고유번호
 	 */
+<<<<<<< HEAD
 	public static void getRecentMoneyBook(int num) {
 		
+=======
+	public static void getRecentMoneyBook(int childNum) {
+
+>>>>>>> c20c313694f4c52c81069c63f04870ec0b4f01f6
 		try {
 			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(num);
 			SuccessView.moneyBookSelectPrint(list);
