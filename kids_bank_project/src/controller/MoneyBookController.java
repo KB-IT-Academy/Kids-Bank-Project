@@ -152,16 +152,12 @@ public class MoneyBookController {
 	 * 
 	 * @param childNum 자식 고유번호
 	 * @param 한달       조회 => 입력 값 "YYYYMM
-	 */
-<<<<<<< HEAD
-	public static void getMonthMoneyBook(int num, String date) {
-		
-=======
+	 */ 
+		 
 	public static void getMonthMoneyBook(int childNum, String date) {
-
->>>>>>> c20c313694f4c52c81069c63f04870ec0b4f01f6
+ 
 		try {
-			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(num, date);
+			List<MoneyBookDto> list = moneyBookService.getMonthMoneyBook(childNum, date);
 			SuccessView.moneyBookSelectPrint(list);
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
@@ -172,16 +168,12 @@ public class MoneyBookController {
 	 * 최근 5개의 기입장을 조회하는 메서드
 	 * 
 	 * @param childNum 자식 고유번호
-	 */
-<<<<<<< HEAD
-	public static void getRecentMoneyBook(int num) {
-		
-=======
+	 */ 
+		 
 	public static void getRecentMoneyBook(int childNum) {
-
->>>>>>> c20c313694f4c52c81069c63f04870ec0b4f01f6
+ 
 		try {
-			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(num);
+			List<MoneyBookDto> list = moneyBookService.getRecentMoneyBook(childNum);
 			SuccessView.moneyBookSelectPrint(list);
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());
