@@ -41,8 +41,8 @@ public class LoginController {
 	/**
 	 * 자식 로그아웃하는 메서드
 	 */
-	public static void logoutChild(String parentChild) {
-		remove(parentChild);
+	public static void logoutChild(Session session) {
+		LoginService.logoutChild(session);
 		
 	}
 	

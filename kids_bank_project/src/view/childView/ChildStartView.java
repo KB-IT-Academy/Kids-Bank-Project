@@ -143,9 +143,12 @@ public class ChildStartView {
 				MyPageView.printMyPageMenu(num);
 				break;
 			case "5":
-				//logoutChild(id)// 로그아웃 메소드 
 				System.out.println("로그아웃 되었습니다.");
-				//StartView.printMain();
+				// 로그아웃 추가 
+				SessionSet sessionSet = new SessionSet();
+				Session session = sessionSet.get(num);
+				LoginController.logoutChild(session);
+				StartView.printMain();
 				break;
 			default:
 				System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
