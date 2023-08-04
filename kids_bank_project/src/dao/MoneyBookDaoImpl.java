@@ -24,28 +24,25 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int createMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException {
+	public int createMoneyBook(int childNum, MoneyBookDto dto) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		String sql = "INSERT INTO MONEY_BOOK(MONEY_BOOK_NUM, CHILD_NUM, MONEY_TYPE, OUTCOME_TYPE, AMOUNT, CONTENT, MEMO, MONEY_DATE, WRITE_DATE, UPDATE_DATE) VALUES(money_book_seq.nextval, ? , ? , ? , ? , ? , ? ,TO_DATE(?,'YYYYMMDD'), SYSDATE, SYSDATE)";
+		String sql = "INSERT INTO MONEY_BOOK(MONEY_BOOK_NUM, CHILD_NUM, MONEY_TYPE, OUTCOME_TYPE, AMOUNT, CONTENT, MEMO, MONEY_DATE, WRITE_DATE, UPDATE_DATE) "
+				+" VALUES(money_book_seq.nextval, ? , ? , ? , ? , ? , ? ,TO_DATE(?,'YYYYMMDD'), SYSDATE, SYSDATE)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
-//			ps.setInt(1, dto.getMoneyBookNum());
-//			// static 으로 자식 고유번호 가져오기
-//			ps.setInt(2, 1);
-//			ps.setInt(3, dto.getMoneyTypeInt());
-//			ps.setString(4, dto.getOutcomeType());
-//			ps.setInt(5, dto.getAmount());
-//			ps.setString(6, dto.getContent());
-//			ps.setString(7, dto.getMemo());
-//			ps.setString(8, dto.getMoney_date());
-//			ps.setString(9, dto.getWrite_date());
-//			ps.setString(10, dto.getUpdate_date());
-
+			
+			ps.setInt(1, childNum);
+			ps.setInt(2, dto.getMoneyTypeInt());
+			ps.setInt(3, dto.getOutcomeType());
+			ps.setInt(4, dto.getAmount());
+			ps.setString(5, dto.getContent());
+			ps.setString(6, dto.getMemo());
+			ps.setString(7, dto.getMoney_date());
+			
 			result = ps.executeUpdate();
-			int amount = dto.getAmount();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -56,24 +53,14 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public int updateMoneyBook(MoneyBookDto dto) throws SearchNotFoundException {
+	public int updateMoneyBook(int childNum, MoneyBookDto dto) throws SearchNotFoundException {
 			//dto 수정할 내용 => 수정할 내용, 날짜, rownum, type
-		Connection con = null;
-		PreparedStatement ps = null;
-		int result = 0;
-		
-		List<MoneyBookDto> moneybook = getDayMoneyBook(dto.getMoney_date());	
-		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1); 	//출력된 내역 중 rownum에 해당하는 내역
-=======
-	public int updateMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException {
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
-		List<MoneyBookDto> moneybook = getDayMoneyBook(num, dto.getMoney_date());
+		List<MoneyBookDto> moneybook = getDayMoneyBook(childNum, dto.getMoney_date());
 		MoneyBookDto dto2 = moneybook.get(dto.getRownum()-1);
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 		
 		String sql = null;
 		int type = dto.getMoneyTypeInt();
@@ -111,7 +98,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public int deleteAllMoneyBook(int num) throws SearchNotFoundException {
+	public int deleteAllMoneyBook(int childNum) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
@@ -120,7 +107,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			
-			//ps.setInt(1, childNum);
+			ps.setInt(1, childNum);
 			
 			result = ps.executeUpdate();
 
@@ -132,7 +119,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getAllMoneyBook(int num) throws SearchNotFoundException {
+	public List<MoneyBookDto> getAllMoneyBook(int childNum) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -142,7 +129,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			
-			//ps.setInt(1, childNum);
+			ps.setInt(1, childNum);
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -159,17 +146,17 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getDayMoneyBook(int num, String date) throws SearchNotFoundException {
+	public List<MoneyBookDto> getDayMoneyBook(int childNum, String date) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		List<MoneyBookDto> list = new ArrayList<>();
-		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
+		String sql = "SELECT MONEY_BOOK_NUM, ROWNUM,TO_CHAR(MONEY_DATE,'YY-MM-DD') AS MONEY_DATE, MONEY_TYPE, AMOUNT, CONTENT, MEMO FROM (SELECT * FROM money_book WHERE CHILD_NUM = ? AND TO_CHAR(MONEY_DATE,'YYYYMMDD')= ? ORDER BY MONEY_DATE DESC)";
 		try {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			
-			//ps.setInt(1, childNum);
+			ps.setInt(1, childNum);
 			ps.setString(2, date);
 			
 			rs = ps.executeQuery();
@@ -204,7 +191,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getMonthMoneyBook(int num, String date) throws SearchNotFoundException {
+	public List<MoneyBookDto> getMonthMoneyBook(int childNum, String date) throws SearchNotFoundException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -214,7 +201,8 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			
-			//ps.setString(1, childNum);
+			ps.setInt(1, childNum);
+			
 			ps.setString(2, date);
 			
 			rs = ps.executeQuery();
@@ -232,7 +220,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-	public List<MoneyBookDto> getRecentMoneyBook(int num) throws SearchNotFoundException{
+	public List<MoneyBookDto> getRecentMoneyBook(int childNum) throws SearchNotFoundException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -245,7 +233,7 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 			con = DBManager.getConnection();
 			ps = con.prepareStatement(sql);
 			
-			//ps.setInt(1, childNum);
+			ps.setInt(1, childNum);
 			
 			rs = ps.executeQuery();
 			while (rs.next()) {
@@ -279,17 +267,13 @@ public class MoneyBookDaoImpl implements MoneyBookDao {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public int deleteMoneyBook(String date, int rownum) throws SearchNotFoundException {
-		
-=======
-	public int deleteMoneyBook(int num, int rownum) throws SearchNotFoundException {
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
+	public int deleteMoneyBook(String date, int childNum, int rownum) throws SearchNotFoundException {
+	
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
 		
-		List<MoneyBookDto> moneybook = getDayMoneyBook(date);
+		List<MoneyBookDto> moneybook = getDayMoneyBook(childNum, date);
 		MoneyBookDto dto2 = moneybook.get(rownum-1);
 		
 		String sql = "DELETE FROM MONEY_BOOK WHERE MONEY_BOOK_NUM  = ? ";

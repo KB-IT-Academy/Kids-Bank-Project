@@ -53,15 +53,9 @@ public class MoneyBookController{
 	 * rownum을 활용하여 기입장을 삭제하는 메서드(rownum으로 고유번호 확인)
 	 * @param 기입장 row number 
 	 */
-<<<<<<< HEAD
-	public static void deleteMoneyBook(String date, int rownum) {
+	public static void deleteMoneyBook(String date, int num, int rownum) {
 		try{
-			moneyBookService.deleteMoneyBook(date, rownum);
-=======
-	public static void deleteMoneyBook(int num, int rownum) {
-		try{
-			moneyBookService.deleteMoneyBook(num, rownum);
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
+			moneyBookService.deleteMoneyBook(date, num, rownum);
 			SuccessView.messagePrint("게시물을 삭제하였습니다");
 		}catch(SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());

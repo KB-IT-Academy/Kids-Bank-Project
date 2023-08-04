@@ -77,23 +77,14 @@ public class MoneyBookView {
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-<<<<<<< HEAD
 				date  = getNumberInput(sc, dateSize);
-				MoneyBookController.getDayMoneyBook(date);
-				break;
-			case "3":
-				System.out.println("월 입력 ex)202308");
-				date = getNumberInputMonth(sc, MonthSize);
-				MoneyBookController.getMonthMoneyBook(date);
-=======
-				String date  = getNumberInput(sc, dateSize);
 				MoneyBookController.getDayMoneyBook(num, date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
-				date = sc.nextLine();
-				MoneyBookController.getMonthMoneyBook(num, date);
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
+				date = getNumberInputMonth(sc, MonthSize);
+				String month  = getNumberInput(sc, dateSize);
+				MoneyBookController.getMonthMoneyBook(num, month);
 				break;
 			case "4":
 				MoneyBookController.getAllMoneyBook(num);
@@ -134,17 +125,14 @@ public class MoneyBookView {
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-<<<<<<< HEAD
 			System.out.println("내역 날짜 입력 : ");
 			moneyDate = sc.nextLine();
 			outComeType = 0;
+			
 			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(dto);
-=======
-			dto =  new MoneyBookDto(); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(num, dto);
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
+	    	MoneyBookController.createMoneyBook(num,dto);
 			break;
+			
 		case "2":
 			System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
 			System.out.println("지출 분류 선택 : ");
@@ -155,17 +143,10 @@ public class MoneyBookView {
 			content = sc.nextLine();
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
-<<<<<<< HEAD
 			System.out.println("내역 날짜 입력 : ");
 			moneyDate = sc.nextLine();
 			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneyDate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(dto);
-	    	
-=======
-			//기능구현
-			dto =  new MoneyBookDto();//적어야될곳
 	    	MoneyBookController.createMoneyBook(num, dto);
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 			System.out.println("등록 완료되었습니다.");
 			break;
 		default:
@@ -183,11 +164,7 @@ public class MoneyBookView {
 		System.out.println("수정할 날짜 입력 ex)20230803 :");
 		String date = sc.nextLine();
 
-<<<<<<< HEAD
-		MoneyBookController.getDayMoneyBook(date); //날짜별 내역 출력
-=======
 		MoneyBookController.getDayMoneyBook(num, date); // 하루 날짜 출력 메소드
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -219,11 +196,7 @@ public class MoneyBookView {
 		if (exit.equals("q")) {
 			return;
 		} else {
-<<<<<<< HEAD
-			MoneyBookController.deleteMoneyBook(date, Integer.parseInt(exit));
-=======
-			MoneyBookController.deleteMoneyBook(num, Integer.parseInt(exit));
->>>>>>> 219a874b74045b25b32528cf12aacd216418207e
+			MoneyBookController.deleteMoneyBook(date, num, Integer.parseInt(exit));
 		}
 	}
 
