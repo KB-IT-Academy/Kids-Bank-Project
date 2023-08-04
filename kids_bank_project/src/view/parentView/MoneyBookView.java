@@ -68,20 +68,20 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				MoneyBookController.getRecentMoneyBook();
+				//MoneyBookController.getRecentMoneyBook();
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
 				String date  = getNumberInput(sc, dateSize);
-				MoneyBookController.getDayMoneyBook(date);
+				//MoneyBookController.getDayMoneyBook(date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
 				date = sc.nextLine();
-				MoneyBookController.getMonthMoneyBook(date);
+				//MoneyBookController.getMonthMoneyBook(date);
 				break;
 			case "4":
-				MoneyBookController.getAllMoneyBook();
+				//MoneyBookController.getAllMoneyBook();
 				break;
 			case "q":
 				flag = 0;
