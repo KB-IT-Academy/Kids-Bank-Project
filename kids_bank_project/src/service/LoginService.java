@@ -76,5 +76,11 @@ public class LoginService {
 	/**
 	 * 부모 로그아웃하는 메서드
 	 */
-	//void logoutParent();
+	public static void logoutParent(Session session) { 
+	 
+		
+		SessionSet sessionSet = new SessionSet();
+		sessionSet.remove(session); 
+		
+	}
 }

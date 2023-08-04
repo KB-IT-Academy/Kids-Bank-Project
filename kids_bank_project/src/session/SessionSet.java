@@ -9,7 +9,7 @@ public class SessionSet {
 	private static SessionSet ss = new SessionSet();
 	private Set<Session> set; 
 	
-	private SessionSet() {
+	public SessionSet() {
 		set = new HashSet<>();
 	}
 	
@@ -24,6 +24,19 @@ public class SessionSet {
 	public Session get(String sessionId) {
 		for(Session session : set) {
 			if(session.getSessionId().equals(sessionId)) { 
+				return session;
+			}
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * 사용자 찾기 - pk값으로 찾기 
+	 * */
+	public Session get(int num) {
+		for(Session session : set) {
+			if(session.getUserNum() == num) { 
 				return session;
 			}
 		}
@@ -51,15 +64,5 @@ public class SessionSet {
 		set.remove(session);
 	}
 
-	/*
-	public String getSet2() {
-        Iterator<Session> iterator = set.iterator();
-  	   
-        return iterator.next().getSessionId();
-        	//return iterator.next().getSessionId();
-    
-		//return null;
-	}
-	*/
 	
 }

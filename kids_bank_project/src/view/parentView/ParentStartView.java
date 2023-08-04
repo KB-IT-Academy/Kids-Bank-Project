@@ -7,6 +7,8 @@ import controller.JoinController;
 import controller.LoginController;
 import controller.MyPageController;
 import dto.UserDto;
+import session.Session;
+import session.SessionSet;
 import view.StartView;
 import view.SuccessView;
 import view.childView.ChildStartView;
@@ -215,6 +217,10 @@ public class ParentStartView {
 				break;
 			case "4":
 				System.out.println("로그아웃 되었습니다.");
+				// 로그아웃 추가 
+				SessionSet sessionSet = new SessionSet();
+				Session session = sessionSet.get(num);
+				LoginController.logoutParent(session);
 				StartView.printMain();
 				break;
 			default:

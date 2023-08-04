@@ -3,6 +3,7 @@ package controller;
 import dto.ChildDto;
 import dto.ParentDto;
 import service.LoginService;
+import session.Session;
 import view.FailView; 
 
 public class LoginController {
@@ -76,7 +77,9 @@ public class LoginController {
 	/**
 	 * 부모 로그아웃하는 메서드
 	 */
-	public static void logoutParent() {
-		
+	
+	public static void logoutParent(Session session) {
+		LoginService.logoutParent(session);
+		 
 	}
 }
