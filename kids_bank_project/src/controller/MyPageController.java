@@ -150,18 +150,18 @@ public class MyPageController {
 	/**
 	 * 연결된 자식 보여주고 반환하는 메서드
 	 */ 
-	public static int getChild(int num) {
+	public static List<ChildDto> getChild(int num) {
 		try {			
 			List<ChildDto> list = myPageService.getChild(num); 
 			System.out.println("자식찾기 성공 ");
 			
 			SuccessView.printChildName(list);
-			return 0;
+			return list;
 		} catch (RuntimeException e) {
-			FailView.errorMessage(e.getMessage());
-			return 1;
-		
+			FailView.errorMessage(e.getMessage()); 
+			return null; 
 		}
+		 
 	}
 	
 	/**

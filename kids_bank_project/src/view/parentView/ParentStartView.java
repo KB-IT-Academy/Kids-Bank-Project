@@ -160,7 +160,8 @@ public class ParentStartView {
 			System.out.println("**********************************************************************************************");
 			// 자녀 정보 불러와서 출력, 자식 순서대로
 
-			if(MyPageController.getChild(num) == 0) { 
+			List<ChildDto> childList = MyPageController.getChild(num);
+			if(childList != null) { 
 //				SuccessView.printChilds();
 				System.out.println("----------------------------------------------------------------------------------------------");
 				System.out.print("자녀 선택 : ");
@@ -178,8 +179,11 @@ public class ParentStartView {
 			
 			// 받은 데이터 저장(인덱스 값으로 가져옴)
 			int childOrder = Integer.parseInt(sc.nextLine());
+			
+			// 자식 PK값 가져오기 
+			int childNum = childList.get(childOrder).getChildNum();
 			//UserDto childData = childs.get(childOrder-1);
-			printMainMenu(num, childOrder);
+			printMainMenu(num, childNum);
 			
 			// 반복문으로 설정 필요, 메소드로 따로 분리
 //			System.out.println("자녀 추가하려면 +를 입력해주세요.");
