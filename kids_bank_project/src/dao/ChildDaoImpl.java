@@ -9,7 +9,9 @@ import java.sql.SQLException;
 
 import common.DBManager;
 import dto.ChildDto;
-import exception.DMLException; 
+import exception.DMLException;
+import exception.SearchNotFoundException;
+import exception.SearchWrongException; 
 
 public class ChildDaoImpl implements ChildDao  {
 	
@@ -17,7 +19,7 @@ public class ChildDaoImpl implements ChildDao  {
 	 * 아이 로그인
 	 */
 	@Override
-	public ChildDto loginChild(String id, String password) throws SQLException {
+	public ChildDto loginChild(String id, String password) throws SearchWrongException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -43,7 +45,9 @@ public class ChildDaoImpl implements ChildDao  {
 				
 				childDto = new ChildDto(childNum, id1, password1, name, phone, registrationNumber, joinDate);
 				 
-			}
+				} 
+		} catch (SQLException e) {
+				throw new SearchWrongException("로그인 입력이 잘못되었습니다.");
 		}finally {
 			 DBManager.releaseConnection(con, ps, rs);
 		}
@@ -68,7 +72,7 @@ public class ChildDaoImpl implements ChildDao  {
 			ps.setString(4, dto.getRegistrationNumber());
 			result = ps.executeUpdate();
 		} catch (SQLException e) {
-			throw new  DMLException();
+			throw new  DMLException("회원가입을 할 수 없습니다.");
 		} finally {
 			DBManager.releaseConnection(con, ps);
 		}

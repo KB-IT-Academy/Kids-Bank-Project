@@ -20,6 +20,8 @@ public class DMLException extends RuntimeException{
 	 * 
 	 * 탈퇴할 수 없습니다.
 	 * 관계를 설정할 수 없습니다.
+	 * 
+	 * 이미 존재하는 아이디입니다.
 	 */
 	public DMLException(String message) {
 		super(message);

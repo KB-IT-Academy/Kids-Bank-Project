@@ -44,7 +44,7 @@ public class MyPageServiceImpl implements MyPageService {
 	public int childFindByRegistNum(String registNum) throws SearchNotFoundException {
 		int result = myPageDao.childFindByRegistNum(registNum);
 		if (result == -1) {
-			throw new SearchNotFoundException();
+			throw new SearchNotFoundException("주민등록번호가 일치하는 자식이 없습니다.");
 		}
 		return result;
 	}
