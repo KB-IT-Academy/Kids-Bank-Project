@@ -21,8 +21,8 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 	
 	@Override
-	public int createMoneyBook(int num, MoneyBookDto dto) throws SearchNotFoundException{
-		 int result = moneyBookDao.createMoneyBook(num, dto);
+	public int createMoneyBook(int childNum, MoneyBookDto dto) throws SearchNotFoundException{
+		 int result = moneyBookDao.createMoneyBook(childNum, dto);
 		 if(result == 0)
 				throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		 return 0;
@@ -31,18 +31,18 @@ public class MoneyBookServiceImpl implements MoneyBookService{
 	}
 
 	@Override
-	public void updateMoneyBook(int type, int num, MoneyBookDto dto)throws SearchNotFoundException {
+	public void updateMoneyBook(int type, int childNum, MoneyBookDto dto)throws SearchNotFoundException {
 		
-		int result = moneyBookDao.updateMoneyBook(type, num, dto);
+		int result = moneyBookDao.updateMoneyBook(type, childNum, dto);
 		if(result == 0)
 			throw new SearchNotFoundException("게시판에 게시물의 정보가 없습니다");
 		
 	}
 
 	@Override
-	public void deleteAllMoneyBook(int num)throws SearchNotFoundException  {
+	public void deleteAllMoneyBook(int childNum)throws SearchNotFoundException  {
 		 
-		int result = moneyBookDao.deleteAllMoneyBook(num);
+		int result = moneyBookDao.deleteAllMoneyBook(childNum);
 		if(result == 0) 
 			throw new SearchNotFoundException("게시물 삭제되지 않았습니다.");
 		

@@ -19,7 +19,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 메뉴 화면 출력하는 메소드
 	 */
-	static public void printMoneyBookMenu(int num) { 
+	static public void printMoneyBookMenu(int childNum) { 
 		int flag = 1;
 		while (flag == 1) {
 			System.out.println("----------------------------------------------------------------------------------------------");
@@ -36,16 +36,16 @@ public class MoneyBookView {
 			String menu = sc.nextLine();
 			switch (menu) {
 			case "1":
-				printSearchMenu(num, 0);
+				printSearchMenu(childNum);
 				break;
 			case "2":
-				printInsertMoneyBook(num);
+				printInsertMoneyBook(childNum);
 				break;
 			case "3":
-				printUpdateMoneyBook(num);
+				printUpdateMoneyBook(childNum);
 				break;
 			case "4":
-				printDeleteMoneyBook(num, 0);
+				printDeleteMoneyBook(childNum);
 				break;
 			case "q":
 				flag = 0;
@@ -59,10 +59,8 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 조회 화면 출력하는 메소드
 	 */
-	static public void printSearchMenu(int num, int childNum) {
+	static public void printSearchMenu(int childNum) {
 		 
-		
-		childNum = 0;
 		int flag = 1;
 		while (flag == 1) {
 			System.out.println();
@@ -76,30 +74,20 @@ public class MoneyBookView {
 			String month;
 			switch (menu) {
 			case "1":
-				MoneyBookController.getRecentMoneyBook(num, childNum);
+				MoneyBookController.getRecentMoneyBook(childNum);
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
-<<<<<<< HEAD
-				date  = getNumberInput(sc, dateSize);	//알맞은 형식으로 쓰도록
-				MoneyBookController.getDayMoneyBook(num, date);
-=======
-
 				date  = getNumberInput(sc, dateSize);
-				MoneyBookController.getDayMoneyBook(num, childNum, date);
->>>>>>> 21c6720935e8a32a68550e12f32a578920e516ec
+				MoneyBookController.getDayMoneyBook(childNum, date);
 				break;
 			case "3":
 				System.out.println("월 입력 ex)202308");
 				month  = getNumberInputMonth(sc, MonthSize);
-<<<<<<< HEAD
-				MoneyBookController.getMonthMoneyBook(num, childNum, month);
-=======
-				MoneyBookController.getMonthMoneyBook(num, childNum, month); 
->>>>>>> 21c6720935e8a32a68550e12f32a578920e516ec
+				MoneyBookController.getMonthMoneyBook(childNum, month); 
 				break;
 			case "4":
-				MoneyBookController.getAllMoneyBook(num, childNum);
+				MoneyBookController.getAllMoneyBook(childNum);
 				break;
 			case "q":
 				flag = 0;
@@ -113,7 +101,7 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 등록 화면 출력하는 메소드
 	 */
-	static public void printInsertMoneyBook(int num) {
+	static public void printInsertMoneyBook(int childNum) {
 		
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
@@ -140,7 +128,7 @@ public class MoneyBookView {
 			outComeType = 0;
 			
 			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(num,dto);
+	    	MoneyBookController.createMoneyBook(childNum,dto);
 			break;
 			
 		case "2":
@@ -154,7 +142,7 @@ public class MoneyBookView {
 			System.out.println("메모 입력 : ");
 			memo = sc.nextLine();
 			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(num, dto);
+	    	MoneyBookController.createMoneyBook(childNum, dto);
 			System.out.println("등록 완료되었습니다.");
 			break;
 		default:
@@ -165,14 +153,14 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 수정 화면 출력하는 메소드
 	 */
-	static public void printUpdateMoneyBook(int num) {
+	static public void printUpdateMoneyBook(int childNum) {
 
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("수정할 날짜 입력 ex)20230803 :");
 		String date = sc.nextLine();
 
-		MoneyBookController.getDayMoneyBook(num, 0, date); // 하루 날짜 출력 메소드
+		MoneyBookController.getDayMoneyBook(childNum, 0, date); // 하루 날짜 출력 메소드
 		
 
 		System.out.println("수정할 번호 입력(수정할 내역 없으면 q 입력) : ");
@@ -182,7 +170,7 @@ public class MoneyBookView {
 			return;
 		} else {
 			int rownum = Integer.parseInt(str_rownum);
-			selectContentOfBook(num, date,rownum);
+			selectContentOfBook(childNum, date,rownum);
 		}
 	
 	}
@@ -190,14 +178,14 @@ public class MoneyBookView {
 	/**
 	 * 용돈기입장 삭제 화면 출력하는 메소드
 	 */
-	static public void printDeleteMoneyBook(int num, int childNum) {
+	static public void printDeleteMoneyBook(int childNum) {
 		childNum = 0;
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------");
 		System.out.println("삭제할 날짜 입력 : ");
 		String date = sc.nextLine();
 
-		MoneyBookController.getDayMoneyBook(num, childNum, date);
+		MoneyBookController.getDayMoneyBook(childNum, date);
 		
 		System.out.println("삭제할 번호 입력(삭제할 내역 없으면 q 입력) : ");
 		String exit = sc.nextLine();
@@ -205,14 +193,14 @@ public class MoneyBookView {
 		if (exit.equals("q")) {
 			return;
 		} else {
-			MoneyBookController.deleteMoneyBook(date, num, Integer.parseInt(exit));
+			MoneyBookController.deleteMoneyBook(date, childNum, Integer.parseInt(exit));
 		}
 	}
 
 	/**
 	 * 용돈기입장 수정(상세 수정) 화면 출력하는 메소드
 	 */
-	static private void selectContentOfBook(int num, String date, int rownum) {
+	static private void selectContentOfBook(int childNum, String date, int rownum) {
 		
 	
 		System.out.println();
@@ -231,21 +219,21 @@ public class MoneyBookView {
 			int amount = Integer.parseInt(sc.nextLine());
 			dto = new MoneyBookDto(rownum,date, 0, amount, null, null) ;
 			typeInt = Integer.parseInt(type);
-			MoneyBookController.updateMoneyBook(typeInt, num, dto);
+			MoneyBookController.updateMoneyBook(typeInt, childNum, dto);
 			break;
 		case "2":
 			System.out.println("수정할 내용 입력 : ");
 			String content = sc.nextLine();
 			dto = new MoneyBookDto(rownum,date, 0, 0, content, " ") ;
 			typeInt = Integer.parseInt(type);
-			MoneyBookController.updateMoneyBook(typeInt, num, dto);
+			MoneyBookController.updateMoneyBook(typeInt, childNum, dto);
 			break;
 		case "3":
 			System.out.println("수정할 메모 입력: ");
 			String memo = sc.nextLine();
 			dto = new MoneyBookDto(rownum,date, 0, 0, " ", memo) ;
 			typeInt = Integer.parseInt(type);
-			MoneyBookController.updateMoneyBook(typeInt, num, dto);
+			MoneyBookController.updateMoneyBook(typeInt, childNum, dto);
 			break;
 		case "q":
 			return;

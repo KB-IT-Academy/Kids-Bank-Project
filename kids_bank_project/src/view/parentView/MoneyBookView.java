@@ -69,7 +69,7 @@ public class MoneyBookView {
 			String date = "";
 			switch (menu) {
 			case "1": 
-				MoneyBookController.getRecentMoneyBook(num, childNum); 
+				MoneyBookController.getRecentMoneyBook(childNum); 
 				break;
 			case "2":
 				System.out.println("날짜 입력 ex)20230803");
@@ -85,7 +85,7 @@ public class MoneyBookView {
 			case "4":
 				date  = getNumberInput(sc, dateSize); 
 				//MoneyBookController.getAllMoneyBook(); 
-				MoneyBookController.getMonthMoneyBook(num, childNum, date);
+				MoneyBookController.getMonthMoneyBook(childNum, date);
 				break; 
 			case "q":
 				flag = 0;
