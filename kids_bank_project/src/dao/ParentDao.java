@@ -27,7 +27,7 @@ public interface ParentDao {
 	 * @return 
 	 * @throws SQLException 
 	 */
-	ParentDto loginParent(String id, String password) throws SQLException;
+	ParentDto loginParent(String id, String password) throws SearchWrongException;
 	
 	/**
 	 * 부모 아이디로 number 값 찾는 메서드

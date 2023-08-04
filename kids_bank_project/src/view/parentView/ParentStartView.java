@@ -170,6 +170,7 @@ public class ParentStartView {
 			}else {
 				System.out.println();
 				System.out.print("자식 등록부터 해주세요!");
+				return;
 			}
   
 			//List<ChildDto> childs = MyPageController.getChild(num);

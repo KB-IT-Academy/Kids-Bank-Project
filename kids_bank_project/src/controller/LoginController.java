@@ -25,7 +25,7 @@ public class LoginController {
 			//return loginCheck;
 		 
 			
-		}catch(Exception e) { 
+		}catch(RuntimeException e) { 
 			loginCheck = false; 
 			FailView.errorMessage("다시 로그인 해주세요.");
 			//return loginCheck; 
@@ -62,7 +62,7 @@ public class LoginController {
 			return parent.getParentNum();
 		 
 			
-		}catch(Exception e) { 
+		}catch(RuntimeException e) { 
 			loginCheck = false; 
 			FailView.errorMessage("다시 로그인 해주세요.");
 			return 0; 
