@@ -176,7 +176,7 @@ public class ParentStartView {
 			int childOrder = Integer.parseInt(sc.nextLine());
 			
 			// 자식 PK값 가져오기 
-			int childNum = childList.get(childOrder).getChildNum();
+			int childNum = childList.get(childOrder-1).getChildNum();
 			//UserDto childData = childs.get(childOrder-1);
 			printMainMenu(num, childNum);
 			

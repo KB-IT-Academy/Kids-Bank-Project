@@ -99,7 +99,7 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<ChildDto> getChild(int num) throws SearchNotFoundException{
 		List<ChildDto> list = myPageDao.getChild(num);
-		System.out.println("list size: " + list.size());
+//		System.out.println("list size: " + list.size());
 		if (list.isEmpty()) {
 			System.out.println("비었다.");
 		

@@ -307,7 +307,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				list.add(child);
 			}
 			con.commit();
-			System.out.println("parent_num: " + num + "child_num: " + childNum);
+//			System.out.println("parent_num: " + num + "child_num: " + childNum);
 		} catch (SQLException e) {
 //			e.printStackTrace();
 			throw new SearchWrongException("자식 데이터를 조회할 수 없습니다.");
@@ -411,7 +411,7 @@ public class MyPageDaoImpl implements MyPageDao {
 				String registrationNumber = rs.getString("registration_number");
 				String joinDate = rs.getString("join_date");
 				dto = new ChildDto(childNum, id1, password, name, phone, registrationNumber, joinDate);
-				System.out.println("아이 찾음 ");
+//				System.out.println("아이 찾음 ");
 			}
 		} finally {
 			DBManager.releaseConnection(null, ps, rs);

@@ -65,13 +65,15 @@ public class CommentEmojiController {
 	 * 해당 날짜와 자기 자신(부모)의 num 값으로 이모지 삭제하는 메서드
 	 * @param moneyDate
 	 */
-	public static void deleteEmoji(int num, String date) {
+	public static int deleteEmoji(int num, String date) {
 		try {			
 			int result = commentEmojiService.deleteEmoji(num, date);
+			return result;
 	
 		} catch (RuntimeException e) {
 			FailView.errorMessage(e.getMessage());
 		}
+		return 0;
 	}
 	
 	/**

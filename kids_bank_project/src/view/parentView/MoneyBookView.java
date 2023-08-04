@@ -28,7 +28,7 @@ public class MoneyBookView {
 			
 			System.out.println();
 			System.out.println("**********************************************************************************************");
-			System.out.println("                         1.조회          2.댓글 기능         3.좋아요 기능                           ");
+			System.out.println("                         1.조회                   2.좋아요 기능                           ");
 			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("메인 메뉴로 돌아가려면 q를 입력해주세요.");
 			System.out.print("메뉴선택 >> ");
@@ -38,10 +38,10 @@ public class MoneyBookView {
 			case "1":
 				printSearchMenu(num, childNum);
 				break;
+//			case "2":
+//				printCommentsMoneyBookMenu(num, childNum);
+//				break;
 			case "2":
-				printCommentsMoneyBookMenu(num, childNum);
-				break;
-			case "3":
 				printLikeMoneyBookMenu(num, childNum);
 				break;
 			case "q":
@@ -226,12 +226,14 @@ public class MoneyBookView {
 				System.out.println("좋아요 삭제할 날짜 입력 : ");		
 				moneyDate = sc.nextLine();
 				
-				CommentEmojiController.deleteEmoji(num, moneyDate);
+				int likes = CommentEmojiController.deleteEmoji(num, moneyDate);
 				//삭제할 날짜에 좋아요 없으면 없다는 메시지창 출력
 				
 				//좋아요 누른 날짜에 대한 내역들 출력(좋아요 하지 않았으면 출력 안함)
 				SuccessView.printDayMoneyBook(num, childNum);
-				
+				if (likes == 0) {
+					return;
+				}
 				System.out.println("좋아요 삭제 하시겠습니까?(Yes or No)");
 				String choice = sc.nextLine();
 				String choice_upper = choice.toUpperCase();
@@ -240,7 +242,6 @@ public class MoneyBookView {
 					return;
 				}else if(choice_upper.equals("YES")) {
 					//rownum int형으로 변환 뒤 메소드 실행
-					//내역 번호 안누르면 에러처리
 					System.out.println("삭제 완료되었습니다.");
 				}else {
 					System.out.println("Yes or No 로 입력해주세요.");
