@@ -41,7 +41,7 @@
 
 ## 참여자 - 역할
 
-|                        강윤서(팀장)                        |                         김대현                          |                         김휘경                         |                           나웅기                            |                         오성훈                         |
+|                        강윤서(팀장)                        |                         김대현                          |                         김휘경                         |                           나웅기                            |                         백미수                         |
 | :--------------------------------------------------------: | :-----------------------------------------------------: | :----------------------------------------------------: | :---------------------------------------------------------: | :----------------------------------------------------: |
 | <img src="https://github.com/YunseoKang.png" width="200"/> | <img src="https://github.com/98eogus.png" width="200"/> | <img src="https://github.com/hwi215.png" width="200"/> | <img src="https://github.com/WoongKi1115.png" width="200"/> | <img src="https://github.com/misuqq.png" width="200"/> |
 |        [YunseoKang](https://github.com/YunseoKang)         |          [98eogus](https://github.com/98eogus)          |          [hwi215](https://github.com/hwi215)           |        [WoongKi1115](https://github.com/WoongKi1115)        |          [misuqq](https://github.com/misuqq)           |
