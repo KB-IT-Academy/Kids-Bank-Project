@@ -61,8 +61,13 @@
 
 <img width="690" alt="스크린샷 2023-08-08 오후 1 17 08" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/0b34e0dc-a0f8-4e9f-86c8-576549143750">
 
-
 <img width="691" alt="스크린샷 2023-08-08 오후 1 17 27" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/322dc327-0996-458d-bee5-3b5372ddab48">
+
+
+### 부모 - 용돈기입장 랭킹 조회
+<img width="696" alt="스크린샷 2023-08-08 오후 2 04 48" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/bb09a5f4-ecc4-4e8e-847f-baf6c112a1ad">
+<img width="692" alt="스크린샷 2023-08-08 오후 2 06 46" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/8d0737b9-b27f-4dce-a274-e759d1993136">
+
 
 ### 아이 용돈기입장 삭제
 <img width="689" alt="스크린샷 2023-08-08 오전 11 15 14" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/d35f7d4e-9622-41b7-8053-f5a2f7f5ef57">
@@ -91,7 +96,6 @@
 ### 부모 자녀 용돈기입장 통계 조회
 <img width="705" alt="image" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/d4d19be0-a442-4257-851b-b96dc03452c1">
 <img width="702" alt="스크린샷 2023-08-08 오후 1 29 41" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/a9701159-9038-46e4-bd57-9b0a836c0a6a">
-
 
 ### 부모 - 자녀 용돈기입장에 좋아요 등록
 <img width="701" alt="스크린샷 2023-08-08 오후 12 33 03" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/966c9e77-5d18-41fa-b557-a093fdd5ae5d">
