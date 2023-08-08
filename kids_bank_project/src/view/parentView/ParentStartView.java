@@ -209,7 +209,7 @@ public class ParentStartView {
 				MoneyBookView.printMoneyBookMenu(num, childNum);
 				break;
 			case "2":
-				StatisticsView.printStatisticsMenu(num);
+				StatisticsView.printStatisticsMenu(childNum);
 				break;
 			case "3":
 				MyPageView.printMyPageMenu(num);
