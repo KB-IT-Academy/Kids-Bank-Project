@@ -100,14 +100,15 @@
 ### 부모 - 자녀 용돈기입장에 좋아요 등록
 <img width="701" alt="스크린샷 2023-08-08 오후 12 33 03" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/966c9e77-5d18-41fa-b557-a093fdd5ae5d">
 
-### 부모 마이페이지 - 비밀번호 변경
-<img width="705" alt="스크린샷 2023-08-08 오후 1 30 37" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/342b2ac6-ea6d-4568-9919-3f0f08b22667">
-
 
 ### 부모 로그아웃
 <img width="695" alt="image" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/687cc65a-1091-498f-880e-91c06347b0d1">
 
+### 아이/부모 마이페이지 - 비밀번호 변경
+<img width="705" alt="스크린샷 2023-08-08 오후 1 30 37" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/342b2ac6-ea6d-4568-9919-3f0f08b22667">
 
+## 아이/부모 마이페이지 - 회원 탈퇴
+<img width="695" alt="스크린샷 2023-08-08 오후 2 11 20" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/34e0527d-a3e2-4a18-9e8c-d2d9eaff8708">
 
 ## 참여자 - 역할
 
