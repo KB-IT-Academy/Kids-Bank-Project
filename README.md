@@ -83,6 +83,11 @@
 ### 부모 - 자녀 용돈기입장에 좋아요 등록
 <img width="701" alt="스크린샷 2023-08-08 오후 12 33 03" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/966c9e77-5d18-41fa-b557-a093fdd5ae5d">
 
+### 부모 로그아웃
+<img width="695" alt="image" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/687cc65a-1091-498f-880e-91c06347b0d1">
+
+
+
 ## 참여자 - 역할
 
 |                        강윤서(팀장)                        |                         김대현                          |                         김휘경                         |                           나웅기                            |                         백미수                         |
