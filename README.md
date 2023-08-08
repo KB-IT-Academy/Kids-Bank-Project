@@ -88,8 +88,17 @@
 ### 부모 - 자녀 용돈기입장 내역 보기
 <img width="717" alt="스크린샷 2023-08-08 오전 11 37 48" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/2c747942-d3ab-49f1-bd39-e30b1d2dc85c">
 
+### 부모 자녀 용돈기입장 통계 조회
+<img width="705" alt="image" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/d4d19be0-a442-4257-851b-b96dc03452c1">
+<img width="702" alt="스크린샷 2023-08-08 오후 1 29 41" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/a9701159-9038-46e4-bd57-9b0a836c0a6a">
+
+
 ### 부모 - 자녀 용돈기입장에 좋아요 등록
 <img width="701" alt="스크린샷 2023-08-08 오후 12 33 03" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/966c9e77-5d18-41fa-b557-a093fdd5ae5d">
+
+### 부모 마이페이지 - 비밀번호 변경
+<img width="705" alt="스크린샷 2023-08-08 오후 1 30 37" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/342b2ac6-ea6d-4568-9919-3f0f08b22667">
+
 
 ### 부모 로그아웃
 <img width="695" alt="image" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/687cc65a-1091-498f-880e-91c06347b0d1">
