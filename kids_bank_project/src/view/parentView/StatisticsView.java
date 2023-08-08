@@ -70,7 +70,7 @@ public class StatisticsView {
 	public static void printWeekStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("                         **"+monthString+"월"+dayString+"일"+" 7일간 주간 통계"+"**                           ");
+		System.out.println("                                 **"+monthString+"월 "+dayString+"일"+" 7일간 주간 통계"+"**       ");
 		StatisticsController.getWeekAmountInfo(num, yearString+"-"+monthString+"-"+dayString);
 		//printCategoryStaticsInfo();
 	}
@@ -87,7 +87,7 @@ public class StatisticsView {
 		int month = Integer.parseInt(sc.nextLine());
 		
 		// 월 계산 출력
-		System.out.println("                              **"+month+"월 한달간 월간 통계"+"**                                  ");
+		System.out.println("                                 **"+year+"년 "+month+"월 한달간 월간 통계"+"**                     ");
 		StatisticsController.getMonthAmountInfo(num, year, month);
 		//printCategoryStaticsInfo();
 	}
@@ -102,7 +102,7 @@ public class StatisticsView {
 		int year = Integer.parseInt(sc.nextLine());
 		
 		// 년도 계산 출력
-		System.out.println("                                  **"+year+"년 1년간 연간 통계"+"**                               ");
+		System.out.println("                                 **"+year+"년 1년간 연간 통계"+"**                                 ");
 		StatisticsController.getYearAmountInfo(num, year);
 		//printCategoryStaticsInfo();
 	}
