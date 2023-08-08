@@ -56,6 +56,14 @@
 
 <img width="669" alt="스크린샷 2023-08-08 오전 11 14 33" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/f411ac43-4914-4c5e-9e81-76a2ec6de195">
 
+### 아이 용돈기입장 통계
+<img width="701" alt="스크린샷 2023-08-08 오후 1 16 24" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/537c23e8-e93d-4710-99d5-9c8e57027624">
+
+<img width="690" alt="스크린샷 2023-08-08 오후 1 17 08" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/0b34e0dc-a0f8-4e9f-86c8-576549143750">
+
+
+<img width="691" alt="스크린샷 2023-08-08 오후 1 17 27" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/322dc327-0996-458d-bee5-3b5372ddab48">
+
 ### 아이 용돈기입장 삭제
 <img width="689" alt="스크린샷 2023-08-08 오전 11 15 14" src="https://github.com/KB-IT-Academy/Kids-Bank-Project/assets/56347876/d35f7d4e-9622-41b7-8053-f5a2f7f5ef57">
 
