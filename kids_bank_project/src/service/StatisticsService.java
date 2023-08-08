@@ -17,7 +17,7 @@ public interface StatisticsService {
 	 * @param 현재 날짜 
 	 * @return StatisticsDto => 안에 카테고리Dto도 있어서 둘다 채워주기.
 	 */
-	StatisticsDto getMonthAmountInfo(int num, int month) throws SearchNotFoundException; 
+	StatisticsDto getMonthAmountInfo(int num, int year, int month) throws SearchNotFoundException; 
 	
 	
 	/**

@@ -67,7 +67,7 @@ public class StatisticsDaoImpl implements StatisticsDao {
 	}
 	
 	@Override
-	public StatisticsDto getMonthAmountInfo(int num, int month) throws SearchNotFoundException{
+	public StatisticsDto getMonthAmountInfo(int num, int year, int month) throws SearchNotFoundException{
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -76,6 +76,7 @@ public class StatisticsDaoImpl implements StatisticsDao {
 		String sql = "SELECT money_type, SUM(amount) AS amountsum "
 				+ "FROM MONEY_BOOK "
 				+ "WHERE child_num=? "
+				+ "AND EXTRACT(YEAR FROM money_date)=? "
 				+ "AND EXTRACT(MONTH FROM money_date)=? "
 				+ "GROUP BY money_type ";
 		
@@ -85,7 +86,8 @@ public class StatisticsDaoImpl implements StatisticsDao {
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, num);
-			ps.setInt(2, month);
+			ps.setInt(2, year);
+			ps.setInt(3, month);
 			
 			// 실행
 			rs = ps.executeQuery();

@@ -29,9 +29,9 @@ public class StatisticsController {
 	 * 월간 통계를 가져오는 메서드
 	 * @param 현재 날짜 
 	 */
-	public static void getMonthAmountInfo(int num, int month) {
+	public static void getMonthAmountInfo(int num, int year, int month) {
 		try {
-			StatisticsDto statistics = statisticsService.getMonthAmountInfo(num, month);
+			StatisticsDto statistics = statisticsService.getMonthAmountInfo(num, year, month);
 			SuccessView.printStatistics(statistics);
 		} catch (SearchNotFoundException e) {
 			FailView.errorMessage(e.getMessage());

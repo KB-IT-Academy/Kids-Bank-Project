@@ -81,12 +81,14 @@ public class StatisticsView {
 	public static void printMonthStaticsInfo(int num) {
 		System.out.println();
 		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.println("년도 입력 : ");
+		int year = Integer.parseInt(sc.nextLine());
 		System.out.println("월 입력 : ");
 		int month = Integer.parseInt(sc.nextLine());
 		
 		// 월 계산 출력
 		System.out.println("                              **"+month+"월 한달간 월간 통계"+"**                                  ");
-		StatisticsController.getMonthAmountInfo(num, month);
+		StatisticsController.getMonthAmountInfo(num, year, month);
 		//printCategoryStaticsInfo();
 	}
 	

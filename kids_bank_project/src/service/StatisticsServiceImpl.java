@@ -23,8 +23,8 @@ public class StatisticsServiceImpl implements StatisticsService{
 	}
 
 	@Override
-	public StatisticsDto getMonthAmountInfo(int num, int month) throws SearchNotFoundException{
-		StatisticsDto statistics = statisticsDao.getMonthAmountInfo(num, month);
+	public StatisticsDto getMonthAmountInfo(int num, int year, int month) throws SearchNotFoundException{
+		StatisticsDto statistics = statisticsDao.getMonthAmountInfo(num, year, month);
 		return statistics;
 	}
 
