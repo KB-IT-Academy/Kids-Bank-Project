@@ -54,12 +54,12 @@ public class MoneyBookDto {
 	 * 등록 생성자
 	 * 
 	 */
-	public MoneyBookDto(int rownum, int moneyBookNum, String moneyType, int outcomeType, int amount, String content,
+	public MoneyBookDto(int rownum, int moneyBookNum, int moneyTypeInt, int outcomeType, int amount, String content,
 			String memo, String money_date, String write_date, String update_date) {
 
 		this.rownum = rownum;
 		this.moneyBookNum = moneyBookNum;
-		this.moneyType = moneyType;
+		this.moneyTypeInt = moneyTypeInt;
 		this.outcomeType = outcomeType;
 		this.amount = amount;
 		this.content = content;

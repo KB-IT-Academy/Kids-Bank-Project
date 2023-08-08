@@ -99,56 +99,63 @@ public class MoneyBookView {
 	}
 
 	/**
-	 * 용돈기입장 등록 화면 출력하는 메소드
-	 */
-	static public void printInsertMoneyBook(int childNum) {
-		
-		System.out.println();
-		System.out.println("----------------------------------------------------------------------------------");
-		System.out.println("작성할 날짜 입력 : ");
-		
-		String moneydate = getNumberInput(sc, dateSize); 	
+	    * 용돈기입장 등록 화면 출력하는 메소드
+	    */
+	   static public void printInsertMoneyBook(int childNum) {
+	      
+	      System.out.println();
+	      System.out.println("----------------------------------------------------------------------------------");
+	      System.out.println("작성할 날짜 입력 : ");
+	      
+	      String moneydate = getNumberInput(sc, dateSize);    
 
-		System.out.println("1. 수입 2. 지출");
-		System.out.print("분류 선택 : ");
-		String moneyType = sc.nextLine();
+	      System.out.println("1. 수입 2. 지출");
+	      System.out.print("분류 선택 : ");
+	      String moneyType = sc.nextLine();
 
-		int outComeType;
-		int amount;
-		String content, memo;
-		MoneyBookDto dto = new MoneyBookDto();
-		switch (moneyType) {
-		case "1":
-			System.out.println("금액 입력 : ");
-			amount = Integer.parseInt(sc.nextLine());
-			System.out.println("내용 입력 : ");
-			content = sc.nextLine();
-			System.out.println("메모 입력 : ");
-			memo = sc.nextLine();
-			outComeType = 0;
-			
-			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(childNum,dto);
-			break;
-			
-		case "2":
-			System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
-			System.out.println("지출 분류 선택 : ");
-			outComeType = Integer.parseInt(sc.nextLine());
-			System.out.println("금액 입력 : ");
-			amount = Integer.parseInt(sc.nextLine());
-			System.out.println("내용 입력 : ");
-			content = sc.nextLine();
-			System.out.println("메모 입력 : ");
-			memo = sc.nextLine();
-			dto =  new MoneyBookDto(0, 0, moneyType, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
-	    	MoneyBookController.createMoneyBook(childNum, dto);
-			System.out.println("등록 완료되었습니다.");
-			break;
-		default:
-			System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
-		}
-	}
+	      int outComeType;
+	      int amount;
+	      String content, memo;
+	      MoneyBookDto dto = new MoneyBookDto();
+	      int moneyTypeInt;
+	      switch (moneyType) {
+	      case "1":
+	         System.out.println("금액 입력 : ");
+	         amount = Integer.parseInt(sc.nextLine());
+	         System.out.println("내용 입력 : ");
+	         content = sc.nextLine();
+	         System.out.println("메모 입력 : ");
+	         memo = sc.nextLine();
+	         outComeType = 0;
+	         
+	         moneyTypeInt = Integer.parseInt(moneyType);
+	         
+	         dto =  new MoneyBookDto(0, 0, moneyTypeInt, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
+	          MoneyBookController.createMoneyBook(childNum,dto);
+	         break;
+	         
+	      case "2":
+	         System.out.println("1.식비 2.간식 3.교통비 4.문화생활 5.기념일 6.기타");
+	         System.out.println("지출 분류 선택 : ");
+	         outComeType = Integer.parseInt(sc.nextLine());
+	         System.out.println("금액 입력 : ");
+	         amount = Integer.parseInt(sc.nextLine());
+	         System.out.println("내용 입력 : ");
+	         content = sc.nextLine();
+	         System.out.println("메모 입력 : ");
+	         memo = sc.nextLine();
+	         
+	         moneyTypeInt = Integer.parseInt(moneyType);
+	         
+	         
+	         dto =  new MoneyBookDto(0, 0, moneyTypeInt, outComeType, amount, content, memo, moneydate, null, null); // 적어야될곳
+	          MoneyBookController.createMoneyBook(childNum, dto);
+	         System.out.println("등록 완료되었습니다.");
+	         break;
+	      default:
+	         System.out.println("화면에 보이는 메뉴 번호를 입력해주세요.");
+	      }
+	   }
 
 	/**
 	 * 용돈기입장 수정 화면 출력하는 메소드
